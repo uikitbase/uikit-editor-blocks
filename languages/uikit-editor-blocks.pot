@@ -1,0 +1,2288 @@
+# Copyright (C) 2022 Liip AG
+# This file is distributed under the GPL2+.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WordPress UIkit Blocks\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-bootstrap-blocks\n"
+"POT-Creation-Date: 2024-12-10 20:11+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+"X-Domain: wp-bootstrap-blocks\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: node_modules\n"
+
+#: src/accordion-item/block.js:14
+msgid "Accordion Item (UIkit)"
+msgstr ""
+
+#: src/accordion-item/block.js:18
+msgid "Accordion Item"
+msgstr ""
+
+#: src/accordion-item/block.js:19
+msgid "UIkit Accordion Item"
+msgstr ""
+
+#: src/accordion-item/block.js:20 src/accordion/block.js:24
+#: src/button/block.js:19 src/card/block.js:19 src/container/block.js:24
+#: src/divider/block.js:19 src/dropdown-item/block.js:20
+#: src/dropdown/block.js:24 src/grid-column/block.js:23 src/grid/block.js:25
+#: src/heading/block.js:19 src/image/block.js:19
+#: src/overlay-slider-item/block.js:20 src/overlay-slider/block.js:24
+#: src/overlay/block.js:19 src/panel-slider-item/block.js:20
+#: src/panel-slider/block.js:24 src/panel/block.js:19 src/section/block.js:24
+#: src/slideshow-item/block.js:20 src/slideshow/block.js:24
+#: src/social-icons-item/block.js:20 src/social-icons/block.js:24
+#: src/switcher-item/block.js:23 src/switcher/block.js:24 src/text/block.js:18
+msgid "UIkit"
+msgstr ""
+
+#: src/accordion-item/edit.js:48 src/button/edit.js:81 src/card/edit.js:49
+#: src/dropdown-item/edit.js:45 src/dropdown/edit.js:57 src/image/edit.js:97
+#: src/overlay-slider-item/edit.js:100 src/overlay/edit.js:126
+#: src/panel-slider-item/edit.js:100 src/panel/edit.js:120
+#: src/slideshow-item/edit.js:100 src/social-icons-item/edit.js:72
+#: src/switcher-item/edit.js:46
+msgid "Block Content"
+msgstr ""
+
+#: src/accordion-item/edit.js:50 src/accordion-item/edit.js:61
+#: src/card/edit.js:51 src/card/edit.js:88 src/card/edit.js:120
+#: src/dropdown-item/edit.js:47 src/dropdown-item/edit.js:53
+#: src/dropdown/edit.js:59 src/overlay-slider-item/edit.js:159
+#: src/overlay-slider-item/edit.js:219 src/overlay-slider/edit.js:503
+#: src/overlay/edit.js:211 src/overlay/edit.js:404 src/overlay/edit.js:675
+#: src/panel-slider-item/edit.js:102 src/panel-slider-item/edit.js:219
+#: src/panel-slider/edit.js:401 src/panel/edit.js:122 src/panel/edit.js:298
+#: src/panel/edit.js:568 src/slideshow-item/edit.js:159
+#: src/slideshow-item/edit.js:233 src/slideshow/edit.js:421
+#: src/social-icons-item/edit.js:140 src/switcher-item/edit.js:48
+msgid "Title"
+msgstr ""
+
+#: src/accordion-item/edit.js:55 src/accordion/edit.js:74 src/card/edit.js:56
+#: src/card/edit.js:106 src/overlay-slider-item/edit.js:169
+#: src/overlay-slider/edit.js:682 src/overlay/edit.js:229
+#: src/overlay/edit.js:583 src/panel-slider-item/edit.js:112
+#: src/panel-slider/edit.js:580 src/panel/edit.js:132 src/panel/edit.js:475
+#: src/slideshow-item/edit.js:169 src/slideshow/edit.js:600
+msgid "Content"
+msgstr ""
+
+#: src/accordion/block.js:18
+msgid "Accordion (UIkit)"
+msgstr ""
+
+#: src/accordion/block.js:22 src/accordion/edit.js:58
+msgid "Accordion"
+msgstr ""
+
+#: src/accordion/block.js:23
+msgid "UIkit Accordion"
+msgstr ""
+
+#: src/accordion/edit.js:60
+msgid "Allow Multiple Open Items"
+msgstr ""
+
+#: src/accordion/edit.js:67
+msgid "Start With All Items Closed"
+msgstr ""
+
+#: src/accordion/edit.js:76 src/button/edit.js:129 src/card/edit.js:63
+#: src/divider/edit.js:47 src/heading/edit.js:58 src/overlay-slider/edit.js:383
+#: src/overlay-slider/edit.js:505 src/overlay-slider/edit.js:595
+#: src/overlay-slider/edit.js:684 src/overlay-slider/edit.js:727
+#: src/overlay/edit.js:306 src/overlay/edit.js:406 src/overlay/edit.js:496
+#: src/overlay/edit.js:585 src/overlay/edit.js:628 src/panel-slider/edit.js:334
+#: src/panel-slider/edit.js:403 src/panel-slider/edit.js:493
+#: src/panel-slider/edit.js:582 src/panel-slider/edit.js:625
+#: src/panel/edit.js:260 src/panel/edit.js:300 src/panel/edit.js:389
+#: src/panel/edit.js:477 src/panel/edit.js:520 src/section/edit.js:89
+#: src/slideshow/edit.js:352 src/slideshow/edit.js:423
+#: src/slideshow/edit.js:513 src/slideshow/edit.js:602
+#: src/slideshow/edit.js:645 src/social-icons/edit.js:60 src/text/edit.js:83
+msgid "Style"
+msgstr ""
+
+#: src/accordion/edit.js:79 src/accordion/edit.js:91 src/card/edit.js:66
+#: src/divider/edit.js:51 src/divider/edit.js:80 src/divider/edit.js:116
+#: src/dropdown/edit.js:106 src/general/general.js:71
+#: src/general/general.js:102 src/general/general.js:117
+#: src/general/general.js:212 src/grid-column/edit.js:174
+#: src/grid-column/edit.js:285 src/grid/edit.js:941 src/heading/edit.js:62
+#: src/heading/edit.js:90 src/heading/edit.js:105 src/image/edit.js:216
+#: src/overlay-slider/edit.js:40 src/overlay-slider/edit.js:236
+#: src/overlay-slider/edit.js:289 src/overlay-slider/edit.js:313
+#: src/overlay-slider/edit.js:328 src/overlay-slider/edit.js:352
+#: src/overlay-slider/edit.js:386 src/overlay-slider/edit.js:402
+#: src/overlay-slider/edit.js:417 src/overlay-slider/edit.js:449
+#: src/overlay-slider/edit.js:462 src/overlay-slider/edit.js:508
+#: src/overlay-slider/edit.js:534 src/overlay-slider/edit.js:547
+#: src/overlay-slider/edit.js:581 src/overlay-slider/edit.js:598
+#: src/overlay-slider/edit.js:624 src/overlay-slider/edit.js:670
+#: src/overlay-slider/edit.js:687 src/overlay-slider/edit.js:713
+#: src/overlay-slider/edit.js:761 src/overlay/edit.js:309
+#: src/overlay/edit.js:325 src/overlay/edit.js:340 src/overlay/edit.js:372
+#: src/overlay/edit.js:385 src/overlay/edit.js:409 src/overlay/edit.js:435
+#: src/overlay/edit.js:448 src/overlay/edit.js:487 src/overlay/edit.js:499
+#: src/overlay/edit.js:525 src/overlay/edit.js:576 src/overlay/edit.js:588
+#: src/overlay/edit.js:619 src/overlay/edit.js:667 src/panel-slider/edit.js:38
+#: src/panel-slider/edit.js:203 src/panel-slider/edit.js:257
+#: src/panel-slider/edit.js:282 src/panel-slider/edit.js:297
+#: src/panel-slider/edit.js:321 src/panel-slider/edit.js:337
+#: src/panel-slider/edit.js:355 src/panel-slider/edit.js:406
+#: src/panel-slider/edit.js:432 src/panel-slider/edit.js:445
+#: src/panel-slider/edit.js:479 src/panel-slider/edit.js:496
+#: src/panel-slider/edit.js:522 src/panel-slider/edit.js:568
+#: src/panel-slider/edit.js:585 src/panel-slider/edit.js:611
+#: src/panel-slider/edit.js:659 src/panel/edit.js:263 src/panel/edit.js:281
+#: src/panel/edit.js:303 src/panel/edit.js:329 src/panel/edit.js:342
+#: src/panel/edit.js:375 src/panel/edit.js:392 src/panel/edit.js:418
+#: src/panel/edit.js:463 src/panel/edit.js:480 src/panel/edit.js:506
+#: src/panel/edit.js:554 src/section/edit.js:93 src/section/edit.js:111
+#: src/section/edit.js:132 src/section/edit.js:170 src/section/edit.js:277
+#: src/slideshow/edit.js:155 src/slideshow/edit.js:167
+#: src/slideshow/edit.js:206 src/slideshow/edit.js:238
+#: src/slideshow/edit.js:260 src/slideshow/edit.js:274
+#: src/slideshow/edit.js:287 src/slideshow/edit.js:322
+#: src/slideshow/edit.js:355 src/slideshow/edit.js:385
+#: src/slideshow/edit.js:426 src/slideshow/edit.js:452
+#: src/slideshow/edit.js:465 src/slideshow/edit.js:499
+#: src/slideshow/edit.js:516 src/slideshow/edit.js:542
+#: src/slideshow/edit.js:588 src/slideshow/edit.js:605
+#: src/slideshow/edit.js:631 src/slideshow/edit.js:679 src/switcher/edit.js:67
+#: src/switcher/edit.js:174 src/switcher/edit.js:188 src/text/edit.js:87
+#: src/text/edit.js:101 src/text/edit.js:120
+msgid "None"
+msgstr ""
+
+#: src/accordion/edit.js:80 src/overlay-slider-item/edit.js:164
+#: src/overlay-slider/edit.js:593 src/overlay/edit.js:220
+#: src/overlay/edit.js:494 src/panel-slider-item/edit.js:107
+#: src/panel-slider/edit.js:491 src/panel/edit.js:127 src/panel/edit.js:387
+#: src/slideshow-item/edit.js:164 src/slideshow/edit.js:511 src/text/edit.js:89
+msgid "Meta"
+msgstr ""
+
+#: src/accordion/edit.js:81 src/text/edit.js:88
+msgid "Lead"
+msgstr ""
+
+#: src/accordion/edit.js:88 src/overlay-slider/edit.js:578
+#: src/overlay-slider/edit.js:667 src/overlay-slider/edit.js:710
+#: src/overlay-slider/edit.js:758 src/overlay/edit.js:479
+#: src/overlay/edit.js:568 src/overlay/edit.js:611 src/overlay/edit.js:659
+#: src/panel-slider/edit.js:476 src/panel-slider/edit.js:565
+#: src/panel-slider/edit.js:608 src/panel-slider/edit.js:656
+#: src/panel/edit.js:372 src/panel/edit.js:460 src/panel/edit.js:503
+#: src/panel/edit.js:551 src/slideshow/edit.js:496 src/slideshow/edit.js:585
+#: src/slideshow/edit.js:628 src/slideshow/edit.js:676
+msgid "Margin Top"
+msgstr ""
+
+#: src/accordion/edit.js:92 src/button/edit.js:151 src/card/edit.js:80
+#: src/container/edit.js:53 src/divider/edit.js:53 src/dropdown/edit.js:95
+#: src/general/general.js:40 src/general/general.js:118 src/grid/edit.js:938
+#: src/overlay-slider/edit.js:37 src/overlay-slider/edit.js:262
+#: src/overlay-slider/edit.js:325 src/overlay-slider/edit.js:415
+#: src/overlay-slider/edit.js:450 src/overlay-slider/edit.js:463
+#: src/overlay-slider/edit.js:582 src/overlay-slider/edit.js:671
+#: src/overlay-slider/edit.js:714 src/overlay-slider/edit.js:749
+#: src/overlay-slider/edit.js:762 src/overlay/edit.js:338
+#: src/overlay/edit.js:373 src/overlay/edit.js:386 src/overlay/edit.js:483
+#: src/overlay/edit.js:572 src/overlay/edit.js:615 src/overlay/edit.js:650
+#: src/overlay/edit.js:663 src/panel-slider/edit.js:35
+#: src/panel-slider/edit.js:230 src/panel-slider/edit.js:294
+#: src/panel-slider/edit.js:357 src/panel-slider/edit.js:480
+#: src/panel-slider/edit.js:569 src/panel-slider/edit.js:612
+#: src/panel-slider/edit.js:647 src/panel-slider/edit.js:660
+#: src/panel/edit.js:283 src/panel/edit.js:377 src/panel/edit.js:465
+#: src/panel/edit.js:508 src/panel/edit.js:542 src/panel/edit.js:556
+#: src/section/edit.js:129 src/section/edit.js:166 src/slideshow/edit.js:168
+#: src/slideshow/edit.js:235 src/slideshow/edit.js:271
+#: src/slideshow/edit.js:289 src/slideshow/edit.js:305
+#: src/slideshow/edit.js:320 src/slideshow/edit.js:373
+#: src/slideshow/edit.js:386 src/slideshow/edit.js:500
+#: src/slideshow/edit.js:589 src/slideshow/edit.js:632
+#: src/slideshow/edit.js:667 src/slideshow/edit.js:680
+#: src/social-icons/edit.js:106 src/switcher/edit.js:136
+#: src/switcher/edit.js:158 src/switcher/edit.js:170 src/switcher/edit.js:184
+#: src/text/edit.js:121
+msgid "Small"
+msgstr ""
+
+#: src/accordion/edit.js:93 src/button/edit.js:133 src/button/edit.js:150
+#: src/card/edit.js:67 src/card/edit.js:79 src/container/edit.js:51
+#: src/dropdown/edit.js:94 src/dropdown/edit.js:107 src/general/general.js:39
+#: src/grid/edit.js:937 src/overlay-slider/edit.js:36
+#: src/overlay-slider/edit.js:261 src/overlay-slider/edit.js:305
+#: src/overlay-slider/edit.js:414 src/overlay-slider/edit.js:583
+#: src/overlay-slider/edit.js:672 src/overlay-slider/edit.js:715
+#: src/overlay-slider/edit.js:748 src/overlay-slider/edit.js:763
+#: src/overlay/edit.js:337 src/overlay/edit.js:482 src/overlay/edit.js:571
+#: src/overlay/edit.js:614 src/overlay/edit.js:649 src/overlay/edit.js:662
+#: src/panel-slider/edit.js:34 src/panel-slider/edit.js:229
+#: src/panel-slider/edit.js:273 src/panel-slider/edit.js:356
+#: src/panel-slider/edit.js:481 src/panel-slider/edit.js:570
+#: src/panel-slider/edit.js:613 src/panel-slider/edit.js:646
+#: src/panel-slider/edit.js:661 src/panel/edit.js:282 src/panel/edit.js:376
+#: src/panel/edit.js:464 src/panel/edit.js:507 src/panel/edit.js:541
+#: src/panel/edit.js:555 src/section/edit.js:94 src/section/edit.js:127
+#: src/section/edit.js:164 src/slideshow-item/edit.js:223
+#: src/slideshow/edit.js:252 src/slideshow/edit.js:288
+#: src/slideshow/edit.js:303 src/slideshow/edit.js:319
+#: src/slideshow/edit.js:372 src/slideshow/edit.js:501
+#: src/slideshow/edit.js:590 src/slideshow/edit.js:633
+#: src/slideshow/edit.js:666 src/slideshow/edit.js:681
+#: src/social-icons/edit.js:63 src/social-icons/edit.js:105
+#: src/switcher/edit.js:140 src/switcher/edit.js:172 src/switcher/edit.js:186
+msgid "Default"
+msgstr ""
+
+#: src/accordion/edit.js:94 src/general/general.js:41
+#: src/general/general.js:119 src/grid/edit.js:939
+#: src/overlay-slider/edit.js:38 src/overlay-slider/edit.js:263
+#: src/overlay-slider/edit.js:326 src/overlay-slider/edit.js:451
+#: src/overlay-slider/edit.js:464 src/overlay-slider/edit.js:584
+#: src/overlay-slider/edit.js:673 src/overlay-slider/edit.js:716
+#: src/overlay-slider/edit.js:764 src/overlay/edit.js:374
+#: src/overlay/edit.js:387 src/overlay/edit.js:484 src/overlay/edit.js:573
+#: src/overlay/edit.js:616 src/overlay/edit.js:664 src/panel-slider/edit.js:36
+#: src/panel-slider/edit.js:231 src/panel-slider/edit.js:295
+#: src/panel-slider/edit.js:482 src/panel-slider/edit.js:571
+#: src/panel-slider/edit.js:614 src/panel-slider/edit.js:662
+#: src/panel/edit.js:378 src/panel/edit.js:466 src/panel/edit.js:509
+#: src/panel/edit.js:557 src/slideshow/edit.js:169 src/slideshow/edit.js:236
+#: src/slideshow/edit.js:272 src/slideshow/edit.js:387
+#: src/slideshow/edit.js:502 src/slideshow/edit.js:591
+#: src/slideshow/edit.js:634 src/slideshow/edit.js:682
+#: src/social-icons/edit.js:107 src/switcher/edit.js:137
+#: src/switcher/edit.js:159 src/switcher/edit.js:171 src/switcher/edit.js:185
+msgid "Medium"
+msgstr ""
+
+#: src/accordion/edit.js:95 src/button/edit.js:152 src/card/edit.js:81
+#: src/container/edit.js:54 src/dropdown/edit.js:96 src/general/general.js:42
+#: src/general/general.js:120 src/grid/edit.js:940
+#: src/overlay-slider/edit.js:39 src/overlay-slider/edit.js:264
+#: src/overlay-slider/edit.js:327 src/overlay-slider/edit.js:416
+#: src/overlay-slider/edit.js:452 src/overlay-slider/edit.js:465
+#: src/overlay-slider/edit.js:585 src/overlay-slider/edit.js:674
+#: src/overlay-slider/edit.js:717 src/overlay-slider/edit.js:750
+#: src/overlay-slider/edit.js:765 src/overlay/edit.js:339
+#: src/overlay/edit.js:375 src/overlay/edit.js:388 src/overlay/edit.js:485
+#: src/overlay/edit.js:574 src/overlay/edit.js:617 src/overlay/edit.js:651
+#: src/overlay/edit.js:665 src/panel-slider/edit.js:37
+#: src/panel-slider/edit.js:232 src/panel-slider/edit.js:296
+#: src/panel-slider/edit.js:358 src/panel-slider/edit.js:483
+#: src/panel-slider/edit.js:572 src/panel-slider/edit.js:615
+#: src/panel-slider/edit.js:648 src/panel-slider/edit.js:663
+#: src/panel/edit.js:284 src/panel/edit.js:379 src/panel/edit.js:467
+#: src/panel/edit.js:510 src/panel/edit.js:543 src/panel/edit.js:558
+#: src/section/edit.js:130 src/section/edit.js:167 src/slideshow/edit.js:170
+#: src/slideshow/edit.js:237 src/slideshow/edit.js:273
+#: src/slideshow/edit.js:290 src/slideshow/edit.js:306
+#: src/slideshow/edit.js:321 src/slideshow/edit.js:374
+#: src/slideshow/edit.js:388 src/slideshow/edit.js:503
+#: src/slideshow/edit.js:592 src/slideshow/edit.js:635
+#: src/slideshow/edit.js:668 src/slideshow/edit.js:683
+#: src/social-icons/edit.js:108 src/switcher/edit.js:138
+#: src/switcher/edit.js:160 src/switcher/edit.js:173 src/switcher/edit.js:187
+#: src/text/edit.js:122
+msgid "Large"
+msgstr ""
+
+#: src/accordion/edit.js:96 src/container/edit.js:55 src/general/general.js:43
+#: src/general/general.js:121 src/overlay-slider/edit.js:586
+#: src/overlay-slider/edit.js:675 src/overlay-slider/edit.js:718
+#: src/overlay-slider/edit.js:766 src/overlay/edit.js:486
+#: src/overlay/edit.js:575 src/overlay/edit.js:618 src/overlay/edit.js:666
+#: src/panel-slider/edit.js:484 src/panel-slider/edit.js:573
+#: src/panel-slider/edit.js:616 src/panel-slider/edit.js:664
+#: src/panel/edit.js:380 src/panel/edit.js:468 src/panel/edit.js:511
+#: src/panel/edit.js:559 src/section/edit.js:131 src/section/edit.js:168
+#: src/slideshow/edit.js:171 src/slideshow/edit.js:291
+#: src/slideshow/edit.js:307 src/slideshow/edit.js:389
+#: src/slideshow/edit.js:504 src/slideshow/edit.js:593
+#: src/slideshow/edit.js:636 src/slideshow/edit.js:684 src/switcher/edit.js:139
+msgid "X-Large"
+msgstr ""
+
+#: src/button/block.js:13
+msgid "Button (UIkit)"
+msgstr ""
+
+#: src/button/block.js:17 src/button/edit.js:127 src/dropdown/edit.js:89
+#: src/social-icons/edit.js:64
+msgid "Button"
+msgstr ""
+
+#: src/button/block.js:18
+msgid "UIkit Button"
+msgstr ""
+
+#: src/button/edit.js:72
+msgid "Add text..."
+msgstr ""
+
+#: src/button/edit.js:83 src/button/edit.js:137 src/dropdown/edit.js:111
+#: src/text/block.js:16 src/text/edit.js:74
+msgid "Text"
+msgstr ""
+
+#: src/button/edit.js:88
+msgid "Link URL"
+msgstr ""
+
+#: src/button/edit.js:95 src/image/edit.js:177
+#: src/overlay-slider-item/edit.js:186 src/overlay/edit.js:254
+#: src/panel-slider-item/edit.js:186 src/panel/edit.js:226
+#: src/slideshow-item/edit.js:186 src/social-icons-item/edit.js:107
+msgid "Open in New Tab"
+msgstr ""
+
+#: src/button/edit.js:100 src/image/edit.js:182
+#: src/overlay-slider-item/edit.js:191 src/overlay/edit.js:259
+#: src/panel-slider-item/edit.js:191 src/panel/edit.js:231
+#: src/slideshow-item/edit.js:191 src/social-icons-item/edit.js:112
+msgid "Link Rel"
+msgstr ""
+
+#: src/button/edit.js:107 src/image/edit.js:189
+#: src/overlay-slider-item/edit.js:198 src/overlay/edit.js:266
+#: src/panel-slider-item/edit.js:198 src/panel/edit.js:238
+#: src/slideshow-item/edit.js:198 src/social-icons-item/edit.js:119
+msgid "Link Title"
+msgstr ""
+
+#: src/button/edit.js:116 src/image/edit.js:198
+#: src/overlay-slider-item/edit.js:207 src/overlay/edit.js:275
+#: src/panel-slider-item/edit.js:207 src/panel/edit.js:247
+#: src/slideshow-item/edit.js:207 src/social-icons-item/edit.js:128
+msgid "Link Aria Label"
+msgstr ""
+
+#: src/button/edit.js:134 src/card/edit.js:68 src/dropdown/edit.js:108
+#: src/heading/edit.js:108 src/overlay-slider/edit.js:550
+#: src/overlay-slider/edit.js:627 src/overlay/edit.js:451
+#: src/overlay/edit.js:528 src/panel-slider/edit.js:448
+#: src/panel-slider/edit.js:525 src/panel/edit.js:345 src/panel/edit.js:421
+#: src/section/edit.js:96 src/slideshow/edit.js:468 src/slideshow/edit.js:545
+#: src/text/edit.js:104
+msgid "Primary"
+msgstr ""
+
+#: src/button/edit.js:135 src/card/edit.js:69 src/dropdown/edit.js:109
+#: src/heading/edit.js:109 src/overlay-slider/edit.js:551
+#: src/overlay-slider/edit.js:628 src/overlay/edit.js:452
+#: src/overlay/edit.js:529 src/panel-slider/edit.js:449
+#: src/panel-slider/edit.js:526 src/panel/edit.js:346 src/panel/edit.js:422
+#: src/section/edit.js:97 src/slideshow/edit.js:469 src/slideshow/edit.js:546
+#: src/text/edit.js:105
+msgid "Secondary"
+msgstr ""
+
+#: src/button/edit.js:136 src/dropdown/edit.js:110 src/heading/edit.js:112
+#: src/overlay-slider/edit.js:554 src/overlay-slider/edit.js:631
+#: src/overlay/edit.js:455 src/overlay/edit.js:532 src/panel-slider/edit.js:452
+#: src/panel-slider/edit.js:529 src/panel/edit.js:349 src/panel/edit.js:425
+#: src/slideshow/edit.js:472 src/slideshow/edit.js:549 src/text/edit.js:108
+msgid "Danger"
+msgstr ""
+
+#: src/button/edit.js:138 src/dropdown/edit.js:112 src/image/edit.js:170
+#: src/overlay-slider-item/edit.js:174 src/overlay-slider/edit.js:725
+#: src/overlay-slider/edit.js:735 src/overlay/edit.js:238
+#: src/overlay/edit.js:626 src/overlay/edit.js:636
+#: src/panel-slider-item/edit.js:174 src/panel-slider/edit.js:623
+#: src/panel-slider/edit.js:633 src/panel/edit.js:210 src/panel/edit.js:518
+#: src/panel/edit.js:528 src/slideshow/edit.js:643 src/slideshow/edit.js:653
+#: src/social-icons-item/edit.js:100 src/social-icons/edit.js:65
+msgid "Link"
+msgstr ""
+
+#: src/button/edit.js:146 src/card/edit.js:76 src/container/edit.js:47
+#: src/text/edit.js:116
+msgid "Size"
+msgstr ""
+
+#: src/card/block.js:13
+msgid "Card (UIkit)"
+msgstr ""
+
+#: src/card/block.js:17 src/card/edit.js:61
+msgid "Card"
+msgstr ""
+
+#: src/card/block.js:18
+msgid "UIkit Card"
+msgstr ""
+
+#: src/card/edit.js:90 src/card/edit.js:108 src/divider/edit.js:62
+#: src/heading/edit.js:120 src/overlay-slider/edit.js:562
+#: src/overlay-slider/edit.js:651 src/overlay/edit.js:463
+#: src/overlay/edit.js:552 src/panel-slider/edit.js:460
+#: src/panel-slider/edit.js:549 src/panel/edit.js:356 src/panel/edit.js:444
+#: src/slideshow/edit.js:480 src/slideshow/edit.js:569 src/text/edit.js:130
+msgid "HTML Element"
+msgstr ""
+
+#: src/card/edit.js:93 src/heading/edit.js:124 src/overlay-slider/edit.js:565
+#: src/overlay-slider/edit.js:654 src/overlay/edit.js:466
+#: src/overlay/edit.js:555 src/panel-slider/edit.js:463
+#: src/panel-slider/edit.js:552 src/panel/edit.js:359 src/panel/edit.js:447
+#: src/slideshow/edit.js:483 src/slideshow/edit.js:572
+msgid "H1"
+msgstr ""
+
+#: src/card/edit.js:94 src/heading/edit.js:125 src/overlay-slider/edit.js:566
+#: src/overlay-slider/edit.js:655 src/overlay/edit.js:467
+#: src/overlay/edit.js:556 src/panel-slider/edit.js:464
+#: src/panel-slider/edit.js:553 src/panel/edit.js:360 src/panel/edit.js:448
+#: src/slideshow/edit.js:484 src/slideshow/edit.js:573
+msgid "H2"
+msgstr ""
+
+#: src/card/edit.js:95 src/heading/edit.js:126 src/overlay-slider/edit.js:567
+#: src/overlay-slider/edit.js:656 src/overlay/edit.js:468
+#: src/overlay/edit.js:557 src/panel-slider/edit.js:465
+#: src/panel-slider/edit.js:554 src/panel/edit.js:361 src/panel/edit.js:449
+#: src/slideshow/edit.js:485 src/slideshow/edit.js:574
+msgid "H3"
+msgstr ""
+
+#: src/card/edit.js:96 src/heading/edit.js:127 src/overlay-slider/edit.js:568
+#: src/overlay-slider/edit.js:657 src/overlay/edit.js:469
+#: src/overlay/edit.js:558 src/panel-slider/edit.js:466
+#: src/panel-slider/edit.js:555 src/panel/edit.js:362 src/panel/edit.js:450
+#: src/slideshow/edit.js:486 src/slideshow/edit.js:575
+msgid "H4"
+msgstr ""
+
+#: src/card/edit.js:97 src/heading/edit.js:128 src/overlay-slider/edit.js:569
+#: src/overlay-slider/edit.js:658 src/overlay/edit.js:470
+#: src/overlay/edit.js:559 src/panel-slider/edit.js:467
+#: src/panel-slider/edit.js:556 src/panel/edit.js:363 src/panel/edit.js:451
+#: src/slideshow/edit.js:487 src/slideshow/edit.js:576
+msgid "H5"
+msgstr ""
+
+#: src/card/edit.js:98 src/heading/edit.js:129 src/overlay-slider/edit.js:570
+#: src/overlay-slider/edit.js:659 src/overlay/edit.js:471
+#: src/overlay/edit.js:560 src/panel-slider/edit.js:468
+#: src/panel-slider/edit.js:557 src/panel/edit.js:364 src/panel/edit.js:452
+#: src/slideshow/edit.js:488 src/slideshow/edit.js:577
+msgid "H6"
+msgstr ""
+
+#: src/card/edit.js:99 src/card/edit.js:112 src/divider/edit.js:67
+#: src/heading/edit.js:130 src/panel/edit.js:365 src/panel/edit.js:453
+msgid "div"
+msgstr ""
+
+#: src/card/edit.js:111
+msgid "p"
+msgstr ""
+
+#: src/class-uikit-editor-blocks.php:269
+msgid "Uikit Blocks"
+msgstr ""
+
+#: src/container/block.js:18
+msgid "Container (UIkit)"
+msgstr ""
+
+#: src/container/block.js:22 src/container/edit.js:45 src/section/edit.js:160
+msgid "Container"
+msgstr ""
+
+#: src/container/block.js:23
+msgid "UIkit Container"
+msgstr ""
+
+#: src/container/edit.js:52 src/section/edit.js:128 src/section/edit.js:165
+#: src/slideshow/edit.js:304
+msgid "X-Small"
+msgstr ""
+
+#: src/container/edit.js:56 src/grid-column/edit.js:73 src/section/edit.js:169
+#: src/slideshow/edit.js:292
+msgid "Expand"
+msgstr ""
+
+#: src/divider/block.js:13
+msgid "Divider (UIkit)"
+msgstr ""
+
+#: src/divider/block.js:17 src/divider/edit.js:45 src/heading/edit.js:91
+#: src/overlay-slider/edit.js:535 src/overlay/edit.js:436
+#: src/panel-slider/edit.js:433 src/panel/edit.js:330 src/slideshow/edit.js:453
+msgid "Divider"
+msgstr ""
+
+#: src/divider/block.js:18
+msgid "UIkit Divider"
+msgstr ""
+
+#: src/divider/edit.js:52 src/social-icons-item/edit.js:74
+msgid "Icon"
+msgstr ""
+
+#: src/divider/edit.js:54 src/social-icons/edit.js:79
+msgid "Vertical"
+msgstr ""
+
+#: src/divider/edit.js:66
+msgid "hr"
+msgstr ""
+
+#: src/divider/edit.js:76 src/overlay-slider/edit.js:639
+#: src/overlay/edit.js:540 src/panel-slider/edit.js:537 src/panel/edit.js:432
+#: src/slideshow/edit.js:557 src/switcher/edit.js:118
+msgid "Alignment"
+msgstr ""
+
+#: src/divider/edit.js:81 src/divider/edit.js:112 src/general/general.js:72
+#: src/general/general.js:103 src/general/general.js:150
+#: src/general/general.js:180 src/overlay-slider/edit.js:249
+#: src/overlay-slider/edit.js:429 src/overlay/edit.js:352
+#: src/panel-slider/edit.js:217 src/slideshow/edit.js:335
+#: src/switcher/edit.js:109 src/switcher/edit.js:121
+msgid "Left"
+msgstr ""
+
+#: src/divider/edit.js:82 src/divider/edit.js:113 src/general/general.js:73
+#: src/general/general.js:104 src/general/general.js:151
+#: src/general/general.js:181 src/overlay-slider/edit.js:250
+#: src/overlay-slider/edit.js:437 src/overlay/edit.js:360
+#: src/panel-slider/edit.js:218 src/switcher/edit.js:123
+msgid "Center"
+msgstr ""
+
+#: src/divider/edit.js:83 src/divider/edit.js:114 src/general/general.js:74
+#: src/general/general.js:105 src/general/general.js:152
+#: src/general/general.js:182 src/overlay-slider/edit.js:251
+#: src/overlay-slider/edit.js:430 src/overlay/edit.js:353
+#: src/panel-slider/edit.js:219 src/slideshow/edit.js:336
+#: src/switcher/edit.js:110 src/switcher/edit.js:122
+msgid "Right"
+msgstr ""
+
+#: src/divider/edit.js:94
+msgid "Alignment Breakpoint"
+msgstr ""
+
+#: src/divider/edit.js:97 src/general/general.js:86 src/general/general.js:133
+#: src/general/general.js:164 src/general/general.js:193
+#: src/grid-column/edit.js:175 src/grid-column/edit.js:339
+#: src/overlay-slider/edit.js:275 src/overlay-slider/edit.js:338
+#: src/panel-slider/edit.js:243 src/panel-slider/edit.js:307
+#: src/section/edit.js:333 src/social-icons/edit.js:90
+msgid "Always"
+msgstr ""
+
+#: src/divider/edit.js:98 src/general/general.js:87 src/general/general.js:134
+#: src/general/general.js:165 src/grid-column/edit.js:176
+#: src/grid-column/edit.js:340 src/overlay-slider/edit.js:276
+#: src/overlay-slider/edit.js:339 src/panel-slider/edit.js:244
+#: src/panel-slider/edit.js:308 src/section/edit.js:334
+#: src/social-icons/edit.js:91 src/switcher/edit.js:198
+msgid "Small (Phone Landscape)"
+msgstr ""
+
+#: src/divider/edit.js:99 src/general/general.js:88 src/general/general.js:135
+#: src/general/general.js:166 src/grid-column/edit.js:177
+#: src/grid-column/edit.js:341 src/overlay-slider/edit.js:277
+#: src/overlay-slider/edit.js:340 src/panel-slider/edit.js:245
+#: src/panel-slider/edit.js:309 src/section/edit.js:335
+#: src/social-icons/edit.js:92 src/switcher/edit.js:199
+msgid "Medium (Tablet Landscape)"
+msgstr ""
+
+#: src/divider/edit.js:100 src/general/general.js:89 src/general/general.js:136
+#: src/general/general.js:167 src/grid-column/edit.js:178
+#: src/grid-column/edit.js:342 src/overlay-slider/edit.js:278
+#: src/overlay-slider/edit.js:341 src/panel-slider/edit.js:246
+#: src/panel-slider/edit.js:310 src/section/edit.js:336
+#: src/social-icons/edit.js:93 src/switcher/edit.js:200
+msgid "Large (Desktop)"
+msgstr ""
+
+#: src/divider/edit.js:101 src/general/general.js:90 src/general/general.js:137
+#: src/general/general.js:168 src/grid-column/edit.js:179
+#: src/grid-column/edit.js:343 src/overlay-slider/edit.js:279
+#: src/overlay-slider/edit.js:342 src/panel-slider/edit.js:247
+#: src/panel-slider/edit.js:311 src/section/edit.js:337
+#: src/social-icons/edit.js:94 src/switcher/edit.js:201
+msgid "X-Large (Large Screens)"
+msgstr ""
+
+#: src/divider/edit.js:109
+msgid "Alignment Fallback"
+msgstr ""
+
+#: src/divider/edit.js:115 src/general/general.js:75 src/general/general.js:106
+#: src/switcher/edit.js:124
+msgid "Justify"
+msgstr ""
+
+#: src/dropdown-item/block.js:14
+msgid "Dropdown Item (UIkit)"
+msgstr ""
+
+#: src/dropdown-item/block.js:18
+msgid "Dropdown Item"
+msgstr ""
+
+#: src/dropdown-item/block.js:19
+msgid "UIkit Dropdown Item"
+msgstr ""
+
+#: src/dropdown/block.js:18
+msgid "Dropdown (UIkit)"
+msgstr ""
+
+#: src/dropdown/block.js:22 src/dropdown/edit.js:66
+msgid "Dropdown"
+msgstr ""
+
+#: src/dropdown/block.js:23
+msgid "UIkit Dropdown"
+msgstr ""
+
+#: src/dropdown/edit.js:68 src/overlay-slider/edit.js:246
+#: src/overlay-slider/edit.js:302 src/overlay-slider/edit.js:424
+#: src/overlay/edit.js:347 src/panel-slider/edit.js:214
+#: src/panel-slider/edit.js:270 src/slideshow/edit.js:216
+#: src/slideshow/edit.js:249 src/slideshow/edit.js:330 src/switcher/edit.js:104
+msgid "Position"
+msgstr ""
+
+#: src/dropdown/edit.js:71
+msgid "top-left"
+msgstr ""
+
+#: src/dropdown/edit.js:72
+msgid "top-center"
+msgstr ""
+
+#: src/dropdown/edit.js:73
+msgid "top-right"
+msgstr ""
+
+#: src/dropdown/edit.js:74
+msgid "bottom-left"
+msgstr ""
+
+#: src/dropdown/edit.js:75
+msgid "bottom-center"
+msgstr ""
+
+#: src/dropdown/edit.js:76
+msgid "bottom-right"
+msgstr ""
+
+#: src/dropdown/edit.js:77
+msgid "left-top"
+msgstr ""
+
+#: src/dropdown/edit.js:78
+msgid "left-center"
+msgstr ""
+
+#: src/dropdown/edit.js:79
+msgid "left-bottom"
+msgstr ""
+
+#: src/dropdown/edit.js:80
+msgid "right-top"
+msgstr ""
+
+#: src/dropdown/edit.js:81
+msgid "right-center"
+msgstr ""
+
+#: src/dropdown/edit.js:82
+msgid "right-bottom"
+msgstr ""
+
+#: src/dropdown/edit.js:91 src/overlay-slider/edit.js:745
+#: src/overlay/edit.js:646 src/panel-slider/edit.js:643 src/panel/edit.js:538
+#: src/slideshow/edit.js:663
+msgid "Button Size"
+msgstr ""
+
+#: src/dropdown/edit.js:103
+msgid "Button Style"
+msgstr ""
+
+#: src/dropdown/edit.js:119
+msgid "Button Icon"
+msgstr ""
+
+#: src/general/general.js:33
+msgid "General (UIkit)"
+msgstr ""
+
+#: src/general/general.js:35 src/overlay-slider/edit.js:258
+#: src/overlay-slider/edit.js:322 src/overlay-slider/edit.js:446
+#: src/overlay/edit.js:369 src/panel-slider/edit.js:226
+#: src/panel-slider/edit.js:291 src/slideshow/edit.js:232
+#: src/slideshow/edit.js:268 src/slideshow/edit.js:316 src/switcher/edit.js:133
+msgid "Margin"
+msgstr ""
+
+#: src/general/general.js:38
+msgid "Keep existing"
+msgstr ""
+
+#: src/general/general.js:51
+msgid "Remove top margin"
+msgstr ""
+
+#: src/general/general.js:60
+msgid "Remove bottom margin"
+msgstr ""
+
+#: src/general/general.js:68
+msgid "Text alignment"
+msgstr ""
+
+#: src/general/general.js:83
+msgid "Text alignment breakpoint"
+msgstr ""
+
+#: src/general/general.js:99
+msgid "Text alignment fallback"
+msgstr ""
+
+#: src/general/general.js:114
+msgid "Max width"
+msgstr ""
+
+#: src/general/general.js:122 src/slideshow/edit.js:390
+msgid "2X-Large"
+msgstr ""
+
+#: src/general/general.js:130
+msgid "Max width breakpoint"
+msgstr ""
+
+#: src/general/general.js:147
+msgid "Block alignment"
+msgstr ""
+
+#: src/general/general.js:161
+msgid "Block Alignment Breakpoint"
+msgstr ""
+
+#: src/general/general.js:177
+msgid "Block Alignment Fallback"
+msgstr ""
+
+#: src/general/general.js:190 src/grid-column/edit.js:336
+#: src/section/edit.js:330
+msgid "Visibility"
+msgstr ""
+
+#: src/general/general.js:194
+msgid "Visible Small (Phone Landscape)"
+msgstr ""
+
+#: src/general/general.js:195
+msgid "Visible Medium (Tablet Landscape)"
+msgstr ""
+
+#: src/general/general.js:196
+msgid "Visible Large (Desktop)"
+msgstr ""
+
+#: src/general/general.js:197
+msgid "Visible X-Large (Large Screens)"
+msgstr ""
+
+#: src/general/general.js:198
+msgid "Hidden Small (Phone Landscape)"
+msgstr ""
+
+#: src/general/general.js:199
+msgid "Hidden Medium (Tablet Landscape)"
+msgstr ""
+
+#: src/general/general.js:200
+msgid "Hidden Large (Desktop)"
+msgstr ""
+
+#: src/general/general.js:201
+msgid "Hidden X-Large (Large Screens)"
+msgstr ""
+
+#: src/general/general.js:208 src/overlay-slider/edit.js:222
+#: src/panel-slider/edit.js:189 src/slideshow/edit.js:178
+#: src/slideshow/edit.js:397 src/switcher/edit.js:64
+msgid "Animation"
+msgstr ""
+
+#: src/general/general.js:213 src/slideshow/edit.js:186
+#: src/slideshow/edit.js:400 src/switcher/edit.js:68
+msgid "Fade"
+msgstr ""
+
+#: src/general/general.js:214 src/slideshow/edit.js:401 src/switcher/edit.js:69
+msgid "Scale Up"
+msgstr ""
+
+#: src/general/general.js:215 src/slideshow/edit.js:402 src/switcher/edit.js:70
+msgid "Scale Down"
+msgstr ""
+
+#: src/general/general.js:216 src/slideshow/edit.js:403 src/switcher/edit.js:71
+msgid "Slide Top Small"
+msgstr ""
+
+#: src/general/general.js:217 src/slideshow/edit.js:404 src/switcher/edit.js:72
+msgid "Slide Bottom Small"
+msgstr ""
+
+#: src/general/general.js:218 src/slideshow/edit.js:405 src/switcher/edit.js:73
+msgid "Slide Left Small"
+msgstr ""
+
+#: src/general/general.js:219 src/slideshow/edit.js:406 src/switcher/edit.js:74
+msgid "Slide Right Small"
+msgstr ""
+
+#: src/general/general.js:220 src/slideshow/edit.js:407 src/switcher/edit.js:75
+msgid "Slide Top Medium"
+msgstr ""
+
+#: src/general/general.js:221 src/slideshow/edit.js:408 src/switcher/edit.js:76
+msgid "Slide Bottom Medium"
+msgstr ""
+
+#: src/general/general.js:222 src/slideshow/edit.js:409 src/switcher/edit.js:77
+msgid "Slide Left Medium"
+msgstr ""
+
+#: src/general/general.js:223 src/slideshow/edit.js:410 src/switcher/edit.js:78
+msgid "Slide Right Medium"
+msgstr ""
+
+#: src/general/general.js:224 src/slideshow/edit.js:411 src/switcher/edit.js:79
+msgid "Slide Top 100%"
+msgstr ""
+
+#: src/general/general.js:225 src/slideshow/edit.js:412 src/switcher/edit.js:80
+msgid "Slide Bottom 100%"
+msgstr ""
+
+#: src/general/general.js:226 src/slideshow/edit.js:413 src/switcher/edit.js:81
+msgid "Slide Left 100%"
+msgstr ""
+
+#: src/general/general.js:227 src/slideshow/edit.js:414 src/switcher/edit.js:82
+msgid "Slide Right 100%"
+msgstr ""
+
+#: src/general/general.js:228 src/grid-column/edit.js:283
+#: src/section/edit.js:278
+msgid "Parallax"
+msgstr ""
+
+#: src/general/general.js:239
+msgid "Animation delay"
+msgstr ""
+
+#: src/general/general.js:242
+msgid "Delay the element animations in milliseconds, e.g. 100."
+msgstr ""
+
+#: src/general/general.js:366
+msgid "Disable Block"
+msgstr ""
+
+#: src/grid-column/block.js:17
+msgid "Grid Column (UIkit)"
+msgstr ""
+
+#: src/grid-column/block.js:21 src/grid-column/edit.js:129
+msgid "Grid Column"
+msgstr ""
+
+#: src/grid-column/block.js:22
+msgid "UIkit Grid Column"
+msgstr ""
+
+#: src/grid-column/edit.js:60 src/overlay-slider/edit.js:44
+#: src/panel-slider/edit.js:42
+msgid "Inherit"
+msgstr ""
+
+#: src/grid-column/edit.js:61
+msgid "1/1"
+msgstr ""
+
+#: src/grid-column/edit.js:62
+msgid "1/2"
+msgstr ""
+
+#: src/grid-column/edit.js:63
+msgid "1/3"
+msgstr ""
+
+#: src/grid-column/edit.js:64
+msgid "2/3"
+msgstr ""
+
+#: src/grid-column/edit.js:65
+msgid "1/4"
+msgstr ""
+
+#: src/grid-column/edit.js:66
+msgid "3/4"
+msgstr ""
+
+#: src/grid-column/edit.js:67
+msgid "1/5"
+msgstr ""
+
+#: src/grid-column/edit.js:68
+msgid "2/5"
+msgstr ""
+
+#: src/grid-column/edit.js:69
+msgid "3/5"
+msgstr ""
+
+#: src/grid-column/edit.js:70
+msgid "4/5"
+msgstr ""
+
+#: src/grid-column/edit.js:71
+msgid "1/6"
+msgstr ""
+
+#: src/grid-column/edit.js:72
+msgid "5/6"
+msgstr ""
+
+#: src/grid-column/edit.js:74 src/grid-column/edit.js:251 src/image/edit.js:154
+#: src/image/edit.js:160 src/overlay-slider/edit.js:130
+#: src/overlay-slider/edit.js:141 src/overlay-slider/edit.js:485
+#: src/overlay-slider/edit.js:495 src/overlay/edit.js:182
+#: src/overlay/edit.js:192 src/panel-slider/edit.js:121
+#: src/panel-slider/edit.js:383 src/panel-slider/edit.js:393
+#: src/panel/edit.js:192 src/panel/edit.js:198 src/section/edit.js:245
+#: src/slideshow/edit.js:99 src/switcher/edit.js:153
+msgid "Auto"
+msgstr ""
+
+#: src/grid-column/edit.js:131 src/overlay-slider/edit.js:181
+#: src/panel-slider/edit.js:148
+msgid "Phone Portrait"
+msgstr ""
+
+#: src/grid-column/edit.js:139 src/overlay-slider/edit.js:189
+#: src/panel-slider/edit.js:156
+msgid "Phone Landscape"
+msgstr ""
+
+#: src/grid-column/edit.js:147 src/overlay-slider/edit.js:197
+#: src/panel-slider/edit.js:164
+msgid "Tablet Landscape"
+msgstr ""
+
+#: src/grid-column/edit.js:155 src/overlay-slider/edit.js:205
+#: src/panel-slider/edit.js:172
+msgid "Desktop"
+msgstr ""
+
+#: src/grid-column/edit.js:163 src/overlay-slider/edit.js:213
+#: src/panel-slider/edit.js:180
+msgid "Large Screens"
+msgstr ""
+
+#: src/grid-column/edit.js:171
+msgid "Order First"
+msgstr ""
+
+#: src/grid-column/edit.js:186 src/section/edit.js:180
+msgid "Background Color"
+msgstr ""
+
+#: src/grid-column/edit.js:194 src/section/edit.js:188
+msgid "Background Image"
+msgstr ""
+
+#: src/grid-column/edit.js:197 src/overlay-slider-item/edit.js:83
+#: src/panel-slider-item/edit.js:83 src/panel/edit.js:138
+#: src/section/edit.js:191
+msgid "To edit the background image, you need permission to upload media."
+msgstr ""
+
+#: src/grid-column/edit.js:199 src/grid-column/edit.js:214
+#: src/grid-column/edit.js:224 src/image/block.js:17 src/image/edit.js:102
+#: src/image/edit.js:117 src/image/edit.js:127 src/image/edit.js:211
+#: src/overlay-slider-item/edit.js:105 src/overlay-slider-item/edit.js:120
+#: src/overlay-slider-item/edit.js:130 src/overlay-slider/edit.js:481
+#: src/overlay/edit.js:131 src/overlay/edit.js:146 src/overlay/edit.js:156
+#: src/panel-slider-item/edit.js:120 src/panel-slider-item/edit.js:135
+#: src/panel-slider-item/edit.js:145 src/panel-slider/edit.js:379
+#: src/panel/edit.js:140 src/panel/edit.js:155 src/panel/edit.js:165
+#: src/section/edit.js:193 src/section/edit.js:208 src/section/edit.js:218
+#: src/slideshow-item/edit.js:105 src/slideshow-item/edit.js:120
+#: src/slideshow-item/edit.js:130
+msgid "Image"
+msgstr ""
+
+#: src/grid-column/edit.js:207 src/image/edit.js:110
+#: src/overlay-slider-item/edit.js:113 src/overlay/edit.js:139
+#: src/panel-slider-item/edit.js:128 src/panel/edit.js:148
+#: src/section/edit.js:201 src/slideshow-item/edit.js:113
+msgid "Set image"
+msgstr ""
+
+#: src/grid-column/edit.js:230 src/image/edit.js:133
+#: src/overlay-slider-item/edit.js:136 src/overlay/edit.js:162
+#: src/panel-slider-item/edit.js:151 src/panel/edit.js:171
+#: src/section/edit.js:224 src/slideshow-item/edit.js:136
+msgid "Replace image"
+msgstr ""
+
+#: src/grid-column/edit.js:239 src/image/edit.js:142
+#: src/overlay-slider-item/edit.js:145 src/overlay/edit.js:171
+#: src/panel-slider-item/edit.js:160 src/panel/edit.js:180
+#: src/section/edit.js:233 src/slideshow-item/edit.js:145
+msgid "Remove image"
+msgstr ""
+
+#: src/grid-column/edit.js:248 src/section/edit.js:242
+msgid "Image Size"
+msgstr ""
+
+#: src/grid-column/edit.js:252 src/overlay-slider/edit.js:368
+#: src/overlay/edit.js:291 src/section/edit.js:246
+msgid "Cover"
+msgstr ""
+
+#: src/grid-column/edit.js:253 src/section/edit.js:247
+msgid "Contain"
+msgstr ""
+
+#: src/grid-column/edit.js:254 src/section/edit.js:248
+msgid "Width 100%"
+msgstr ""
+
+#: src/grid-column/edit.js:255 src/section/edit.js:249
+msgid "Height 100%"
+msgstr ""
+
+#: src/grid-column/edit.js:262 src/section/edit.js:256
+msgid "Image Position"
+msgstr ""
+
+#: src/grid-column/edit.js:265 src/overlay-slider/edit.js:306
+#: src/overlay-slider/edit.js:431 src/overlay/edit.js:354
+#: src/panel-slider/edit.js:274 src/section/edit.js:259
+#: src/slideshow/edit.js:219 src/slideshow/edit.js:253
+#: src/slideshow/edit.js:337
+msgid "Top Left"
+msgstr ""
+
+#: src/grid-column/edit.js:266 src/overlay-slider/edit.js:432
+#: src/overlay/edit.js:355 src/section/edit.js:260 src/slideshow/edit.js:338
+msgid "Top Center"
+msgstr ""
+
+#: src/grid-column/edit.js:267 src/overlay-slider/edit.js:307
+#: src/overlay-slider/edit.js:433 src/overlay/edit.js:356
+#: src/panel-slider/edit.js:275 src/section/edit.js:261
+#: src/slideshow/edit.js:220 src/slideshow/edit.js:254
+#: src/slideshow/edit.js:339
+msgid "Top Right"
+msgstr ""
+
+#: src/grid-column/edit.js:268 src/overlay-slider/edit.js:308
+#: src/overlay-slider/edit.js:438 src/overlay/edit.js:361
+#: src/panel-slider/edit.js:276 src/section/edit.js:262
+#: src/slideshow/edit.js:221 src/slideshow/edit.js:255
+#: src/slideshow/edit.js:340
+msgid "Center Left"
+msgstr ""
+
+#: src/grid-column/edit.js:269 src/section/edit.js:263
+#: src/slideshow/edit.js:341
+msgid "Center Center"
+msgstr ""
+
+#: src/grid-column/edit.js:270 src/overlay-slider/edit.js:309
+#: src/overlay-slider/edit.js:439 src/overlay/edit.js:362
+#: src/panel-slider/edit.js:277 src/section/edit.js:264
+#: src/slideshow/edit.js:222 src/slideshow/edit.js:256
+#: src/slideshow/edit.js:342
+msgid "Center Right"
+msgstr ""
+
+#: src/grid-column/edit.js:271 src/overlay-slider/edit.js:310
+#: src/overlay-slider/edit.js:434 src/overlay/edit.js:357
+#: src/panel-slider/edit.js:278 src/section/edit.js:265
+#: src/slideshow/edit.js:223 src/slideshow/edit.js:257
+#: src/slideshow/edit.js:343
+msgid "Bottom Left"
+msgstr ""
+
+#: src/grid-column/edit.js:272 src/overlay-slider/edit.js:311
+#: src/overlay-slider/edit.js:435 src/overlay/edit.js:358
+#: src/panel-slider/edit.js:279 src/section/edit.js:266
+#: src/slideshow/edit.js:224 src/slideshow/edit.js:258
+#: src/slideshow/edit.js:344
+msgid "Bottom Center"
+msgstr ""
+
+#: src/grid-column/edit.js:273 src/overlay-slider/edit.js:312
+#: src/overlay-slider/edit.js:436 src/overlay/edit.js:359
+#: src/panel-slider/edit.js:280 src/section/edit.js:267
+#: src/slideshow/edit.js:225 src/slideshow/edit.js:259
+#: src/slideshow/edit.js:345
+msgid "Bottom Right"
+msgstr ""
+
+#: src/grid-column/edit.js:280 src/section/edit.js:274
+msgid "Image Effect"
+msgstr ""
+
+#: src/grid-column/edit.js:284 src/overlay-slider/edit.js:129
+#: src/panel-slider/edit.js:120 src/section/edit.js:279
+msgid "Fixed"
+msgstr ""
+
+#: src/grid-column/edit.js:294 src/section/edit.js:288
+msgid "Horizontal Start"
+msgstr ""
+
+#: src/grid-column/edit.js:304 src/section/edit.js:298
+msgid "Horizontal End"
+msgstr ""
+
+#: src/grid-column/edit.js:314 src/section/edit.js:308
+msgid "Vertical Start"
+msgstr ""
+
+#: src/grid-column/edit.js:324 src/section/edit.js:318
+msgid "Vertical End"
+msgstr ""
+
+#: src/grid-column/edit.js:351 src/overlay-slider/edit.js:363
+#: src/overlay/block.js:17 src/overlay/edit.js:286 src/section/edit.js:345
+#: src/slideshow/edit.js:282
+msgid "Overlay"
+msgstr ""
+
+#: src/grid/block.js:19
+msgid "Grid (UIkit)"
+msgstr ""
+
+#: src/grid/block.js:23 src/grid/edit.js:1033 src/social-icons/edit.js:75
+msgid "Grid"
+msgstr ""
+
+#: src/grid/block.js:24
+msgid "UIkit Grid"
+msgstr ""
+
+#: src/grid/edit.js:45
+msgid "Whole"
+msgstr ""
+
+#: src/grid/edit.js:67
+msgid "Halves"
+msgstr ""
+
+#: src/grid/edit.js:99
+msgid "Thirds 1-2"
+msgstr ""
+
+#: src/grid/edit.js:131
+msgid "Thirds 2-1"
+msgstr ""
+
+#: src/grid/edit.js:163
+msgid "Thirds"
+msgstr ""
+
+#: src/grid/edit.js:205
+msgid "Quarters 1-3"
+msgstr ""
+
+#: src/grid/edit.js:237
+msgid "Quarters 3-1"
+msgstr ""
+
+#: src/grid/edit.js:269
+msgid "Quarters 1-1-2"
+msgstr ""
+
+#: src/grid/edit.js:311
+msgid "Quarters 2-1-1"
+msgstr ""
+
+#: src/grid/edit.js:353
+msgid "Quarters 1-2-1"
+msgstr ""
+
+#: src/grid/edit.js:395
+msgid "Quarters"
+msgstr ""
+
+#: src/grid/edit.js:447
+msgid "Fifths 1-4"
+msgstr ""
+
+#: src/grid/edit.js:479
+msgid "Fifths 4-1"
+msgstr ""
+
+#: src/grid/edit.js:511
+msgid "Fifths 2-3"
+msgstr ""
+
+#: src/grid/edit.js:543
+msgid "Fifths 3-2"
+msgstr ""
+
+#: src/grid/edit.js:575
+msgid "Fifths 1-1-3"
+msgstr ""
+
+#: src/grid/edit.js:617
+msgid "Fifths 3-1-1"
+msgstr ""
+
+#: src/grid/edit.js:659
+msgid "Fifths"
+msgstr ""
+
+#: src/grid/edit.js:721
+msgid "Sixths 4-1-1"
+msgstr ""
+
+#: src/grid/edit.js:763
+msgid "Sixths 1-1-4"
+msgstr ""
+
+#: src/grid/edit.js:805
+msgid "Sixths 1-4-1"
+msgstr ""
+
+#: src/grid/edit.js:847
+msgid "Sixths 1-1-1-1-1-1"
+msgstr ""
+
+#: src/grid/edit.js:929
+msgid "Custom"
+msgstr ""
+
+#: src/grid/edit.js:1002
+msgid "Layout"
+msgstr ""
+
+#: src/grid/edit.js:1035 src/overlay-slider/edit.js:161
+#: src/panel-slider/edit.js:128
+msgid "Column Gap"
+msgstr ""
+
+#: src/grid/edit.js:1045
+msgid "Row Gap"
+msgstr ""
+
+#: src/grid/edit.js:1055
+msgid "Column Equal Height"
+msgstr ""
+
+#: src/grid/edit.js:1062 src/overlay-slider/edit.js:171
+#: src/panel-slider/edit.js:138
+msgid "Show Divider"
+msgstr ""
+
+#: src/grid/edit.js:1069
+msgid "Center Columns"
+msgstr ""
+
+#: src/grid/edit.js:1076
+msgid "Center Rows"
+msgstr ""
+
+#: src/heading/block.js:13
+msgid "Heading (UIkit)"
+msgstr ""
+
+#: src/heading/block.js:17 src/heading/edit.js:56
+msgid "Heading"
+msgstr ""
+
+#: src/heading/block.js:18
+msgid "UIkit Heading"
+msgstr ""
+
+#: src/heading/edit.js:47
+msgid "Heading "
+msgstr ""
+
+#: src/heading/edit.js:63 src/overlay-slider/edit.js:509
+#: src/overlay-slider/edit.js:599 src/overlay-slider/edit.js:688
+#: src/overlay/edit.js:410 src/overlay/edit.js:500 src/overlay/edit.js:589
+#: src/panel-slider/edit.js:407 src/panel-slider/edit.js:497
+#: src/panel-slider/edit.js:586 src/panel/edit.js:304 src/panel/edit.js:393
+#: src/panel/edit.js:481 src/slideshow/edit.js:427 src/slideshow/edit.js:517
+#: src/slideshow/edit.js:606
+msgid "Heading 3X-Large"
+msgstr ""
+
+#: src/heading/edit.js:64 src/overlay-slider/edit.js:510
+#: src/overlay-slider/edit.js:600 src/overlay-slider/edit.js:689
+#: src/overlay/edit.js:411 src/overlay/edit.js:501 src/overlay/edit.js:590
+#: src/panel-slider/edit.js:408 src/panel-slider/edit.js:498
+#: src/panel-slider/edit.js:587 src/panel/edit.js:305 src/panel/edit.js:394
+#: src/panel/edit.js:482 src/slideshow/edit.js:428 src/slideshow/edit.js:518
+#: src/slideshow/edit.js:607
+msgid "Heading 2X-Large"
+msgstr ""
+
+#: src/heading/edit.js:65 src/overlay-slider/edit.js:511
+#: src/overlay-slider/edit.js:601 src/overlay-slider/edit.js:690
+#: src/overlay/edit.js:412 src/overlay/edit.js:502 src/overlay/edit.js:591
+#: src/panel-slider/edit.js:409 src/panel-slider/edit.js:499
+#: src/panel-slider/edit.js:588 src/panel/edit.js:306 src/panel/edit.js:395
+#: src/panel/edit.js:483 src/slideshow/edit.js:429 src/slideshow/edit.js:519
+#: src/slideshow/edit.js:608
+msgid "Heading X-Large"
+msgstr ""
+
+#: src/heading/edit.js:66 src/overlay-slider/edit.js:512
+#: src/overlay-slider/edit.js:602 src/overlay-slider/edit.js:691
+#: src/overlay/edit.js:413 src/overlay/edit.js:503 src/overlay/edit.js:592
+#: src/panel-slider/edit.js:410 src/panel-slider/edit.js:500
+#: src/panel-slider/edit.js:589 src/panel/edit.js:307 src/panel/edit.js:396
+#: src/panel/edit.js:484 src/slideshow/edit.js:430 src/slideshow/edit.js:520
+#: src/slideshow/edit.js:609
+msgid "Heading Large"
+msgstr ""
+
+#: src/heading/edit.js:67 src/overlay-slider/edit.js:513
+#: src/overlay-slider/edit.js:603 src/overlay-slider/edit.js:692
+#: src/overlay/edit.js:414 src/overlay/edit.js:504 src/overlay/edit.js:593
+#: src/panel-slider/edit.js:411 src/panel-slider/edit.js:501
+#: src/panel-slider/edit.js:590 src/panel/edit.js:308 src/panel/edit.js:397
+#: src/panel/edit.js:485 src/slideshow/edit.js:431 src/slideshow/edit.js:521
+#: src/slideshow/edit.js:610
+msgid "Heading Medium"
+msgstr ""
+
+#: src/heading/edit.js:68 src/overlay-slider/edit.js:514
+#: src/overlay-slider/edit.js:604 src/overlay-slider/edit.js:693
+#: src/overlay/edit.js:415 src/overlay/edit.js:505 src/overlay/edit.js:594
+#: src/panel-slider/edit.js:412 src/panel-slider/edit.js:502
+#: src/panel-slider/edit.js:591 src/panel/edit.js:309 src/panel/edit.js:398
+#: src/panel/edit.js:486 src/slideshow/edit.js:432 src/slideshow/edit.js:522
+#: src/slideshow/edit.js:611
+msgid "Heading Small"
+msgstr ""
+
+#: src/heading/edit.js:69 src/overlay-slider/edit.js:515
+#: src/overlay-slider/edit.js:605 src/overlay-slider/edit.js:694
+#: src/overlay/edit.js:416 src/overlay/edit.js:506 src/overlay/edit.js:595
+#: src/panel-slider/edit.js:413 src/panel-slider/edit.js:503
+#: src/panel-slider/edit.js:592 src/panel/edit.js:310 src/panel/edit.js:399
+#: src/panel/edit.js:487 src/slideshow/edit.js:433 src/slideshow/edit.js:523
+#: src/slideshow/edit.js:612
+msgid "Heading H1"
+msgstr ""
+
+#: src/heading/edit.js:70 src/overlay-slider/edit.js:516
+#: src/overlay-slider/edit.js:606 src/overlay-slider/edit.js:695
+#: src/overlay/edit.js:417 src/overlay/edit.js:507 src/overlay/edit.js:596
+#: src/panel-slider/edit.js:414 src/panel-slider/edit.js:504
+#: src/panel-slider/edit.js:593 src/panel/edit.js:311 src/panel/edit.js:400
+#: src/panel/edit.js:488 src/slideshow/edit.js:434 src/slideshow/edit.js:524
+#: src/slideshow/edit.js:613
+msgid "Heading H2"
+msgstr ""
+
+#: src/heading/edit.js:71 src/overlay-slider/edit.js:517
+#: src/overlay-slider/edit.js:607 src/overlay-slider/edit.js:696
+#: src/overlay/edit.js:418 src/overlay/edit.js:508 src/overlay/edit.js:597
+#: src/panel-slider/edit.js:415 src/panel-slider/edit.js:505
+#: src/panel-slider/edit.js:594 src/panel/edit.js:312 src/panel/edit.js:401
+#: src/panel/edit.js:489 src/slideshow/edit.js:435 src/slideshow/edit.js:525
+#: src/slideshow/edit.js:614
+msgid "Heading H3"
+msgstr ""
+
+#: src/heading/edit.js:72 src/overlay-slider/edit.js:518
+#: src/overlay-slider/edit.js:608 src/overlay-slider/edit.js:697
+#: src/overlay/edit.js:419 src/overlay/edit.js:509 src/overlay/edit.js:598
+#: src/panel-slider/edit.js:416 src/panel-slider/edit.js:506
+#: src/panel-slider/edit.js:595 src/panel/edit.js:313 src/panel/edit.js:402
+#: src/panel/edit.js:490 src/slideshow/edit.js:436 src/slideshow/edit.js:526
+#: src/slideshow/edit.js:615
+msgid "Heading H4"
+msgstr ""
+
+#: src/heading/edit.js:73 src/overlay-slider/edit.js:519
+#: src/overlay-slider/edit.js:609 src/overlay-slider/edit.js:698
+#: src/overlay/edit.js:420 src/overlay/edit.js:510 src/overlay/edit.js:599
+#: src/panel-slider/edit.js:417 src/panel-slider/edit.js:507
+#: src/panel-slider/edit.js:596 src/panel/edit.js:314 src/panel/edit.js:403
+#: src/panel/edit.js:491 src/slideshow/edit.js:437 src/slideshow/edit.js:527
+#: src/slideshow/edit.js:616
+msgid "Heading H5"
+msgstr ""
+
+#: src/heading/edit.js:74 src/overlay-slider/edit.js:520
+#: src/overlay-slider/edit.js:610 src/overlay-slider/edit.js:699
+#: src/overlay/edit.js:421 src/overlay/edit.js:511 src/overlay/edit.js:600
+#: src/panel-slider/edit.js:418 src/panel-slider/edit.js:508
+#: src/panel-slider/edit.js:597 src/panel/edit.js:315 src/panel/edit.js:404
+#: src/panel/edit.js:492 src/slideshow/edit.js:438 src/slideshow/edit.js:528
+#: src/slideshow/edit.js:617
+msgid "Heading H6"
+msgstr ""
+
+#: src/heading/edit.js:75 src/overlay-slider/edit.js:521
+#: src/overlay-slider/edit.js:611 src/overlay-slider/edit.js:700
+#: src/overlay/edit.js:422 src/overlay/edit.js:512 src/overlay/edit.js:601
+#: src/panel-slider/edit.js:419 src/panel-slider/edit.js:509
+#: src/panel-slider/edit.js:598 src/panel/edit.js:316 src/panel/edit.js:405
+#: src/panel/edit.js:493 src/slideshow/edit.js:439 src/slideshow/edit.js:529
+#: src/slideshow/edit.js:618
+msgid "Text Meta"
+msgstr ""
+
+#: src/heading/edit.js:76 src/overlay-slider/edit.js:522
+#: src/overlay-slider/edit.js:612 src/overlay-slider/edit.js:701
+#: src/overlay/edit.js:423 src/overlay/edit.js:513 src/overlay/edit.js:602
+#: src/panel-slider/edit.js:420 src/panel-slider/edit.js:510
+#: src/panel-slider/edit.js:599 src/panel/edit.js:317 src/panel/edit.js:406
+#: src/panel/edit.js:494 src/slideshow/edit.js:440 src/slideshow/edit.js:530
+#: src/slideshow/edit.js:619
+msgid "Text Lead"
+msgstr ""
+
+#: src/heading/edit.js:77 src/overlay-slider/edit.js:523
+#: src/overlay-slider/edit.js:613 src/overlay-slider/edit.js:702
+#: src/overlay/edit.js:424 src/overlay/edit.js:514 src/overlay/edit.js:603
+#: src/panel-slider/edit.js:421 src/panel-slider/edit.js:511
+#: src/panel-slider/edit.js:600 src/panel/edit.js:318 src/panel/edit.js:407
+#: src/panel/edit.js:495 src/slideshow/edit.js:441 src/slideshow/edit.js:531
+#: src/slideshow/edit.js:620
+msgid "Text Small"
+msgstr ""
+
+#: src/heading/edit.js:78 src/overlay-slider/edit.js:524
+#: src/overlay-slider/edit.js:614 src/overlay-slider/edit.js:703
+#: src/overlay/edit.js:425 src/overlay/edit.js:515 src/overlay/edit.js:604
+#: src/panel-slider/edit.js:422 src/panel-slider/edit.js:512
+#: src/panel-slider/edit.js:601 src/panel/edit.js:319 src/panel/edit.js:408
+#: src/panel/edit.js:496 src/slideshow/edit.js:442 src/slideshow/edit.js:532
+#: src/slideshow/edit.js:621
+msgid "Text Large"
+msgstr ""
+
+#: src/heading/edit.js:86 src/overlay-slider/edit.js:531
+#: src/overlay/edit.js:432 src/panel-slider/edit.js:429 src/panel/edit.js:326
+#: src/slideshow/edit.js:449
+msgid "Decoration"
+msgstr ""
+
+#: src/heading/edit.js:92 src/overlay-slider/edit.js:536
+#: src/overlay/edit.js:437 src/panel-slider/edit.js:434 src/panel/edit.js:331
+#: src/slideshow/edit.js:454
+msgid "Bullet"
+msgstr ""
+
+#: src/heading/edit.js:93 src/overlay-slider/edit.js:537
+#: src/overlay/edit.js:438 src/panel-slider/edit.js:435 src/panel/edit.js:332
+#: src/slideshow/edit.js:455
+msgid "Line"
+msgstr ""
+
+#: src/heading/edit.js:101 src/overlay-slider/edit.js:286
+#: src/overlay-slider/edit.js:349 src/overlay-slider/edit.js:544
+#: src/overlay-slider/edit.js:621 src/overlay/edit.js:445
+#: src/overlay/edit.js:522 src/panel-slider/edit.js:254
+#: src/panel-slider/edit.js:318 src/panel-slider/edit.js:442
+#: src/panel-slider/edit.js:519 src/panel/edit.js:339 src/panel/edit.js:415
+#: src/slideshow/edit.js:462 src/slideshow/edit.js:539 src/text/edit.js:97
+msgid "Color"
+msgstr ""
+
+#: src/heading/edit.js:106 src/overlay-slider/edit.js:548
+#: src/overlay-slider/edit.js:625 src/overlay/edit.js:449
+#: src/overlay/edit.js:526 src/panel-slider/edit.js:446
+#: src/panel-slider/edit.js:523 src/section/edit.js:95
+#: src/slideshow/edit.js:466 src/slideshow/edit.js:543
+msgid "Muted"
+msgstr ""
+
+#: src/heading/edit.js:107 src/overlay-slider/edit.js:549
+#: src/overlay-slider/edit.js:626 src/overlay/edit.js:450
+#: src/overlay/edit.js:527 src/panel-slider/edit.js:447
+#: src/panel-slider/edit.js:524 src/panel/edit.js:344 src/panel/edit.js:420
+#: src/slideshow/edit.js:467 src/slideshow/edit.js:544 src/text/edit.js:103
+msgid "Emphasis"
+msgstr ""
+
+#: src/heading/edit.js:110 src/overlay-slider/edit.js:552
+#: src/overlay-slider/edit.js:629 src/overlay/edit.js:453
+#: src/overlay/edit.js:530 src/panel-slider/edit.js:450
+#: src/panel-slider/edit.js:527 src/panel/edit.js:347 src/panel/edit.js:423
+#: src/slideshow/edit.js:470 src/slideshow/edit.js:547 src/text/edit.js:106
+msgid "Success"
+msgstr ""
+
+#: src/heading/edit.js:111 src/overlay-slider/edit.js:553
+#: src/overlay-slider/edit.js:630 src/overlay/edit.js:454
+#: src/overlay/edit.js:531 src/panel-slider/edit.js:451
+#: src/panel-slider/edit.js:528 src/panel/edit.js:348 src/panel/edit.js:424
+#: src/slideshow/edit.js:471 src/slideshow/edit.js:548 src/text/edit.js:107
+msgid "Warning"
+msgstr ""
+
+#: src/image/block.js:13
+msgid "Image (UIkit)"
+msgstr ""
+
+#: src/image/block.js:18
+msgid "UIkit Image"
+msgstr ""
+
+#: src/image/edit.js:100 src/overlay/edit.js:129 src/slideshow-item/edit.js:103
+msgid "To edit the image, you need permission to upload media."
+msgstr ""
+
+#: src/image/edit.js:152 src/overlay/edit.js:180 src/panel/edit.js:190
+msgid "Image Width"
+msgstr ""
+
+#: src/image/edit.js:159 src/overlay/edit.js:190 src/panel/edit.js:197
+msgid "Image Height"
+msgstr ""
+
+#: src/image/edit.js:165 src/overlay-slider-item/edit.js:153
+#: src/overlay/edit.js:200 src/panel-slider-item/edit.js:168
+#: src/slideshow-item/edit.js:153
+msgid "Image Alt"
+msgstr ""
+
+#: src/image/edit.js:213
+msgid "Border"
+msgstr ""
+
+#: src/image/edit.js:217
+msgid "Rounded"
+msgstr ""
+
+#: src/image/edit.js:218
+msgid "Circle"
+msgstr ""
+
+#: src/image/edit.js:219
+msgid "Pill"
+msgstr ""
+
+#: src/overlay-slider-item/block.js:14
+msgid "Overlay Slider Item (UIkit)"
+msgstr ""
+
+#: src/overlay-slider-item/block.js:18
+msgid "Overlay Slider Item"
+msgstr ""
+
+#: src/overlay-slider-item/block.js:19
+msgid "UIkit Overlay Slider Item"
+msgstr ""
+
+#: src/overlay-slider-item/edit.js:181 src/overlay-slider/edit.js:737
+#: src/overlay/edit.js:245 src/overlay/edit.js:638
+#: src/panel-slider-item/edit.js:181 src/panel-slider/edit.js:635
+#: src/panel/edit.js:217 src/panel/edit.js:530 src/slideshow-item/edit.js:181
+#: src/slideshow/edit.js:655 src/social-icons/edit.js:67
+msgid "Link Text"
+msgstr ""
+
+#: src/overlay-slider/block.js:18
+msgid "Overlay Slider (UIkit)"
+msgstr ""
+
+#: src/overlay-slider/block.js:22
+msgid "Overlay Slider"
+msgstr ""
+
+#: src/overlay-slider/block.js:23
+msgid "UIkit Overlay Slider"
+msgstr ""
+
+#: src/overlay-slider/edit.js:45 src/panel-slider/edit.js:43
+msgid "100%"
+msgstr ""
+
+#: src/overlay-slider/edit.js:46 src/panel-slider/edit.js:44
+msgid "83%"
+msgstr ""
+
+#: src/overlay-slider/edit.js:47 src/panel-slider/edit.js:45
+msgid "80%"
+msgstr ""
+
+#: src/overlay-slider/edit.js:48 src/panel-slider/edit.js:46
+msgid "60%"
+msgstr ""
+
+#: src/overlay-slider/edit.js:49 src/panel-slider/edit.js:47
+#: src/switcher/edit.js:154
+msgid "50%"
+msgstr ""
+
+#: src/overlay-slider/edit.js:50 src/panel-slider/edit.js:48
+#: src/switcher/edit.js:155
+msgid "33%"
+msgstr ""
+
+#: src/overlay-slider/edit.js:51 src/panel-slider/edit.js:49
+#: src/switcher/edit.js:156
+msgid "25%"
+msgstr ""
+
+#: src/overlay-slider/edit.js:52 src/panel-slider/edit.js:50
+#: src/switcher/edit.js:157
+msgid "20%"
+msgstr ""
+
+#: src/overlay-slider/edit.js:53 src/panel-slider/edit.js:51
+msgid "16%"
+msgstr ""
+
+#: src/overlay-slider/edit.js:124 src/panel-slider/edit.js:115
+msgid "Slider"
+msgstr ""
+
+#: src/overlay-slider/edit.js:126 src/panel-slider/edit.js:117
+msgid "Item Width Mode"
+msgstr ""
+
+#: src/overlay-slider/edit.js:138 src/overlay-slider/edit.js:493
+#: src/panel-slider/edit.js:391 src/slideshow/edit.js:96
+msgid "Height"
+msgstr ""
+
+#: src/overlay-slider/edit.js:142 src/slideshow/edit.js:100
+msgid "Viewport"
+msgstr ""
+
+#: src/overlay-slider/edit.js:151 src/slideshow/edit.js:129
+msgid "Min Height"
+msgstr ""
+
+#: src/overlay-slider/edit.js:179 src/panel-slider/edit.js:146
+msgid "Items"
+msgstr ""
+
+#: src/overlay-slider/edit.js:224 src/panel-slider/edit.js:191
+#: src/slideshow/edit.js:194
+msgid "Autoplay"
+msgstr ""
+
+#: src/overlay-slider/edit.js:231 src/overlay-slider/edit.js:233
+#: src/panel-slider/edit.js:198 src/slideshow/edit.js:201
+#: src/slideshow/edit.js:203 src/switcher/edit.js:89 src/switcher/edit.js:91
+msgid "Navigation"
+msgstr ""
+
+#: src/overlay-slider/edit.js:237 src/panel-slider/edit.js:204
+#: src/slideshow/edit.js:207
+msgid "Dotnav"
+msgstr ""
+
+#: src/overlay-slider/edit.js:272 src/overlay-slider/edit.js:335
+#: src/panel-slider/edit.js:240 src/panel-slider/edit.js:304
+msgid "Breakpoint"
+msgstr ""
+
+#: src/overlay-slider/edit.js:290 src/overlay-slider/edit.js:353
+#: src/overlay-slider/edit.js:403 src/overlay/edit.js:326
+#: src/panel-slider/edit.js:258 src/panel-slider/edit.js:322
+#: src/section/edit.js:112 src/slideshow-item/edit.js:224
+#: src/slideshow/edit.js:156
+msgid "Light"
+msgstr ""
+
+#: src/overlay-slider/edit.js:291 src/overlay-slider/edit.js:354
+#: src/overlay-slider/edit.js:404 src/overlay/edit.js:327
+#: src/panel-slider/edit.js:259 src/panel-slider/edit.js:323
+#: src/section/edit.js:113 src/slideshow-item/edit.js:225
+#: src/slideshow/edit.js:157
+msgid "Dark"
+msgstr ""
+
+#: src/overlay-slider/edit.js:300 src/panel-slider/edit.js:268
+#: src/slideshow/edit.js:247
+msgid "Slidenav"
+msgstr ""
+
+#: src/overlay-slider/edit.js:365 src/overlay/edit.js:288
+msgid "Mode"
+msgstr ""
+
+#: src/overlay-slider/edit.js:369 src/overlay/edit.js:292
+msgid "Caption"
+msgstr ""
+
+#: src/overlay-slider/edit.js:376 src/overlay/edit.js:299
+msgid "Display Overlay on Hover"
+msgstr ""
+
+#: src/overlay-slider/edit.js:387 src/overlay/edit.js:310
+#: src/slideshow/edit.js:356
+msgid "Overlay Default"
+msgstr ""
+
+#: src/overlay-slider/edit.js:388 src/overlay/edit.js:311
+#: src/slideshow/edit.js:357
+msgid "Overlay Primary"
+msgstr ""
+
+#: src/overlay-slider/edit.js:389 src/overlay/edit.js:312
+#: src/panel-slider/edit.js:342 src/panel/edit.js:268 src/slideshow/edit.js:358
+msgid "Tile Default"
+msgstr ""
+
+#: src/overlay-slider/edit.js:390 src/overlay/edit.js:313
+#: src/panel-slider/edit.js:343 src/panel/edit.js:269 src/slideshow/edit.js:359
+msgid "Tile Muted"
+msgstr ""
+
+#: src/overlay-slider/edit.js:391 src/overlay/edit.js:314
+#: src/panel-slider/edit.js:344 src/panel/edit.js:270 src/slideshow/edit.js:360
+msgid "Tile Primary"
+msgstr ""
+
+#: src/overlay-slider/edit.js:392 src/overlay/edit.js:315
+#: src/panel-slider/edit.js:345 src/panel/edit.js:271 src/slideshow/edit.js:361
+msgid "Tile Secondary"
+msgstr ""
+
+#: src/overlay-slider/edit.js:399 src/overlay/edit.js:322
+#: src/section/edit.js:107 src/slideshow-item/edit.js:220
+#: src/slideshow/edit.js:152
+msgid "Text Color"
+msgstr ""
+
+#: src/overlay-slider/edit.js:411 src/overlay/edit.js:334
+#: src/panel-slider/edit.js:352 src/panel/edit.js:278 src/section/edit.js:123
+#: src/slideshow/edit.js:369
+msgid "Padding"
+msgstr ""
+
+#: src/overlay-slider/edit.js:427 src/overlay/edit.js:350
+#: src/slideshow/edit.js:333 src/switcher/edit.js:107
+msgid "Top"
+msgstr ""
+
+#: src/overlay-slider/edit.js:428 src/overlay/edit.js:351
+#: src/slideshow/edit.js:334 src/switcher/edit.js:108
+msgid "Bottom"
+msgstr ""
+
+#: src/overlay-slider/edit.js:459 src/overlay/edit.js:382
+msgid "Max Width"
+msgstr ""
+
+#: src/overlay-slider/edit.js:466 src/overlay/edit.js:389
+msgid "Xlarge"
+msgstr ""
+
+#: src/overlay-slider/edit.js:467 src/overlay/edit.js:390
+msgid "2Xlarge"
+msgstr ""
+
+#: src/overlay-slider/edit.js:474 src/overlay/edit.js:397
+msgid "Link Overlay"
+msgstr ""
+
+#: src/overlay-slider/edit.js:483 src/panel-slider/edit.js:381
+#: src/slideshow/edit.js:382
+msgid "Width"
+msgstr ""
+
+#: src/overlay-slider/edit.js:555 src/overlay-slider/edit.js:632
+#: src/overlay/edit.js:456 src/overlay/edit.js:533 src/panel-slider/edit.js:453
+#: src/panel-slider/edit.js:530 src/slideshow/edit.js:473
+#: src/slideshow/edit.js:550
+msgid "Background"
+msgstr ""
+
+#: src/overlay-slider/edit.js:571 src/overlay-slider/edit.js:660
+#: src/overlay/edit.js:472 src/overlay/edit.js:561 src/panel-slider/edit.js:469
+#: src/panel-slider/edit.js:558 src/slideshow/edit.js:489
+#: src/slideshow/edit.js:578 src/text/edit.js:135
+msgid "Div"
+msgstr ""
+
+#: src/overlay-slider/edit.js:642 src/overlay/edit.js:543
+#: src/panel-slider/edit.js:540 src/panel/edit.js:435 src/slideshow/edit.js:560
+msgid "Above Title"
+msgstr ""
+
+#: src/overlay-slider/edit.js:643 src/overlay/edit.js:544
+#: src/panel-slider/edit.js:541 src/panel/edit.js:436 src/slideshow/edit.js:561
+msgid "Below Title"
+msgstr ""
+
+#: src/overlay-slider/edit.js:644 src/overlay/edit.js:545
+#: src/panel-slider/edit.js:542 src/panel/edit.js:437 src/slideshow/edit.js:562
+msgid "Below Content"
+msgstr ""
+
+#: src/overlay-slider/edit.js:730 src/overlay/edit.js:631
+#: src/panel-slider/edit.js:628 src/panel/edit.js:523 src/slideshow/edit.js:648
+msgid "Button Default"
+msgstr ""
+
+#: src/overlay-slider/edit.js:731 src/overlay/edit.js:632
+#: src/panel-slider/edit.js:629 src/panel/edit.js:524 src/slideshow/edit.js:649
+msgid "Button Primary"
+msgstr ""
+
+#: src/overlay-slider/edit.js:732 src/overlay/edit.js:633
+#: src/panel-slider/edit.js:630 src/panel/edit.js:525 src/slideshow/edit.js:650
+msgid "Button Secondary"
+msgstr ""
+
+#: src/overlay-slider/edit.js:733 src/overlay/edit.js:634
+#: src/panel-slider/edit.js:631 src/panel/edit.js:526 src/slideshow/edit.js:651
+msgid "Button Danger"
+msgstr ""
+
+#: src/overlay-slider/edit.js:734 src/overlay/edit.js:635
+#: src/panel-slider/edit.js:632 src/panel/edit.js:527 src/slideshow/edit.js:652
+msgid "Button Text"
+msgstr ""
+
+#: src/overlay-slider/edit.js:736 src/overlay/edit.js:637
+#: src/panel-slider/edit.js:634 src/panel/edit.js:529 src/slideshow/edit.js:654
+#: src/social-icons/edit.js:66
+msgid "Link Muted"
+msgstr ""
+
+#: src/overlay/block.js:13
+msgid "Overlay (UIkit)"
+msgstr ""
+
+#: src/overlay/block.js:18
+msgid "UIkit Overlay"
+msgstr ""
+
+#: src/panel-slider-item/block.js:14
+msgid "Panel Slider Item (UIkit)"
+msgstr ""
+
+#: src/panel-slider-item/block.js:18
+msgid "Panel Slider Item"
+msgstr ""
+
+#: src/panel-slider-item/block.js:19
+msgid "UIkit Panel Slider Item"
+msgstr ""
+
+#: src/panel-slider/block.js:18
+msgid "Panel Slider (UIkit)"
+msgstr ""
+
+#: src/panel-slider/block.js:22
+msgid "Panel Slider"
+msgstr ""
+
+#: src/panel-slider/block.js:23
+msgid "UIkit Panel Slider"
+msgstr ""
+
+#: src/panel-slider/edit.js:200
+msgid "Navigation Settings"
+msgstr ""
+
+#: src/panel-slider/edit.js:281
+msgid "Outsite"
+msgstr ""
+
+#: src/panel-slider/edit.js:332 src/panel/block.js:17 src/panel/edit.js:258
+msgid "Panel"
+msgstr ""
+
+#: src/panel-slider/edit.js:338 src/panel/edit.js:264
+msgid "Card Default"
+msgstr ""
+
+#: src/panel-slider/edit.js:339 src/panel/edit.js:265
+msgid "Card Primary"
+msgstr ""
+
+#: src/panel-slider/edit.js:340 src/panel/edit.js:266
+msgid "Card Secondary"
+msgstr ""
+
+#: src/panel-slider/edit.js:341 src/panel/edit.js:267
+msgid "Card Hover"
+msgstr ""
+
+#: src/panel-slider/edit.js:365
+msgid "Match Height"
+msgstr ""
+
+#: src/panel-slider/edit.js:372
+msgid "Link Panel"
+msgstr ""
+
+#: src/panel/block.js:13
+msgid "Panel (UIkit)"
+msgstr ""
+
+#: src/panel/block.js:18
+msgid "UIkit Panel"
+msgstr ""
+
+#: src/panel/edit.js:203
+msgid "Image ALT"
+msgstr ""
+
+#: src/panel/edit.js:291
+msgid "Link panel"
+msgstr ""
+
+#: src/panel/edit.js:343 src/panel/edit.js:419 src/text/edit.js:102
+msgid "Mute"
+msgstr ""
+
+#: src/section/block.js:18
+msgid "Section (UIkit)"
+msgstr ""
+
+#: src/section/block.js:22 src/section/edit.js:87
+msgid "Section"
+msgstr ""
+
+#: src/section/block.js:23
+msgid "UIkit Section"
+msgstr ""
+
+#: src/section/edit.js:144
+msgid "Remove Top Padding"
+msgstr ""
+
+#: src/section/edit.js:151
+msgid "Remove Bottom Padding"
+msgstr ""
+
+#: src/settings/class-settings.php:150
+msgid "UIkit Blocks Settings"
+msgstr ""
+
+#: src/settings/class-settings.php:150
+msgid "UIkit Blocks"
+msgstr ""
+
+#: src/settings/class-settings.php:177
+msgid "Load UIkit Files"
+msgstr ""
+
+#: src/settings/class-settings.php:178
+msgid "Load UIkit CSS and JS files from this plugin in theme."
+msgstr ""
+
+#: src/settings/class-settings.php:187
+msgid "UIkit Theme"
+msgstr ""
+
+#: src/settings/class-settings.php:201
+msgid "Exclude Load UIkit Icons"
+msgstr ""
+
+#: src/settings/class-settings.php:209
+msgid "Exclude Load UIkit Components"
+msgstr ""
+
+#: src/settings/class-settings.php:235
+msgid "Main settings"
+msgstr ""
+
+#: src/slideshow-item/block.js:14
+msgid "Slideshow Item (UIkit)"
+msgstr ""
+
+#: src/slideshow-item/block.js:18 src/slideshow-item/edit.js:218
+msgid "Slideshow Item"
+msgstr ""
+
+#: src/slideshow-item/block.js:19
+msgid "UIkit Slideshow Item"
+msgstr ""
+
+#: src/slideshow-item/edit.js:174
+msgid "Link url"
+msgstr ""
+
+#: src/slideshow/block.js:18
+msgid "Slideshow (UIkit)"
+msgstr ""
+
+#: src/slideshow/block.js:22 src/slideshow/edit.js:94
+msgid "Slideshow"
+msgstr ""
+
+#: src/slideshow/block.js:23
+msgid "UIkit Slideshow"
+msgstr ""
+
+#: src/slideshow/edit.js:109
+msgid "Height Viewport"
+msgstr ""
+
+#: src/slideshow/edit.js:110
+msgid "100"
+msgstr ""
+
+#: src/slideshow/edit.js:119
+msgid "Ratio"
+msgstr ""
+
+#: src/slideshow/edit.js:120
+msgid "16:9"
+msgstr ""
+
+#: src/slideshow/edit.js:141
+msgid "Max Height"
+msgstr ""
+
+#: src/slideshow/edit.js:164
+msgid "Box Shadow"
+msgstr ""
+
+#: src/slideshow/edit.js:180
+msgid "Transition"
+msgstr ""
+
+#: src/slideshow/edit.js:183
+msgid "Slide"
+msgstr ""
+
+#: src/slideshow/edit.js:184
+msgid "Pull"
+msgstr ""
+
+#: src/slideshow/edit.js:185
+msgid "Push"
+msgstr ""
+
+#: src/slideshow/edit.js:187
+msgid "Scale"
+msgstr ""
+
+#: src/slideshow/edit.js:284
+msgid "Container Width"
+msgstr ""
+
+#: src/slideshow/edit.js:300
+msgid "Container Padding"
+msgstr ""
+
+#: src/social-icons-item/block.js:14
+msgid "Social Icons Item (UIkit)"
+msgstr ""
+
+#: src/social-icons-item/block.js:18
+msgid "Social Icons Item"
+msgstr ""
+
+#: src/social-icons-item/block.js:19
+msgid "UIkit Social Icons Item"
+msgstr ""
+
+#: src/social-icons-item/edit.js:77
+msgid "Facebook"
+msgstr ""
+
+#: src/social-icons-item/edit.js:78
+msgid "WhatsApp"
+msgstr ""
+
+#: src/social-icons-item/edit.js:79
+msgid "Instagram"
+msgstr ""
+
+#: src/social-icons-item/edit.js:80
+msgid "YouTube"
+msgstr ""
+
+#: src/social-icons-item/edit.js:81
+msgid "Telegram"
+msgstr ""
+
+#: src/social-icons-item/edit.js:82
+msgid "GitHub"
+msgstr ""
+
+#: src/social-icons-item/edit.js:83
+msgid "Vimeo"
+msgstr ""
+
+#: src/social-icons-item/edit.js:84
+msgid "Twitch"
+msgstr ""
+
+#: src/social-icons-item/edit.js:85
+msgid "SoundCloud"
+msgstr ""
+
+#: src/social-icons-item/edit.js:86
+msgid "Reddit"
+msgstr ""
+
+#: src/social-icons-item/edit.js:87
+msgid "Discord"
+msgstr ""
+
+#: src/social-icons-item/edit.js:88
+msgid "LinkedIn"
+msgstr ""
+
+#: src/social-icons-item/edit.js:89
+msgid "TikTok"
+msgstr ""
+
+#: src/social-icons-item/edit.js:90
+msgid "Google"
+msgstr ""
+
+#: src/social-icons-item/edit.js:91
+msgid "Pinterest"
+msgstr ""
+
+#: src/social-icons-item/edit.js:92
+msgid "Signal"
+msgstr ""
+
+#: src/social-icons-item/edit.js:93
+msgid "Threads"
+msgstr ""
+
+#: src/social-icons/block.js:18
+msgid "Social Icons (UIkit)"
+msgstr ""
+
+#: src/social-icons/block.js:22 src/social-icons/edit.js:58
+msgid "Social Icons"
+msgstr ""
+
+#: src/social-icons/block.js:23
+msgid "UIkit Social Icons"
+msgstr ""
+
+#: src/social-icons/edit.js:68
+msgid "Link Reset"
+msgstr ""
+
+#: src/social-icons/edit.js:78
+msgid "Horizontal"
+msgstr ""
+
+#: src/social-icons/edit.js:87 src/switcher/edit.js:195
+msgid "Grid Breakpoint"
+msgstr ""
+
+#: src/social-icons/edit.js:102
+msgid "Grid Gap"
+msgstr ""
+
+#: src/switcher-item/block.js:17
+msgid "Switcher Item (UIkit)"
+msgstr ""
+
+#: src/switcher-item/block.js:21
+msgid "Switcher Item"
+msgstr ""
+
+#: src/switcher-item/block.js:22
+msgid "UIkit Switcher Item"
+msgstr ""
+
+#: src/switcher/block.js:18
+msgid "Switcher (UIkit)"
+msgstr ""
+
+#: src/switcher/block.js:22 src/switcher/edit.js:62
+msgid "Switcher"
+msgstr ""
+
+#: src/switcher/block.js:23
+msgid "UIkit Switcher"
+msgstr ""
+
+#: src/switcher/edit.js:94
+msgid "Tabs"
+msgstr ""
+
+#: src/switcher/edit.js:95
+msgid "Subnav Pill (Nav)"
+msgstr ""
+
+#: src/switcher/edit.js:96
+msgid "Subnav Divider (Nav)"
+msgstr ""
+
+#: src/switcher/edit.js:97
+msgid "Subnav (Nav)"
+msgstr ""
+
+#: src/switcher/edit.js:150
+msgid "Grid Width"
+msgstr ""
+
+#: src/switcher/edit.js:167
+msgid "Grid Column Gap"
+msgstr ""
+
+#: src/switcher/edit.js:181
+msgid "Grid Row Gap"
+msgstr ""
+
+#: src/switcher/edit.js:208
+msgid "Vertical Alignment"
+msgstr ""
+
+#: src/text/block.js:12
+msgid "Text (UIkit)"
+msgstr ""
+
+#: src/text/block.js:17
+msgid "UIkit Text"
+msgstr ""
+
+#: src/text/edit.js:65
+msgid "Enter text here..."
+msgstr ""
+
+#: src/text/edit.js:76
+msgid "Drop Cap"
+msgstr ""
+
+#: src/text/edit.js:134
+msgid "P"
+msgstr ""

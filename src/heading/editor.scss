@@ -1,0 +1,8 @@
+@import "../assets/gutenberg";
+
+// heading block
+[data-type="uikit-editor-blocks/heading"] {
+    padding: 10px;
+    border: dashed 1px #eee;
+    box-sizing: border-box;
+}

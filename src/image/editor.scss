@@ -1,0 +1,8 @@
+@import "../assets/gutenberg";
+
+// image block
+[data-type="uikit-editor-blocks/image"] {
+    padding: 10px;
+    border: dashed 1px #eee;
+    box-sizing: border-box;
+}

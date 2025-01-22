@@ -1,0 +1,17 @@
+.uikit-editor-blocks-image-select {
+    img {
+        max-width: 100%;
+        width: auto;
+    }
+
+    > .components-spinner {
+        margin: 0;
+        float: none;
+    }
+
+    > .components-button + .components-button {
+        display: block;
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+}
