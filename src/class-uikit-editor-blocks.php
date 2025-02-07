@@ -55,7 +55,7 @@ class Uikit_Editor_Blocks {
      *
      * @var string
      */
-    public static $version = '1.0.0';
+    public static $version = '1.0.1';
 
     /**
      * The plugin token.
@@ -389,7 +389,7 @@ class Uikit_Editor_Blocks {
             return;
         }
 
-        wp_enqueue_style( 'uikit', UIKIT_EDITOR_BLOCKS_PLUGIN_URL . 'assets/css/' . $uikit_theme . ( is_rtl() ? '-rtl' : '' ) . '.css', array(), self::$version );
+        wp_enqueue_style( 'uikit', UIKIT_EDITOR_BLOCKS_PLUGIN_URL . 'assets/css/' . ( $uikit_theme ? $uikit_theme : 'uikit' ) . ( is_rtl() ? '-rtl' : '' ) . '.css', array(), self::$version );
 
         if( ! Settings::is_exclude_load_uikit_icons_enabled() ) {
             wp_enqueue_script( 'uikit-icons', UIKIT_EDITOR_BLOCKS_PLUGIN_URL . 'assets/js/uikit-icons.js', array( 'uikit' ), self::$version, false );
