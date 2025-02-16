@@ -1,5 +1,6 @@
 import './common.js';
 
+// Blocks
 import './accordion/block.js';
 import './accordion-item/block.js';
 import './button/block.js';
@@ -13,6 +14,7 @@ import './general/index.js';
 import './grid/block.js';
 import './grid-column/block.js';
 import './heading/block.js';
+import './icon/block.js';
 import './image/block.js';
 import './overlay/block.js';
 import './overlay-slider/block.js';
@@ -20,6 +22,7 @@ import './overlay-slider-item/block.js';
 import './panel/block.js';
 import './panel-slider/block.js';
 import './panel-slider-item/block.js';
+import './quotation/block.js';
 import './section/block.js';
 import './slideshow/block.js';
 import './slideshow-item/block.js';

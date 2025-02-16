@@ -16,7 +16,6 @@ import {
   withSelect,
   withDispatch,
 } from '@wordpress/data';
-import { templateIconMissing} from '../icons';
 import { __ } from '@wordpress/i18n';
 
 // Fallback to deprecated '@wordpress/editor' for backwards compatibility

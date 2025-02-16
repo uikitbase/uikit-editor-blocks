@@ -6,11 +6,11 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 import edit from './edit';
-import { button } from '../icons';
+import { postContent as icon } from '@wordpress/icons';
 
 registerBlockType( 'uikit-editor-blocks/text', {
   title: __( 'Text (UIkit)', 'uikit-editor-blocks' ),
-  icon: button,
+  icon: icon,
   category: 'uikit-editor-blocks',
   keywords: [
     __( 'Text', 'uikit-editor-blocks' ),

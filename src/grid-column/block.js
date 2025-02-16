@@ -8,14 +8,14 @@ import { __ } from '@wordpress/i18n';
 import * as BlockEditor from '@wordpress/block-editor';
 import * as Editor from '@wordpress/editor';
 import edit from './edit';
-import { column } from '../icons';
+import { column as icon } from '@wordpress/icons';
 
 // Fallback to deprecated '@wordpress/editor' for backwards compatibility
 const { InnerBlocks } = BlockEditor || Editor;
 
 registerBlockType( 'uikit-editor-blocks/grid-column', {
   title: __( 'Grid Column (UIkit)', 'uikit-editor-blocks' ),
-  icon: column,
+  icon: icon,
   category: 'uikit-editor-blocks',
   keywords: [
     __( 'Grid Column', 'uikit-editor-blocks' ),

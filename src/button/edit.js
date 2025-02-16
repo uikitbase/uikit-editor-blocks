@@ -11,6 +11,7 @@ import {
   TextControl,
   SelectControl,
   ToggleControl,
+  CheckboxControl,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
@@ -42,6 +43,7 @@ class UikitButtonEdit extends Component {
       linkAriaLabel,
       style,
       size,
+      fullWidth,
     } = attributes;
 
     if ( ! blockId ) {
@@ -155,6 +157,13 @@ class UikitButtonEdit extends Component {
                 onChange={ ( value ) => {
                   setAttributes( { size: value } );
                 } }
+              />
+              <CheckboxControl
+                label={ __( 'Full Width', 'uikit-editor-blocks' ) }
+                checked={ fullWidth }
+                onChange={ ( isChecked ) =>
+                  setAttributes( { fullWidth: isChecked } )
+                }
               />
             </PanelBody>
           </InspectorControls>

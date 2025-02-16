@@ -1,9 +1,9 @@
 === UIkit Editor Blocks ===
 Tags: uikit, block-editor, blocks
 Requires at least: 6.0
-Tested up to: 6.7
+Tested up to: 6.7.2
 Requires PHP: 7.4
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,11 +31,13 @@ UIkit Editor Blocks for WordPress. This plugin adds UIkit blocks to the WordPres
 **Dropdown**
 **Grid**
 **Heading**
+**Icon**
 **Image**
 **Overlay**
 **Overlay Slider**
 **Panel**
 **Panel Slider**
+**Quotation**
 **Section**
 **Slideshow**
 **Social Icons**
@@ -91,4 +93,11 @@ By using this plugin, users agree to the terms and conditions of YouTube and Vim
 * Initial release.
 
 = 1.0.1 =
-* Fix: UIkit CSS loading issue when settings are unsaved.
+* Fixed: UIkit CSS loading issue when settings are unsaved.
+
+= 1.0.2 =
+* Fixed: Updated templates for Button and Image blocks.
+* Fixed: Updated icons for blocks.
+* Added: "Full Width" checkbox option to the Button block.
+* Added: New Icon block.
+* Added: New Quotation block.

@@ -1,14 +1,14 @@
 @import "../assets/gutenberg";
 
-// panel block
-[data-type="uikit-editor-blocks/panel"] {
+// icon block
+[data-type="uikit-editor-blocks/icon"] {
     padding: 60px 20px 20px 20px;
     border: dashed 1px #eee;
     box-sizing: border-box;
     position: relative;
 
     &:before {
-        content: "Panel (UIkit)";
+        content: "Icon (UIkit)";
         position: absolute;
         font-size: 10pt;
         background: #eee;
@@ -18,11 +18,5 @@
         height: 40px;
         line-height: 40px;
         padding: 0 20px;
-    }
-
-    .wp-block-uikit-editor-blocks-panel {
-        p {
-            margin: 0;
-        }
     }
 }

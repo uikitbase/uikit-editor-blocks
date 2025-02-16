@@ -47,17 +47,20 @@ if ( ! class_exists( '\Uikit_Editor_Blocks\Button\Button_Block_Type', false ) ) 
             'linkRel' => array(
                 'type' => 'string',
             ),
+            'linkTitle' => array(
+                'type' => 'string',
+            ),
+            'linkAriaLabel' => array(
+                'type' => 'string',
+            ),
             'style' => array(
                 'type' => 'string',
             ),
             'size' => array(
                 'type' => 'string',
             ),
-            'linkTitle' => array(
-                'type' => 'string',
-            ),
-            'linkAriaLabel' => array(
-                'type' => 'string',
+            'fullWidth' => array(
+                'type' => 'boolean',
             ),
         );
 
@@ -76,6 +79,7 @@ if ( ! class_exists( '\Uikit_Editor_Blocks\Button\Button_Block_Type', false ) ) 
             'linkAriaLabel' => '',
             'style'         => 'default',
             'size'          => '',
+            'fullWidth'     => false,
         );
     }
 

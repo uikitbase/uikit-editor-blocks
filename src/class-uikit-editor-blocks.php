@@ -18,6 +18,7 @@ use Uikit_Editor_Blocks\Dropdown_Item\Dropdown_Item_Block_Type;
 use Uikit_Editor_Blocks\Grid\Grid_Block_Type;
 use Uikit_Editor_Blocks\Grid_Column\Grid_Column_Block_Type;
 use Uikit_Editor_Blocks\Heading\Heading_Block_Type;
+use Uikit_Editor_Blocks\Icon\Icon_Block_Type;
 use Uikit_Editor_Blocks\Image\Image_Block_Type;
 use Uikit_Editor_Blocks\Overlay\Overlay_Block_Type;
 use Uikit_Editor_Blocks\Overlay_Slider\Overlay_Slider_Block_Type;
@@ -25,6 +26,7 @@ use Uikit_Editor_Blocks\Overlay_Slider_Item\Overlay_Slider_Item_Block_Type;
 use Uikit_Editor_Blocks\Panel\Panel_Block_Type;
 use Uikit_Editor_Blocks\Panel_Slider\Panel_Slider_Block_Type;
 use Uikit_Editor_Blocks\Panel_Slider_Item\Panel_Slider_Item_Block_Type;
+use Uikit_Editor_Blocks\Quotation\Quotation_Block_Type;
 use Uikit_Editor_Blocks\Section\Section_Block_Type;
 use Uikit_Editor_Blocks\Slideshow\Slideshow_Block_Type;
 use Uikit_Editor_Blocks\Slideshow_Item\Slideshow_Item_Block_Type;
@@ -55,7 +57,7 @@ class Uikit_Editor_Blocks {
      *
      * @var string
      */
-    public static $version = '1.0.1';
+    public static $version = '1.0.2';
 
     /**
      * The plugin token.
@@ -146,6 +148,7 @@ class Uikit_Editor_Blocks {
         require_once UIKIT_EDITOR_BLOCKS_ABSPATH . 'src/grid/class-grid-block-type.php';
         require_once UIKIT_EDITOR_BLOCKS_ABSPATH . 'src/grid-column/class-grid-column-block-type.php';
         require_once UIKIT_EDITOR_BLOCKS_ABSPATH . 'src/heading/class-heading-block-type.php';
+        require_once UIKIT_EDITOR_BLOCKS_ABSPATH . 'src/icon/class-icon-block-type.php';
         require_once UIKIT_EDITOR_BLOCKS_ABSPATH . 'src/image/class-image-block-type.php';
         require_once UIKIT_EDITOR_BLOCKS_ABSPATH . 'src/overlay/class-overlay-block-type.php';
         require_once UIKIT_EDITOR_BLOCKS_ABSPATH . 'src/overlay-slider/class-overlay-slider-block-type.php';
@@ -153,6 +156,7 @@ class Uikit_Editor_Blocks {
         require_once UIKIT_EDITOR_BLOCKS_ABSPATH . 'src/panel/class-panel-block-type.php';
         require_once UIKIT_EDITOR_BLOCKS_ABSPATH . 'src/panel-slider/class-panel-slider-block-type.php';
         require_once UIKIT_EDITOR_BLOCKS_ABSPATH . 'src/panel-slider-item/class-panel-slider-item-block-type.php';
+        require_once UIKIT_EDITOR_BLOCKS_ABSPATH . 'src/quotation/class-quotation-block-type.php';
         require_once UIKIT_EDITOR_BLOCKS_ABSPATH . 'src/section/class-section-block-type.php';
         require_once UIKIT_EDITOR_BLOCKS_ABSPATH . 'src/slideshow/class-slideshow-block-type.php';
         require_once UIKIT_EDITOR_BLOCKS_ABSPATH . 'src/slideshow-item/class-slideshow-item-block-type.php';
@@ -294,6 +298,7 @@ class Uikit_Editor_Blocks {
         new Grid_Block_Type();
         new Grid_Column_Block_Type();
         new Heading_Block_Type();
+        new Icon_Block_Type();
         new Image_Block_Type();
         new Overlay_Block_Type();
         new Overlay_Slider_Block_Type();
@@ -301,6 +306,7 @@ class Uikit_Editor_Blocks {
         new Panel_Block_Type();
         new Panel_Slider_Block_Type();
         new Panel_Slider_Item_Block_Type();
+        new Quotation_Block_Type();
         new Section_Block_Type();
         new Slideshow_Block_Type();
         new Slideshow_Item_Block_Type();

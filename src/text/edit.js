@@ -99,7 +99,7 @@ class UikitTextEdit extends Component {
                 options={
                   [
                     { label: __( 'None', 'uikit-editor-blocks' ), value: '' },
-                    { label: __( 'Mute', 'uikit-editor-blocks' ), value: 'muted' },
+                    { label: __( 'Muted', 'uikit-editor-blocks' ), value: 'muted' },
                     { label: __( 'Emphasis', 'uikit-editor-blocks' ), value: 'emphasis' },
                     { label: __( 'Primary', 'uikit-editor-blocks' ), value: 'primary' },
                     { label: __( 'Secondary', 'uikit-editor-blocks' ), value: 'secondary' },

@@ -8,11 +8,11 @@ import { __ } from '@wordpress/i18n';
 import * as BlockEditor from '@wordpress/block-editor';
 import * as Editor from '@wordpress/editor';
 import edit from './edit';
-import { column } from '../icons';
+import { chevronDown as icon } from '@wordpress/icons';
 
 registerBlockType( 'uikit-editor-blocks/dropdown-item', {
   title: __( 'Dropdown Item (UIkit)', 'uikit-editor-blocks' ),
-  icon: column,
+  icon: icon,
   category: 'uikit-editor-blocks',
   keywords: [
     __( 'Dropdown Item', 'uikit-editor-blocks' ),
