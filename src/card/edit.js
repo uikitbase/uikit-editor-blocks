@@ -3,6 +3,7 @@
 import * as BlockEditor from '@wordpress/block-editor';
 import * as Editor from '@wordpress/editor';
 import {
+  createElement,
   Component,
   Fragment,
 } from '@wordpress/element';
@@ -13,6 +14,10 @@ import {
   SelectControl,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import clsx from 'clsx';
+
+// Import the custom hook for applying general block settings
+import useGeneralBlockProps from '../use-general-block-props';
 
 // Fallback to deprecated '@wordpress/editor' for backwards compatibility
 const {
@@ -41,7 +46,58 @@ class UikitCardEdit extends Component {
 
     if ( ! blockId ) {
       setAttributes( { blockId: clientId } );
+
+      if (!titleText && !contentText) {
+        setAttributes({
+          titleText: __( 'Title', 'uikit-editor-blocks' ),
+          contentText: __( 'Content', 'uikit-editor-blocks' ),
+        });
+      }
     }
+
+    // Define block-level attributes
+    const blockProps = {
+      className: clsx(
+        useGeneralBlockProps(attributes)?.className,
+        'uk-card uk-card-body',
+        {
+          [`uk-card-${style}`]: style,
+          [`uk-card-${size}`]: size,
+        },
+        className
+      ),
+    };
+
+    // Define title element attributes
+    const titleProps = {
+      className: clsx(
+        'uk-card-title',
+      ),
+    };
+
+    // Determine the correct title tag
+    const titleTag = titleElement || 'h3';
+
+    // Create the title element
+    const titleElm = titleText ? (
+      createElement(
+        titleTag,
+        { className: titleProps.className },
+        titleText
+      )
+    ) : null;
+
+    // Determine the correct content tag
+    const contentTag = contentElement || 'p';
+
+    // Create the content element
+    const contentElm = contentText ? (
+      createElement(
+        contentTag,
+        null,
+        contentText
+      )
+    ) : null;
 
     return (
       <Fragment>
@@ -117,7 +173,10 @@ class UikitCardEdit extends Component {
             />
           </PanelBody>
         </InspectorControls>
-        <div className={ className }>{ titleText != '' ? titleText : __( 'Title', 'uikit-editor-blocks' ) }</div>
+        <div className={blockProps.className}>
+          {titleElm}
+          {contentElm}
+        </div>
       </Fragment>
     );
   }

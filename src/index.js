@@ -3,6 +3,7 @@ import './common.js';
 // Blocks
 import './accordion/block.js';
 import './accordion-item/block.js';
+import './alert/block.js';
 import './button/block.js';
 import './card/block.js';
 import './container/block.js';

@@ -19,6 +19,10 @@ import {
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+import clsx from 'clsx';
+
+// Import the custom hook for applying general block settings
+import useGeneralBlockProps from '../use-general-block-props';
 
 // Fallback to deprecated '@wordpress/editor' for backwards compatibility
 const {
@@ -60,6 +64,17 @@ class UikitImageEdit extends Component {
       setAttributes( { blockId: clientId } );
     }
 
+    // Define block-level attributes
+    const blockProps = {
+      className: clsx(
+        useGeneralBlockProps(attributes)?.className,
+        {
+          [`uk-border-${border}`]: border,
+        },
+        className
+      ),
+    };
+
     // Open in new tab behavior from core/button (source: https://github.com/WordPress/gutenberg/blob/master/packages/block-library/src/button/edit.js)
     const onToggleOpenInNewTab = ( value ) => {
       const newLinkTarget = value ? '_blank' : undefined;
@@ -90,6 +105,22 @@ class UikitImageEdit extends Component {
         mediaUrl: ''
       } );
     };
+
+    const imageStyle = {
+      width: width ? `${width}px` : 'auto',
+      height: height ? `${height}px` : 'auto',
+    };
+
+    const placeholder = (
+      <div className="image-placeholder" style={{ width: '300px', height: '300px', display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#f0f0f0' }}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+          <rect x="0" y="0" width="300" height="300" fill="#e0e0e0" />
+          <text x="50%" y="50%" textAnchor="middle" fill="#888" fontSize="20" dy=".3em">
+            No Image
+          </text>
+        </svg>
+      </div>
+    );
 
     return (
       <Fragment>
@@ -224,8 +255,12 @@ class UikitImageEdit extends Component {
             />
           </PanelBody>
         </InspectorControls>
-        <div className={ className }>
-          <img src={ mediaUrl } />
+        <div>
+          { mediaUrl ? (
+            <img src={ mediaUrl } alt={ alt } style={ imageStyle } className={blockProps.className} />
+          ) : (
+            placeholder
+          )}
         </div>
       </Fragment>
     );

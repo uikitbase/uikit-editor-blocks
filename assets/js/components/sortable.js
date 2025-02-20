@@ -1,4 +1,4 @@
-/*! UIkit 3.21.16 | https://www.getuikit.com | (c) 2014 - 2024 YOOtheme | MIT License */
+/*! UIkit 3.23.1 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
@@ -63,14 +63,6 @@
     }
 
     ({
-      props: {
-        margin: String,
-        firstColumn: Boolean
-      },
-      data: {
-        margin: "uk-margin-small-top",
-        firstColumn: "uk-first-column"
-      },
       observe: [
         mutation({
           options: {
@@ -87,24 +79,7 @@
         resize({
           target: ({ $el }) => [$el, ...uikitUtil.children($el)]
         })
-      ],
-      update: {
-        read() {
-          return {
-            rows: getRows(uikitUtil.children(this.$el))
-          };
-        },
-        write({ rows }) {
-          for (const row of rows) {
-            for (const el of row) {
-              uikitUtil.toggleClass(el, this.margin, rows[0] !== row);
-              uikitUtil.toggleClass(el, this.firstColumn, row[uikitUtil.isRtl ? row.length - 1 : 0] === el);
-            }
-          }
-        },
-        events: ["resize"]
-      }
-    });
+      ]});
     function getRows(elements) {
       const sorted = [[]];
       const withOffset = elements.some(

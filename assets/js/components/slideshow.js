@@ -1,4 +1,4 @@
-/*! UIkit 3.21.16 | https://www.getuikit.com | (c) 2014 - 2024 YOOtheme | MIT License */
+/*! UIkit 3.23.1 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
@@ -98,50 +98,11 @@
       });
     }
 
-    var Media = {
-      props: {
-        media: Boolean
-      },
-      data: {
-        media: false
-      },
-      connected() {
-        const media = toMedia(this.media, this.$el);
-        this.matchMedia = true;
-        if (media) {
-          this.mediaObj = window.matchMedia(media);
-          const handler = () => {
-            this.matchMedia = this.mediaObj.matches;
-            util.trigger(this.$el, util.createEvent("mediachange", false, true, [this.mediaObj]));
-          };
-          this.offMediaObj = util.on(this.mediaObj, "change", () => {
-            handler();
-            this.$emit("resize");
-          });
-          handler();
-        }
-      },
-      disconnected() {
-        var _a;
-        (_a = this.offMediaObj) == null ? void 0 : _a.call(this);
-      }
-    };
-    function toMedia(value, element) {
-      if (util.isString(value)) {
-        if (util.startsWith(value, "@")) {
-          value = util.toFloat(util.css(element, `--uk-breakpoint-${value.slice(1)}`));
-        } else if (isNaN(value)) {
-          return value;
-        }
-      }
-      return value && util.isNumeric(value) ? `(min-width: ${value}px)` : "";
-    }
-
     function startsWith(str, search) {
       var _a;
       return (_a = str == null ? void 0 : str.startsWith) == null ? void 0 : _a.call(str, search);
     }
-    const { isArray, from: toArray } = Array;
+    const { from: toArray } = Array;
     function isFunction(obj) {
       return typeof obj === "function";
     }
@@ -228,7 +189,7 @@
       return selector ? filter(children2, selector) : children2;
     }
     function index(element, ref) {
-      return ref ? toNodes(element).indexOf(toNode(ref)) : children(parent(element)).indexOf(element);
+      return children(parent(element)).indexOf(element);
     }
 
     function findAll(selector, context) {
@@ -383,45 +344,8 @@
     };
     const { keys } = Object;
     ({
-      mixins: [Media],
       props: fillObject(keys(props), "list"),
-      data: fillObject(keys(props), void 0),
-      computed: {
-        props(properties, $el) {
-          const stops = {};
-          for (const prop in properties) {
-            if (prop in props && !util.isUndefined(properties[prop])) {
-              stops[prop] = properties[prop].slice();
-            }
-          }
-          const result = {};
-          for (const prop in stops) {
-            result[prop] = props[prop](prop, $el, stops[prop], stops);
-          }
-          return result;
-        }
-      },
-      events: {
-        load() {
-          this.$emit();
-        }
-      },
-      methods: {
-        reset() {
-          for (const prop in this.getCss(0)) {
-            util.css(this.$el, prop, "");
-          }
-        },
-        getCss(percent) {
-          const css2 = {};
-          for (const prop in this.props) {
-            this.props[prop](css2, util.clamp(percent));
-          }
-          css2.willChange = Object.keys(css2).map(util.propName).join(",");
-          return css2;
-        }
-      }
-    });
+      data: fillObject(keys(props), void 0)});
     function transformFn(prop, el, stops) {
       let unit = getUnit(stops) || { x: "px", y: "px", rotate: "deg" }[prop] || "";
       let transformFn2;
@@ -1109,16 +1033,11 @@
     }
 
     const keyMap = {
-      TAB: 9,
-      ESC: 27,
       SPACE: 32,
       END: 35,
       HOME: 36,
       LEFT: 37,
-      UP: 38,
-      RIGHT: 39,
-      DOWN: 40
-    };
+      RIGHT: 39};
 
     var SliderNav = {
       i18n: {

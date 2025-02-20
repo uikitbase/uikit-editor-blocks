@@ -1,4 +1,4 @@
-/*! UIkit 3.21.16 | https://www.getuikit.com | (c) 2014 - 2024 YOOtheme | MIT License */
+/*! UIkit 3.23.1 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
@@ -881,8 +881,8 @@
       element = toNode(element);
       const offset2 = [element.offsetTop, element.offsetLeft];
       while (element = element.offsetParent) {
-        offset2[0] += element.offsetTop + toFloat(css(element, `borderTopWidth`));
-        offset2[1] += element.offsetLeft + toFloat(css(element, `borderLeftWidth`));
+        offset2[0] += element.offsetTop + toFloat(css(element, "borderTopWidth"));
+        offset2[1] += element.offsetLeft + toFloat(css(element, "borderLeftWidth"));
         if (css(element, "position") === "fixed") {
           const win = toWindow(element);
           offset2[0] += win.scrollY;
@@ -1688,17 +1688,19 @@
       props: {
         date: String,
         clsWrapper: String,
-        role: String
+        role: String,
+        reload: Boolean
       },
       data: {
         date: "",
         clsWrapper: ".uk-countdown-%unit%",
-        role: "timer"
+        role: "timer",
+        reload: false
       },
       connected() {
         attr(this.$el, "role", this.role);
         this.date = toFloat(Date.parse(this.$props.date));
-        this.end = false;
+        this.started = this.end = false;
         this.start();
       },
       disconnected() {
@@ -1719,10 +1721,6 @@
         start() {
           this.stop();
           this.update();
-          if (!this.timer) {
-            trigger(this.$el, "countdownstart");
-            this.timer = setInterval(this.update, 1e3);
-          }
         },
         stop() {
           if (this.timer) {
@@ -1738,7 +1736,14 @@
             if (!this.end) {
               trigger(this.$el, "countdownend");
               this.end = true;
+              if (this.reload && this.started) {
+                window.location.reload();
+              }
             }
+          } else if (!this.timer) {
+            this.started = true;
+            this.timer = setInterval(this.update, 1e3);
+            trigger(this.$el, "countdownstart");
           }
           for (const unit of units) {
             const el = $(this.clsWrapper.replace("%unit%", unit), this.$el);
@@ -3716,7 +3721,7 @@
     };
     App.util = util;
     App.options = {};
-    App.version = "3.21.16";
+    App.version = "3.23.1";
 
     const PREFIX = "uk-";
     const DATA = "__uikit__";
@@ -7464,9 +7469,26 @@
             var _a;
             const { current, keyCode } = e;
             const active2 = this.getActive();
-            if (keyCode === keyMap.DOWN && (active2 == null ? void 0 : active2.targetEl) === current) {
-              e.preventDefault();
-              (_a = $(selFocusable, active2.$el)) == null ? void 0 : _a.focus();
+            if (keyCode === keyMap.DOWN) {
+              if ((active2 == null ? void 0 : active2.targetEl) === current) {
+                e.preventDefault();
+                (_a = $(selFocusable, active2.$el)) == null ? void 0 : _a.focus();
+              } else {
+                const dropdown = this.dropdowns.find(
+                  (el) => {
+                    var _a2;
+                    return ((_a2 = this.getDropdown(el)) == null ? void 0 : _a2.targetEl) === current;
+                  }
+                );
+                if (dropdown) {
+                  e.preventDefault();
+                  current.click();
+                  once(dropdown, "show", (e2) => {
+                    var _a2;
+                    return (_a2 = $(selFocusable, e2.target)) == null ? void 0 : _a2.focus();
+                  });
+                }
+              }
             }
             handleNavItemNavigation(e, this.items, active2);
           }
@@ -7502,6 +7524,7 @@
                 elements,
                 findIndex(elements, (el) => matches(el, ":focus"))
               )].focus();
+              return;
             }
             handleNavItemNavigation(e, this.items, active2);
           }
@@ -7946,7 +7969,7 @@
           return this.target ? { height: this.target.offsetHeight } : false;
         },
         write({ height }) {
-          css(this.$el, { minHeight: height });
+          css(this.$el, "minHeight", height);
         },
         events: ["resize"]
       }
@@ -7957,13 +7980,15 @@
         expand: Boolean,
         offsetTop: Boolean,
         offsetBottom: Boolean,
-        minHeight: Number
+        minHeight: Number,
+        property: String
       },
       data: {
         expand: false,
         offsetTop: false,
         offsetBottom: false,
-        minHeight: 0
+        minHeight: 0,
+        property: "min-height"
       },
       // check for offsetTop change
       observe: [
@@ -8011,7 +8036,7 @@
           return { minHeight };
         },
         write({ minHeight }) {
-          css(this.$el, "minHeight", `max(${this.minHeight || 0}px, ${minHeight})`);
+          css(this.$el, this.property, `max(${this.min || 0}px, ${minHeight})`);
         },
         events: ["resize"]
       }
@@ -8631,12 +8656,9 @@
         {
           name: "hide",
           el: ({ dropContainer }) => dropContainer,
-          async handler(e) {
-            if (parent(e.target) !== this.dropContainer) {
-              return;
-            }
+          async handler() {
             await awaitMacroTask();
-            if (!this.getActive() && this._transparent) {
+            if (this._transparent && (!active || !this.dropContainer.contains(active.$el))) {
               addClass(this.navbarContainer, clsNavbarTransparent);
               this._transparent = null;
             }
@@ -9070,6 +9092,7 @@
         start: null,
         end: null,
         offset: String,
+        offsetEnd: String,
         overflowFlip: Boolean,
         animation: String,
         clsActive: String,
@@ -9087,6 +9110,7 @@
         start: false,
         end: false,
         offset: 0,
+        offsetEnd: 0,
         overflowFlip: false,
         animation: "",
         clsActive: "uk-active",
@@ -9185,11 +9209,14 @@
               position = position === "top" ? "bottom" : "top";
             }
             const referenceElement = this.isFixed ? this.placeholder : this.$el;
-            let offset$1 = toPx(this.offset, "height", sticky ? this.$el : referenceElement);
+            let [offset$1, offsetEnd] = [this.offset, this.offsetEnd].map(
+              (value) => toPx(value, "height", sticky ? this.$el : referenceElement)
+            );
             if (position === "bottom" && (height$1 < dynamicViewport || this.overflowFlip)) {
               offset$1 += dynamicViewport - height$1;
             }
-            const overflow = this.overflowFlip ? 0 : Math.max(0, height$1 + offset$1 - viewport2);
+            const elementBox = height$1 + offset$1 + offsetEnd;
+            const overflow = this.overflowFlip ? 0 : Math.max(0, elementBox - viewport2);
             const topOffset = offset(referenceElement).top - // offset possible `transform: translateY` animation 'uk-animation-slide-top' while hiding
             new DOMMatrix(css(referenceElement, "transform")).m42;
             const elHeight = dimensions$1(this.$el).height;
@@ -9692,6 +9719,7 @@
       }
     };
 
+    const KEY_ENTER = 13;
     const KEY_SPACE = 32;
     var toggle = {
       mixins: [Media, Togglable],
@@ -9778,7 +9806,7 @@
           name: "keydown",
           filter: ({ $el, mode }) => includes(mode, "click") && !isTag($el, "input"),
           handler(e) {
-            if (e.keyCode === KEY_SPACE) {
+            if (e.keyCode === KEY_SPACE || e.keyCode === KEY_ENTER) {
               e.preventDefault();
               this.$el.click();
             }

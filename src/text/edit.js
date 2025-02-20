@@ -12,6 +12,10 @@ import {
   SelectControl,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import clsx from 'clsx';
+
+// Import the custom hook for applying general block settings
+import useGeneralBlockProps from '../use-general-block-props';
 
 // Fallback to deprecated '@wordpress/editor' for backwards compatibility
 const {
@@ -45,6 +49,20 @@ class UikitTextEdit extends Component {
       setAttributes( { blockId: clientId } );
     }
 
+    // Define block-level attributes
+    const blockProps = {
+      className: clsx(
+        useGeneralBlockProps(attributes)?.className,
+        {
+          'uk-dropcap': dropCap,
+          [`uk-text-${style}`]: style,
+          [`uk-text-${color}`]: color,
+          [`uk-text-${size}`]: size,
+        },
+        className
+      ),
+    };
+
 		const onChangeAlignment = ( newAlignment ) => {
 			let alignmentValue = ( newAlignment === undefined ) ? 'none' : newAlignment;
 				setAttributes( { alignment: alignmentValue } )
@@ -52,7 +70,7 @@ class UikitTextEdit extends Component {
 
     return (
       <Fragment>
-        <div className={ className }>
+        <div>
           {
             <BlockControls>
               <AlignmentToolbar
@@ -62,9 +80,10 @@ class UikitTextEdit extends Component {
             </BlockControls>
           }
           <RichText
+            tagName={ element || 'p' }
+            className={ blockProps.className }
             placeholder={ __( 'Enter text here...', 'uikit-editor-blocks' ) }
             value={ text }
-            tagName="div"
             onChange={ ( value ) =>
               setAttributes( { text: value } )
             }

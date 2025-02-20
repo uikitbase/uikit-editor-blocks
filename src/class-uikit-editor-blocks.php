@@ -9,6 +9,7 @@ namespace Uikit_Editor_Blocks;
 
 use Uikit_Editor_Blocks\Accordion\Accordion_Block_Type;
 use Uikit_Editor_Blocks\Accordion_Item\Accordion_Item_Block_Type;
+use Uikit_Editor_Blocks\Alert\Alert_Block_Type;
 use Uikit_Editor_Blocks\Button\Button_Block_Type;
 use Uikit_Editor_Blocks\Card\Card_Block_Type;
 use Uikit_Editor_Blocks\Container\Container_Block_Type;
@@ -57,7 +58,7 @@ class Uikit_Editor_Blocks {
      *
      * @var string
      */
-    public static $version = '1.0.2';
+    public static $version = '1.0.3';
 
     /**
      * The plugin token.
@@ -139,6 +140,7 @@ class Uikit_Editor_Blocks {
 
         require_once UIKIT_EDITOR_BLOCKS_ABSPATH . 'src/accordion/class-accordion-block-type.php';
         require_once UIKIT_EDITOR_BLOCKS_ABSPATH . 'src/accordion-item/class-accordion-item-block-type.php';
+        require_once UIKIT_EDITOR_BLOCKS_ABSPATH . 'src/alert/class-alert-block-type.php';
         require_once UIKIT_EDITOR_BLOCKS_ABSPATH . 'src/button/class-button-block-type.php';
         require_once UIKIT_EDITOR_BLOCKS_ABSPATH . 'src/card/class-card-block-type.php';
         require_once UIKIT_EDITOR_BLOCKS_ABSPATH . 'src/container/class-container-block-type.php';
@@ -230,6 +232,27 @@ class Uikit_Editor_Blocks {
             array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
             self::$version
         );
+
+        wp_enqueue_style(
+            'uikit-editor', // Handle
+            UIKIT_EDITOR_BLOCKS_PLUGIN_URL . 'assets/css/uikit' . ( is_rtl() ? '-rtl' : '' ) . '.css',
+            array(), // Dependencies
+            self::$version
+        );
+
+        wp_enqueue_script(
+            'uikit-editor', // Handle
+            UIKIT_EDITOR_BLOCKS_PLUGIN_URL . 'assets/js/uikit.js',
+            array(), // Dependencies
+            self::$version
+        );
+
+        wp_enqueue_script(
+            'uikit-icons-editor', // Handle
+            UIKIT_EDITOR_BLOCKS_PLUGIN_URL . 'assets/js/uikit-icons.js',
+            array(), // Dependencies
+            self::$version
+        );
     }
 
     /**
@@ -289,6 +312,7 @@ class Uikit_Editor_Blocks {
     public function register_block_types() {
         new Accordion_Block_Type();
         new Accordion_Item_Block_Type();
+        new Alert_Block_Type();
         new Button_Block_Type();
         new Card_Block_Type();
         new Container_Block_Type();

@@ -5,7 +5,7 @@
  * This template can be overridden by copying it to theme/uikit-editor-blocks/heading.php.
  *
  * @package uikit-editor-blocks/templates/heading
- * @version 1.0.0
+ * @version 1.0.3
  */
 
 /**
@@ -100,7 +100,7 @@ $block_elm_classes = apply_filters( 'uikit_editor_blocks_heading_classes', $bloc
 <?php if( $attributes['decoration'] == 'line' ) : ?>
     <span>
 <?php endif; ?>
-<?php echo esc_html( $attributes['text'] ); ?>
+<?php echo wp_kses_post( $attributes['text'] ); ?>
 <?php if( $attributes['decoration'] == 'line' ) : ?>
     </span>
 <?php endif; ?>

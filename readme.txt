@@ -3,7 +3,7 @@ Tags: uikit, block-editor, blocks
 Requires at least: 6.0
 Tested up to: 6.7.2
 Requires PHP: 7.4
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,6 +24,7 @@ UIkit Editor Blocks for WordPress. This plugin adds UIkit blocks to the WordPres
 = Available Blocks =
 
 **Accordion**
+**Alert***
 **Button**
 **Card**
 **Container**
@@ -89,11 +90,17 @@ By using this plugin, users agree to the terms and conditions of YouTube and Vim
 
 == Changelog ==
 
-= 1.0.0 =
-* Initial release.
-
-= 1.0.1 =
-* Fixed: UIkit CSS loading issue when settings are unsaved.
+= 1.0.3 =
+* Updated: UIkit framework to version 3.23.1.
+* Fixed: Updated templates for Heading block.
+* Added: UIkit now loads in the block editor for real-time styling.
+* Added: New Alert block with live preview support.
+* Fixed: Button block now supports live preview in the Gutenberg editor.
+* Fixed: Card block now supports live preview in the Gutenberg editor.
+* Fixed: Divider block now supports live preview in the Gutenberg editor.
+* Fixed: Heading block now supports live preview in the Gutenberg editor.
+* Fixed: Image block now supports live preview in the Gutenberg editor.
+* Fixed: Text block now supports live preview in the Gutenberg editor.
 
 = 1.0.2 =
 * Fixed: Updated templates for Button and Image blocks.
@@ -101,3 +108,9 @@ By using this plugin, users agree to the terms and conditions of YouTube and Vim
 * Added: "Full Width" checkbox option to the Button block.
 * Added: New Icon block.
 * Added: New Quotation block.
+
+= 1.0.1 =
+* Fixed: UIkit CSS loading issue when settings are unsaved.
+
+= 1.0.0 =
+* Initial release.

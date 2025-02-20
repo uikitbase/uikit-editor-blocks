@@ -1,4 +1,4 @@
-/*! UIkit 3.21.16 | https://www.getuikit.com | (c) 2014 - 2024 YOOtheme | MIT License */
+/*! UIkit 3.23.1 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
 /* ========================================================================
    Component: Base
  ========================================================================== */
@@ -767,83 +767,57 @@ a.uk-link-reset,
   margin-top: 10px;
 }
 /* Marker modifiers
- * Moving `::marker` inside `::before` to style it differently
- * To style the `::marker` is currently only supported in Firefox and Safari
  ========================================================================== */
-.uk-list-disc > *,
-.uk-list-circle > *,
-.uk-list-square > *,
-.uk-list-decimal > *,
-.uk-list-hyphen > * {
+.uk-list-disc,
+.uk-list-circle,
+.uk-list-square,
+.uk-list-decimal,
+.uk-list-hyphen {
   padding-right: 30px;
 }
-/*
- * Type modifiers
- */
-.uk-list-decimal {
-  counter-reset: decimal;
-}
-.uk-list-decimal > * {
-  counter-increment: decimal;
-}
-.uk-list-disc > ::before,
-.uk-list-circle > ::before,
-.uk-list-square > ::before,
-.uk-list-decimal > ::before,
-.uk-list-hyphen > ::before {
-  content: "";
-  position: relative;
-  right: -30px;
-  width: 30px;
-  height: 1.5em;
-  margin-bottom: -1.5em;
-  display: list-item;
-  list-style-position: inside;
-  text-align: left;
-}
-.uk-list-disc > ::before {
+.uk-list-disc {
   list-style-type: disc;
 }
-.uk-list-circle > ::before {
+.uk-list-circle {
   list-style-type: circle;
 }
-.uk-list-square > ::before {
+.uk-list-square {
   list-style-type: square;
 }
-.uk-list-decimal > ::before {
-  content: counter(decimal, decimal) '\200A.\00A0';
+.uk-list-decimal {
+  list-style-type: decimal;
 }
-.uk-list-hyphen > ::before {
-  content: '–\00A0\00A0';
+.uk-list-hyphen {
+  list-style-type: '–  ';
 }
 /*
  * Color modifiers
  */
-.uk-list-muted > ::before {
+.uk-list-muted > ::marker {
   color: #888 !important;
 }
-.uk-list-emphasis > ::before {
+.uk-list-emphasis > ::marker {
   color: #222 !important;
 }
-.uk-list-primary > ::before {
+.uk-list-primary > ::marker {
   color: #1e87f0 !important;
 }
-.uk-list-secondary > ::before {
+.uk-list-secondary > ::marker {
   color: #222 !important;
 }
 /* Image bullet modifier
  ========================================================================== */
 .uk-list-bullet > * {
+  position: relative;
   padding-right: 30px;
 }
 .uk-list-bullet > ::before {
   content: "";
-  display: list-item;
-  position: relative;
-  right: -30px;
+  position: absolute;
+  top: 0;
+  right: 0;
   width: 30px;
   height: 1.5em;
-  margin-bottom: -1.5em;
   background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%226%22%20height%3D%226%22%20viewBox%3D%220%200%206%206%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%20%20%3Ccircle%20fill%3D%22%23444%22%20cx%3D%223%22%20cy%3D%223%22%20r%3D%223%22%20%2F%3E%0A%3C%2Fsvg%3E");
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -1422,6 +1396,17 @@ button.uk-icon:not(:disabled) {
 .uk-input[type="number"]::-webkit-inner-spin-button,
 .uk-input[type="number"]::-webkit-outer-spin-button {
   height: auto;
+}
+/*
+ * Correct vertical alignment in Safari.
+ */
+.uk-input[type="date"]::-webkit-datetime-edit,
+.uk-input[type="time"]::-webkit-datetime-edit,
+.uk-input[type="datetime-local"]::-webkit-datetime-edit {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  padding: 0;
 }
 /*
  * Removes placeholder transparency in Firefox.
@@ -5951,6 +5936,15 @@ ul.uk-nav-sub {
 }
 /* Pill modifier
  ========================================================================== */
+/*
+ * Gutter
+ */
+.uk-subnav-pill {
+  margin-right: -20px;
+}
+.uk-subnav-pill > * {
+  padding-right: 20px;
+}
 .uk-subnav-pill > * > :first-child {
   padding: 5px 10px;
   background: transparent;
@@ -6395,6 +6389,7 @@ ul.uk-nav-sub {
  * 3. Padding
  */
 .uk-dropdown-dropbar {
+  --uk-position-offset: 10px;
   /* 1 */
   width: auto;
   /* 2 */
@@ -7834,6 +7829,12 @@ td.uk-text-truncate {
 th.uk-text-break,
 td.uk-text-break {
   word-break: break-word;
+}
+/* Stroke modifiers
+ ========================================================================== */
+.uk-text-stroke {
+  -webkit-text-stroke: calc(1.4px + 0.002em);
+  -webkit-text-fill-color: transparent;
 }
 /* ========================================================================
    Component: Column
@@ -9907,7 +9908,8 @@ iframe[data-uk-cover] {
  *    Note: `clip-path` doesn't work with `tabindex` on touch devices.
  */
 .uk-hidden-visually:not(:focus):not(:active):not(:focus-within),
-.uk-visible-toggle:not(:hover):not(:focus) .uk-hidden-hover:not(:focus-visible):not(:has(:focus-visible)) {
+.uk-visible-toggle:not(:hover):not(:focus) .uk-hidden-hover:not(:focus-visible):not(:has(:focus-visible)),
+.uk-visible-toggle:not(:hover):not(:focus) .uk-hidden-hover:not(:focus-within) {
   /* 1 */
   position: absolute !important;
   /* 2 */
@@ -10581,56 +10583,56 @@ iframe[data-uk-cover] {
 .uk-offcanvas-bar .uk-divider-vertical {
   border-right-color: rgba(255, 255, 255, 0.2);
 }
-.uk-light .uk-list-muted > ::before,
-.uk-section-primary:not(.uk-preserve-color) .uk-list-muted > ::before,
-.uk-section-secondary:not(.uk-preserve-color) .uk-list-muted > ::before,
-.uk-tile-primary:not(.uk-preserve-color) .uk-list-muted > ::before,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-list-muted > ::before,
-.uk-card-primary.uk-card-body .uk-list-muted > ::before,
-.uk-card-primary > :not([class*="uk-card-media"]) .uk-list-muted > ::before,
-.uk-card-secondary.uk-card-body .uk-list-muted > ::before,
-.uk-card-secondary > :not([class*="uk-card-media"]) .uk-list-muted > ::before,
-.uk-overlay-primary .uk-list-muted > ::before,
-.uk-offcanvas-bar .uk-list-muted > ::before {
+.uk-light .uk-list-muted > ::marker,
+.uk-section-primary:not(.uk-preserve-color) .uk-list-muted > ::marker,
+.uk-section-secondary:not(.uk-preserve-color) .uk-list-muted > ::marker,
+.uk-tile-primary:not(.uk-preserve-color) .uk-list-muted > ::marker,
+.uk-tile-secondary:not(.uk-preserve-color) .uk-list-muted > ::marker,
+.uk-card-primary.uk-card-body .uk-list-muted > ::marker,
+.uk-card-primary > :not([class*="uk-card-media"]) .uk-list-muted > ::marker,
+.uk-card-secondary.uk-card-body .uk-list-muted > ::marker,
+.uk-card-secondary > :not([class*="uk-card-media"]) .uk-list-muted > ::marker,
+.uk-overlay-primary .uk-list-muted > ::marker,
+.uk-offcanvas-bar .uk-list-muted > ::marker {
   color: rgba(255, 255, 255, 0.5) !important;
 }
-.uk-light .uk-list-emphasis > ::before,
-.uk-section-primary:not(.uk-preserve-color) .uk-list-emphasis > ::before,
-.uk-section-secondary:not(.uk-preserve-color) .uk-list-emphasis > ::before,
-.uk-tile-primary:not(.uk-preserve-color) .uk-list-emphasis > ::before,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-list-emphasis > ::before,
-.uk-card-primary.uk-card-body .uk-list-emphasis > ::before,
-.uk-card-primary > :not([class*="uk-card-media"]) .uk-list-emphasis > ::before,
-.uk-card-secondary.uk-card-body .uk-list-emphasis > ::before,
-.uk-card-secondary > :not([class*="uk-card-media"]) .uk-list-emphasis > ::before,
-.uk-overlay-primary .uk-list-emphasis > ::before,
-.uk-offcanvas-bar .uk-list-emphasis > ::before {
+.uk-light .uk-list-emphasis > ::marker,
+.uk-section-primary:not(.uk-preserve-color) .uk-list-emphasis > ::marker,
+.uk-section-secondary:not(.uk-preserve-color) .uk-list-emphasis > ::marker,
+.uk-tile-primary:not(.uk-preserve-color) .uk-list-emphasis > ::marker,
+.uk-tile-secondary:not(.uk-preserve-color) .uk-list-emphasis > ::marker,
+.uk-card-primary.uk-card-body .uk-list-emphasis > ::marker,
+.uk-card-primary > :not([class*="uk-card-media"]) .uk-list-emphasis > ::marker,
+.uk-card-secondary.uk-card-body .uk-list-emphasis > ::marker,
+.uk-card-secondary > :not([class*="uk-card-media"]) .uk-list-emphasis > ::marker,
+.uk-overlay-primary .uk-list-emphasis > ::marker,
+.uk-offcanvas-bar .uk-list-emphasis > ::marker {
   color: #fff !important;
 }
-.uk-light .uk-list-primary > ::before,
-.uk-section-primary:not(.uk-preserve-color) .uk-list-primary > ::before,
-.uk-section-secondary:not(.uk-preserve-color) .uk-list-primary > ::before,
-.uk-tile-primary:not(.uk-preserve-color) .uk-list-primary > ::before,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-list-primary > ::before,
-.uk-card-primary.uk-card-body .uk-list-primary > ::before,
-.uk-card-primary > :not([class*="uk-card-media"]) .uk-list-primary > ::before,
-.uk-card-secondary.uk-card-body .uk-list-primary > ::before,
-.uk-card-secondary > :not([class*="uk-card-media"]) .uk-list-primary > ::before,
-.uk-overlay-primary .uk-list-primary > ::before,
-.uk-offcanvas-bar .uk-list-primary > ::before {
+.uk-light .uk-list-primary > ::marker,
+.uk-section-primary:not(.uk-preserve-color) .uk-list-primary > ::marker,
+.uk-section-secondary:not(.uk-preserve-color) .uk-list-primary > ::marker,
+.uk-tile-primary:not(.uk-preserve-color) .uk-list-primary > ::marker,
+.uk-tile-secondary:not(.uk-preserve-color) .uk-list-primary > ::marker,
+.uk-card-primary.uk-card-body .uk-list-primary > ::marker,
+.uk-card-primary > :not([class*="uk-card-media"]) .uk-list-primary > ::marker,
+.uk-card-secondary.uk-card-body .uk-list-primary > ::marker,
+.uk-card-secondary > :not([class*="uk-card-media"]) .uk-list-primary > ::marker,
+.uk-overlay-primary .uk-list-primary > ::marker,
+.uk-offcanvas-bar .uk-list-primary > ::marker {
   color: #fff !important;
 }
-.uk-light .uk-list-secondary > ::before,
-.uk-section-primary:not(.uk-preserve-color) .uk-list-secondary > ::before,
-.uk-section-secondary:not(.uk-preserve-color) .uk-list-secondary > ::before,
-.uk-tile-primary:not(.uk-preserve-color) .uk-list-secondary > ::before,
-.uk-tile-secondary:not(.uk-preserve-color) .uk-list-secondary > ::before,
-.uk-card-primary.uk-card-body .uk-list-secondary > ::before,
-.uk-card-primary > :not([class*="uk-card-media"]) .uk-list-secondary > ::before,
-.uk-card-secondary.uk-card-body .uk-list-secondary > ::before,
-.uk-card-secondary > :not([class*="uk-card-media"]) .uk-list-secondary > ::before,
-.uk-overlay-primary .uk-list-secondary > ::before,
-.uk-offcanvas-bar .uk-list-secondary > ::before {
+.uk-light .uk-list-secondary > ::marker,
+.uk-section-primary:not(.uk-preserve-color) .uk-list-secondary > ::marker,
+.uk-section-secondary:not(.uk-preserve-color) .uk-list-secondary > ::marker,
+.uk-tile-primary:not(.uk-preserve-color) .uk-list-secondary > ::marker,
+.uk-tile-secondary:not(.uk-preserve-color) .uk-list-secondary > ::marker,
+.uk-card-primary.uk-card-body .uk-list-secondary > ::marker,
+.uk-card-primary > :not([class*="uk-card-media"]) .uk-list-secondary > ::marker,
+.uk-card-secondary.uk-card-body .uk-list-secondary > ::marker,
+.uk-card-secondary > :not([class*="uk-card-media"]) .uk-list-secondary > ::marker,
+.uk-overlay-primary .uk-list-secondary > ::marker,
+.uk-offcanvas-bar .uk-list-secondary > ::marker {
   color: #fff !important;
 }
 .uk-light .uk-list-bullet > ::before,

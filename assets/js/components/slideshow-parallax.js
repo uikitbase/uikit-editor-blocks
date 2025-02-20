@@ -1,4 +1,4 @@
-/*! UIkit 3.21.16 | https://www.getuikit.com | (c) 2014 - 2024 YOOtheme | MIT License */
+/*! UIkit 3.23.1 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
@@ -49,7 +49,7 @@
       var _a;
       return (_a = str == null ? void 0 : str.startsWith) == null ? void 0 : _a.call(str, search);
     }
-    const { isArray, from: toArray } = Array;
+    const { from: toArray } = Array;
     function isFunction(obj) {
       return typeof obj === "function";
     }
@@ -136,7 +136,7 @@
       return selector ? filter(children2, selector) : children2;
     }
     function index(element, ref) {
-      return ref ? toNodes(element).indexOf(toNode(ref)) : children(parent(element)).indexOf(element);
+      return children(parent(element)).indexOf(element);
     }
 
     function findAll(selector, context) {

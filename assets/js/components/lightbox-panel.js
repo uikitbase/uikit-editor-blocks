@@ -1,4 +1,4 @@
-/*! UIkit 3.21.16 | https://www.getuikit.com | (c) 2014 - 2024 YOOtheme | MIT License */
+/*! UIkit 3.23.1 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
@@ -77,35 +77,6 @@
     }
 
     ({
-      args: "dataSrc",
-      props: {
-        dataSrc: String,
-        sources: String,
-        margin: String,
-        target: String,
-        loading: String
-      },
-      data: {
-        dataSrc: "",
-        sources: false,
-        margin: "50%",
-        target: false,
-        loading: "lazy"
-      },
-      connected() {
-        if (this.loading !== "lazy") {
-          this.load();
-        } else if (isImg(this.$el)) {
-          this.$el.loading = "lazy";
-          setSrcAttrs(this.$el);
-        }
-      },
-      disconnected() {
-        if (this.img) {
-          this.img.onload = "";
-        }
-        delete this.img;
-      },
       observe: intersection({
         handler(entries, observer) {
           this.load();
@@ -114,49 +85,7 @@
         options: ({ margin }) => ({ rootMargin: margin }),
         filter: ({ loading }) => loading === "lazy",
         target: ({ $el, $props }) => $props.target ? [$el, ...util.queryAll($props.target, $el)] : $el
-      }),
-      methods: {
-        load() {
-          if (this.img) {
-            return this.img;
-          }
-          const image = isImg(this.$el) ? this.$el : getImageFromElement(this.$el, this.dataSrc, this.sources);
-          util.removeAttr(image, "loading");
-          setSrcAttrs(this.$el, image.currentSrc);
-          return this.img = image;
-        }
-      }
-    });
-    function setSrcAttrs(el, src) {
-      if (isImg(el)) {
-        const parentNode = util.parent(el);
-        const elements = util.isTag(parentNode, "picture") ? util.children(parentNode) : [el];
-        elements.forEach((el2) => setSourceProps(el2, el2));
-      } else if (src) {
-        const change = !util.includes(el.style.backgroundImage, src);
-        if (change) {
-          util.css(el, "backgroundImage", `url(${util.escape(src)})`);
-          util.trigger(el, util.createEvent("load", false));
-        }
-      }
-    }
-    const srcProps = ["data-src", "data-srcset", "sizes"];
-    function setSourceProps(sourceEl, targetEl) {
-      for (const prop of srcProps) {
-        const value = util.data(sourceEl, prop);
-        if (value) {
-          util.attr(targetEl, prop.replace(/data-/g, ""), value);
-        }
-      }
-    }
-    function getImageFromElement(el, src, sources) {
-      const img = new Image();
-      wrapInPicture(img, sources);
-      setSourceProps(el, img);
-      img.onload = () => setSrcAttrs(el, img.currentSrc);
-      util.attr(img, "src", src);
-      return img;
-    }
+      })});
     function wrapInPicture(img, sources) {
       sources = parseSources(sources);
       if (sources.length) {
@@ -186,9 +115,6 @@
         sources = [sources];
       }
       return sources.filter((source) => !util.isEmpty(source));
-    }
-    function isImg(el) {
-      return util.isTag(el, "img");
     }
 
     let prevented;
@@ -979,16 +905,11 @@
     }
 
     const keyMap = {
-      TAB: 9,
-      ESC: 27,
       SPACE: 32,
       END: 35,
       HOME: 36,
       LEFT: 37,
-      UP: 38,
-      RIGHT: 39,
-      DOWN: 40
-    };
+      RIGHT: 39};
 
     var SliderNav = {
       i18n: {
@@ -1365,79 +1286,7 @@
     };
 
     ({
-      ...Animations$1,
-      fade: {
-        show() {
-          return [{ opacity: 0, zIndex: 0 }, { zIndex: -1 }];
-        },
-        percent(current) {
-          return 1 - util.css(current, "opacity");
-        },
-        translate(percent) {
-          return [{ opacity: 1 - percent, zIndex: 0 }, { zIndex: -1 }];
-        }
-      },
-      scale: {
-        show() {
-          return [{ opacity: 0, transform: scale3d(1 + 0.5), zIndex: 0 }, { zIndex: -1 }];
-        },
-        percent(current) {
-          return 1 - util.css(current, "opacity");
-        },
-        translate(percent) {
-          return [
-            { opacity: 1 - percent, transform: scale3d(1 + 0.5 * percent), zIndex: 0 },
-            { zIndex: -1 }
-          ];
-        }
-      },
-      pull: {
-        show(dir) {
-          return dir < 0 ? [
-            { transform: translate(30), zIndex: -1 },
-            { transform: translate(), zIndex: 0 }
-          ] : [
-            { transform: translate(-100), zIndex: 0 },
-            { transform: translate(), zIndex: -1 }
-          ];
-        },
-        percent(current, next, dir) {
-          return dir < 0 ? 1 - translated(next) : translated(current);
-        },
-        translate(percent, dir) {
-          return dir < 0 ? [
-            { transform: translate(30 * percent), zIndex: -1 },
-            { transform: translate(-100 * (1 - percent)), zIndex: 0 }
-          ] : [
-            { transform: translate(-percent * 100), zIndex: 0 },
-            { transform: translate(30 * (1 - percent)), zIndex: -1 }
-          ];
-        }
-      },
-      push: {
-        show(dir) {
-          return dir < 0 ? [
-            { transform: translate(100), zIndex: 0 },
-            { transform: translate(), zIndex: -1 }
-          ] : [
-            { transform: translate(-30), zIndex: -1 },
-            { transform: translate(), zIndex: 0 }
-          ];
-        },
-        percent(current, next, dir) {
-          return dir > 0 ? 1 - translated(next) : translated(current);
-        },
-        translate(percent, dir) {
-          return dir < 0 ? [
-            { transform: translate(percent * 100), zIndex: 0 },
-            { transform: translate(-30 * (1 - percent)), zIndex: -1 }
-          ] : [
-            { transform: translate(-30 * percent), zIndex: -1 },
-            { transform: translate(100 * (1 - percent)), zIndex: 0 }
-          ];
-        }
-      }
-    });
+      ...Animations$1});
     function scale3d(value) {
       return `scale3d(${value}, ${value}, 1)`;
     }

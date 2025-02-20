@@ -14,6 +14,10 @@ import {
   CheckboxControl,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import clsx from 'clsx';
+
+// Import the custom hook for applying general block settings
+import useGeneralBlockProps from '../use-general-block-props';
 
 // Fallback to deprecated '@wordpress/editor' for backwards compatibility
 const {
@@ -50,6 +54,20 @@ class UikitButtonEdit extends Component {
       setAttributes( { blockId: clientId } );
     }
 
+    // Define block-level attributes
+    const blockProps = {
+      className: clsx(
+        useGeneralBlockProps(attributes)?.className,
+        'uk-button',
+        {
+          [`uk-button-${style}`]: style,
+          [`uk-button-${size}`]: size,
+          'uk-width-1-1': fullWidth,
+        },
+        className
+      ),
+    };
+
     // Open in new tab behavior from core/button (source: https://github.com/WordPress/gutenberg/blob/master/packages/block-library/src/button/edit.js)
     const onToggleOpenInNewTab = ( value ) => {
       const newLinkTarget = value ? '_blank' : undefined;
@@ -69,7 +87,7 @@ class UikitButtonEdit extends Component {
 
     return (
       <Fragment>
-        <div className={ className }>
+        <div className={ blockProps.className }>
           <RichText
             placeholder={ __( 'Add text...', 'uikit-editor-blocks' ) }
             value={ text }

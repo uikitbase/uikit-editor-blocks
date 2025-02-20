@@ -1,4 +1,4 @@
-/*! UIkit 3.21.16 | https://www.getuikit.com | (c) 2014 - 2024 YOOtheme | MIT License */
+/*! UIkit 3.23.1 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
@@ -18,17 +18,19 @@
       props: {
         date: String,
         clsWrapper: String,
-        role: String
+        role: String,
+        reload: Boolean
       },
       data: {
         date: "",
         clsWrapper: ".uk-countdown-%unit%",
-        role: "timer"
+        role: "timer",
+        reload: false
       },
       connected() {
         uikitUtil.attr(this.$el, "role", this.role);
         this.date = uikitUtil.toFloat(Date.parse(this.$props.date));
-        this.end = false;
+        this.started = this.end = false;
         this.start();
       },
       disconnected() {
@@ -49,10 +51,6 @@
         start() {
           this.stop();
           this.update();
-          if (!this.timer) {
-            uikitUtil.trigger(this.$el, "countdownstart");
-            this.timer = setInterval(this.update, 1e3);
-          }
         },
         stop() {
           if (this.timer) {
@@ -68,7 +66,14 @@
             if (!this.end) {
               uikitUtil.trigger(this.$el, "countdownend");
               this.end = true;
+              if (this.reload && this.started) {
+                window.location.reload();
+              }
             }
+          } else if (!this.timer) {
+            this.started = true;
+            this.timer = setInterval(this.update, 1e3);
+            uikitUtil.trigger(this.$el, "countdownstart");
           }
           for (const unit of units) {
             const el = uikitUtil.$(this.clsWrapper.replace("%unit%", unit), this.$el);
