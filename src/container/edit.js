@@ -13,6 +13,10 @@ import {
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+import clsx from 'clsx';
+
+// Import the custom hook for applying general block settings
+import useGeneralBlockProps from '../use-general-block-props';
 
 // Fallback to deprecated '@wordpress/editor' for backwards compatibility
 const {
@@ -39,6 +43,14 @@ class UikitContainerEdit extends Component {
       setAttributes( { blockId: clientId } );
     }
 
+    // Define block-level attributes
+    const blockProps = {
+      className: clsx(
+        useGeneralBlockProps(attributes)?.className,
+        className
+      ),
+    };
+
     return (
       <Fragment>
         <InspectorControls>
@@ -64,7 +76,7 @@ class UikitContainerEdit extends Component {
             />
           </PanelBody>
         </InspectorControls>
-        <div className={ className }>
+        <div className={blockProps.className}>
           <InnerBlocks
             renderAppender={
               hasChildBlocks

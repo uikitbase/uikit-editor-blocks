@@ -3,7 +3,7 @@ Tags: uikit, block-editor, blocks
 Requires at least: 6.0
 Tested up to: 6.7.2
 Requires PHP: 7.4
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,7 +24,7 @@ UIkit Editor Blocks for WordPress. This plugin adds UIkit blocks to the WordPres
 = Available Blocks =
 
 **Accordion**
-**Alert***
+**Alert**
 **Button**
 **Card**
 **Container**
@@ -49,6 +49,14 @@ UIkit Editor Blocks for WordPress. This plugin adds UIkit blocks to the WordPres
 
 * WordPress >= 6.0
 * PHP >= 7.4
+
+= Further Information =
+
+* Documentation: [https://github.com/uikitbase/uikit-editor-blocks#readme](https://github.com/uikitbase/uikit-editor-blocks#readme)
+* WordPress Plugin: [https://wordpress.org/plugins/uikit-editor-blocks/](https://wordpress.org/plugins/uikit-editor-blocks/)
+* GitHub Repository: [https://github.com/uikitbase/uikit-editor-blocks](https://github.com/uikitbase/uikit-editor-blocks)
+* Changelog: [https://github.com/uikitbase/uikit-editor-blocks/tags](https://github.com/uikitbase/uikit-editor-blocks/tags)
+* Issue tracker: [https://github.com/uikitbase/uikit-editor-blocks/issues](https://github.com/uikitbase/uikit-editor-blocks/issues)
 
 == Installation ==
 
@@ -88,7 +96,20 @@ This plugin utilizes external services to embed videos from YouTube and Vimeo. T
 
 By using this plugin, users agree to the terms and conditions of YouTube and Vimeo for any embedded video content.
 
+== Screenshots ==
+
+1. UIkit blocks.
+2. UIkit blocks settings page.
+
 == Changelog ==
+
+= 1.0.4 =
+* Added: "Icon Picker" for easy selection and integration of UIkit icons.
+* Fixed: Accordion block now supports live preview in the Gutenberg editor.
+* Fixed: Container block now supports live preview in the Gutenberg editor.
+* Fixed: Icon block now supports live preview in the Gutenberg editor.
+* Fixed: Section block now supports live preview in the Gutenberg editor.
+* Improved: Enhanced styling for blocks that currently do not support live preview.
 
 = 1.0.3 =
 * Updated: UIkit framework to version 3.23.1.

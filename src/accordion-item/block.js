@@ -20,6 +20,10 @@ registerBlockType( 'uikit-editor-blocks/accordion-item', {
     __( 'UIkit', 'uikit-editor-blocks' ),
   ],
   parent: [ 'uikit-editor-blocks/accordion' ],
+  usesContext: [
+      'uikit-editor-blocks/accordion-contentStyle',
+      'uikit-editor-blocks/accordion-contentTopMargin'
+  ],
 
   edit,
 

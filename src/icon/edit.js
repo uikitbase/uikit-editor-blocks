@@ -12,6 +12,12 @@ import {
   SelectControl,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import clsx from 'clsx';
+
+// Import the custom hook for applying general block settings
+import useGeneralBlockProps from '../use-general-block-props';
+
+import UIkitIconInput from '../uikit-icon-input';
 
 // Fallback to deprecated '@wordpress/editor' for backwards compatibility
 const {
@@ -36,19 +42,44 @@ class UikitIconEdit extends Component {
 
     if ( ! blockId ) {
       setAttributes( { blockId: clientId } );
+
+      if (!icon) {
+        setAttributes({
+          icon: 'star',
+        });
+      }
     }
+
+    // Define block-level attributes
+    const blockProps = {
+      className: clsx(
+        useGeneralBlockProps(attributes)?.className,
+        'uk-icon',
+        {
+          [`uk-text-${color}`]: color,
+        },
+        className
+      ),
+    };
+
+    // Set icon data attributes
+    const iconDataAttribute = [
+      icon ? `icon: ${icon}` : '',
+      width ? `width: ${width}` : '',
+      width ? `height: ${width}` : '',
+    ].filter(Boolean).join('; ');
 
     return (
       <Fragment>
         <InspectorControls>
           <PanelBody title={ __( 'Icon', 'uikit-editor-blocks' ) } initialOpen={ false }>
-            <TextControl
+            <UIkitIconInput
               label={ __( 'Icon', 'uikit-editor-blocks' ) }
-              help={ __( 'Enter icon name from UIkit', 'uikit-editor-blocks' ) }
-              value={ icon }
-              onChange={ ( value ) => {
-                setAttributes( { icon: value } );
-              } }
+              help={ __( 'Enter icon name from UIkit or select one.', 'uikit-editor-blocks' ) }
+              value={ attributes.icon || '' }
+              onChange={ ( value ) =>
+                setAttributes( { icon: value } )
+              }
             />
             <SelectControl
               label={ __( 'Color', 'uikit-editor-blocks' ) }
@@ -80,7 +111,7 @@ class UikitIconEdit extends Component {
             />
           </PanelBody>
         </InspectorControls>
-        <div className={ className }>{icon}</div>
+        <span className={blockProps.className} data-uk-icon={iconDataAttribute}></span>
       </Fragment>
     );
   }

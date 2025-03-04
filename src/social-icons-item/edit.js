@@ -19,6 +19,8 @@ import {
 } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
+import UIkitIconInput from '../uikit-icon-input';
+
 // Fallback to deprecated '@wordpress/editor' for backwards compatibility
 const {
   InspectorControls,
@@ -27,6 +29,14 @@ const {
 const NEW_TAB_REL_DEFAULT_VALUE = 'noreferrer noopener';
 
 class UikitSocialIconsItemEdit extends Component {
+  componentDidMount() {
+    const { attributes, setAttributes } = this.props;
+
+    if (!attributes.icon) {
+      setAttributes({ icon: 'x' });
+    }
+  }
+
   render() {
     const {
       attributes,
@@ -70,31 +80,14 @@ class UikitSocialIconsItemEdit extends Component {
       <Fragment>
         <InspectorControls>
           <PanelBody title={ __( 'Block Content', 'uikit-editor-blocks' ) }>
-            <SelectControl 
+            <UIkitIconInput
+              allowedIcons={ ['facebook', 'whatsapp', 'instagram', 'youtube', 'telegram', 'github', 'vimeo', 'twitch', 'soundcloud', 'reddit', 'discord', 'linkedin', 'tiktok', 'google', 'pinterest', 'signal', 'threads', 'dribbble', 'flickr', 'foursquare', 'mastodon', 'tumblr', 'x', 'xing', 'youtube'] }
               label={ __( 'Icon', 'uikit-editor-blocks' ) }
-              value={ icon }
-              options={[
-                { label: __( 'Facebook', 'uikit-editor-blocks' ), value: 'facebook' },
-                { label: __( 'WhatsApp', 'uikit-editor-blocks' ), value: 'whatsapp' },
-                { label: __( 'Instagram', 'uikit-editor-blocks' ), value: 'instagram' },
-                { label: __( 'YouTube', 'uikit-editor-blocks' ), value: 'youtube' },
-                { label: __( 'Telegram', 'uikit-editor-blocks' ), value: 'telegram' },
-                { label: __( 'GitHub', 'uikit-editor-blocks' ), value: 'github' },
-                { label: __( 'Vimeo', 'uikit-editor-blocks' ), value: 'vimeo' },
-                { label: __( 'Twitch', 'uikit-editor-blocks' ), value: 'twitch' },
-                { label: __( 'SoundCloud', 'uikit-editor-blocks' ), value: 'soundcloud' },
-                { label: __( 'Reddit', 'uikit-editor-blocks' ), value: 'reddit' },
-                { label: __( 'Discord', 'uikit-editor-blocks' ), value: 'discord' },
-                { label: __( 'LinkedIn', 'uikit-editor-blocks' ), value: 'linkedin' },
-                { label: __( 'TikTok', 'uikit-editor-blocks' ), value: 'tiktok' },
-                { label: __( 'Google', 'uikit-editor-blocks' ), value: 'google' },
-                { label: __( 'Pinterest', 'uikit-editor-blocks' ), value: 'pinterest' },
-                { label: __( 'Signal', 'uikit-editor-blocks' ), value: 'signal' },
-                { label: __( 'Threads', 'uikit-editor-blocks' ), value: 'threads' },
-              ]}
-              onChange={( value ) => {
-                setAttributes( { icon: value } );
-              }}
+              help={ __( 'Enter icon name from UIkit or select one.', 'uikit-editor-blocks' ) }
+              value={ attributes.icon || '' }
+              onChange={ ( value ) =>
+                setAttributes( { icon: value } )
+              }
             />
             <TextControl
               label={ __( 'Link', 'uikit-editor-blocks' ) }
@@ -137,7 +130,7 @@ class UikitSocialIconsItemEdit extends Component {
             )}
           </PanelBody>
         </InspectorControls>
-        <div className={ className }>{ icon != '' ? icon : __( 'Title', 'uikit-editor-blocks' ) }</div>
+        <div className={ className }><span data-uk-icon={icon}></span></div>
       </Fragment>
     );
   }

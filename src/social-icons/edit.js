@@ -10,6 +10,7 @@ import {
   PanelBody,
   SelectControl,
   TextControl,
+  Button,
 } from '@wordpress/components';
 import { compose } from '@wordpress/compose';
 import {
@@ -19,6 +20,7 @@ import {
   select,
 } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+import { createBlock } from '@wordpress/blocks';
 
 // Fallback to deprecated '@wordpress/editor' for backwards compatibility
 const {
@@ -36,6 +38,7 @@ class UikitSocialIconsEdit extends Component {
       setAttributes,
       columns,
       updateBlockAttributes,
+      hasChildBlocks,
       clientId,
     } = this.props;
 
@@ -115,7 +118,17 @@ class UikitSocialIconsEdit extends Component {
         <div className={ className }>
           <InnerBlocks
             allowedBlocks={ ALLOWED_BLOCKS }
+            renderAppender={false}
           />
+          <Button
+            onClick={() => {
+              const newBlock = createBlock('uikit-editor-blocks/social-icons-item'); 
+              this.props.insertBlock(newBlock);
+            }}
+            className="uk-width-1-1 uk-flex uk-flex-center"
+          >
+                <span data-uk-icon="plus" class="uk-icon-button"></span>
+          </Button>
         </div>
       </Fragment>
     );
@@ -134,11 +147,14 @@ const applyWithSelect = withSelect( ( select, { clientId } ) => {
   };
 } );
 
-const applyWithDispatch = withDispatch( ( dispatch ) => {
-  const { updateBlockAttributes } = dispatch( 'core/block-editor' ) || dispatch( 'core/editor' ); // Fallback to 'core/editor' for backwards compatibility
+const applyWithDispatch = withDispatch( ( dispatch, ownProps ) => {
+  const { clientId } = ownProps;
+
+  const { updateBlockAttributes, insertBlock } = dispatch( 'core/block-editor' ) || dispatch( 'core/editor' ); // Fallback to 'core/editor' for backwards compatibility
 
   return {
     updateBlockAttributes,
+    insertBlock: (block) => insertBlock(block, undefined, clientId),
   };
 } );
 

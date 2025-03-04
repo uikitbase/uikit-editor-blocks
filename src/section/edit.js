@@ -3,6 +3,7 @@
 import * as BlockEditor from '@wordpress/block-editor';
 import * as Editor from '@wordpress/editor';
 import {
+  createElement,
   Component,
   Fragment,
 } from '@wordpress/element';
@@ -20,6 +21,10 @@ import {
 import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+import clsx from 'clsx';
+
+// Import the custom hook for applying general block settings
+import useGeneralBlockProps from '../use-general-block-props';
 
 // Fallback to deprecated '@wordpress/editor' for backwards compatibility
 const {
@@ -69,6 +74,54 @@ class UikitSectionEdit extends Component {
       setAttributes( { blockId: clientId } );
     }
 
+    const paddingClasses = {
+      'xsmall': 'uk-section-xsmall',
+      'small': 'uk-section-small',
+      'large': 'uk-section-large',
+      'xlarge': 'uk-section-xlarge',
+      'none': 'uk-padding-remove',
+    };
+
+    const containerClasses = {
+      'default': 'uk-container',
+      'xsmall': 'uk-container uk-container-xsmall',
+      'small': 'uk-container uk-container-small',
+      'large': 'uk-container uk-container-large',
+      'xlarge': 'uk-container uk-container-xlarge',
+      'expand': 'uk-container uk-container-expand',
+    };
+
+    const blockStyles = {
+      ...(bgColor && { backgroundColor: bgColor }),
+      ...(bgImage && { backgroundImage: `url(${bgImage.source_url})` }),
+    };
+
+    // Define block-level attributes
+    const blockProps = {
+      className: clsx(
+        useGeneralBlockProps(attributes)?.className,
+        'uk-section',
+        {
+          [`uk-section-${style}`]: style,
+          [`uk-${textColor}`]: textColor,
+          [paddingClasses[padding]]: padding,
+          'uk-padding-remove-top': removeTopPadding,
+          'uk-padding-remove-bottom': removeBottomPadding,
+          ...(bgImageOverlay && { 'uk-overlay': true }),
+        },
+        className
+      ),
+    };
+
+    // Define container attributes
+    const containerProps = {
+      className: clsx(
+        {
+          [containerClasses[container]]: container,
+        },
+      ),
+    };
+
     const onUpdateImage = ( image ) => {
       setAttributes( {
         bgImageMediaId: image.id,
@@ -80,6 +133,28 @@ class UikitSectionEdit extends Component {
         bgImageMediaId: undefined,
       } );
     };
+
+    // Create the block element
+    const blockElm = createElement(
+      'div',
+      {
+        className: blockProps.className,
+        style: blockStyles,
+      },
+      container ? createElement(
+        'div',
+        { className: containerProps.className },
+        createElement(InnerBlocks, {
+          renderAppender: hasChildBlocks
+            ? undefined
+            : () => createElement(InnerBlocks.ButtonBlockAppender)
+        })
+      ) : createElement(InnerBlocks, {
+        renderAppender: hasChildBlocks
+          ? undefined
+          : () => createElement(InnerBlocks.ButtonBlockAppender)
+      })
+    );
 
     return (
       <Fragment>
@@ -361,15 +436,7 @@ class UikitSectionEdit extends Component {
             }
           </PanelBody>
         </InspectorControls>
-        <div className={ className }>
-          <InnerBlocks
-            renderAppender={
-              hasChildBlocks
-                ? undefined
-                : () => <InnerBlocks.ButtonBlockAppender />
-            }
-          />
-        </div>
+        {blockElm}
       </Fragment>
     );
   }

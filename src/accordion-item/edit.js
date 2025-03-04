@@ -17,6 +17,10 @@ import {
   select,
 } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
+import clsx from 'clsx';
+
+// Import the custom hook for applying general block settings
+import useGeneralBlockProps from '../use-general-block-props';
 
 // Fallback to deprecated '@wordpress/editor' for backwards compatibility
 const {
@@ -30,6 +34,7 @@ class UikitAccordionItemEdit extends Component {
       className,
       setAttributes,
       clientId,
+      context,
     } = this.props;
 
     const {
@@ -40,7 +45,44 @@ class UikitAccordionItemEdit extends Component {
 
     if ( ! blockId ) {
       setAttributes( { blockId: clientId } );
+
+      if (!titleText && !contentText) {
+        setAttributes({
+          titleText: __( 'Title', 'uikit-editor-blocks' ),
+          contentText: __( 'Content', 'uikit-editor-blocks' ),
+        });
+      }
     }
+
+    const parentContentStyle = context['uikit-editor-blocks/accordion-contentStyle'];
+    const parentContentTopMargin = context['uikit-editor-blocks/accordion-contentTopMargin'];
+
+    const parentContentTopMarginClasses = {
+      'small': 'uk-margin-small-top',
+      'default': 'uk-margin-top',
+      'medium': 'uk-margin-medium-top',
+      'large': 'uk-margin-large-top',
+      'xlarge': 'uk-margin-xlarge-top',
+    };
+
+    // Define block-level attributes
+    const blockProps = {
+      className: clsx(
+        useGeneralBlockProps(attributes)?.className,
+        className
+      ),
+    };
+
+    // Define content element attributes
+    const contentProps = {
+      className: clsx(
+        'uk-panel',
+        {
+          [`uk-text-${parentContentStyle}`]: parentContentStyle,
+          [parentContentTopMarginClasses[parentContentTopMargin]]: parentContentTopMargin,
+        }
+      ),
+    };
 
     return (
       <Fragment>
@@ -58,7 +100,16 @@ class UikitAccordionItemEdit extends Component {
             />
           </PanelBody>
         </InspectorControls>
-        <div className={ className }>{ titleText != '' ? titleText : __( 'Title', 'uikit-editor-blocks' ) }</div>
+        <div className={blockProps.className}>
+          <a class="uk-accordion-title" href>
+            { titleText }
+          </a>
+          <div class="uk-accordion-content">
+            <div class={contentProps.className}>
+              <p>{ contentText }</p>
+            </div>
+          </div>
+        </div>
       </Fragment>
     );
   }

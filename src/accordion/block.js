@@ -23,6 +23,10 @@ registerBlockType( 'uikit-editor-blocks/accordion', {
     __( 'UIkit Accordion', 'uikit-editor-blocks' ),
     __( 'UIkit', 'uikit-editor-blocks' ),
   ],
+  providesContext: {
+    'uikit-editor-blocks/accordion-contentStyle': 'contentStyle',
+    'uikit-editor-blocks/accordion-contentTopMargin': 'contentTopMargin',
+  },
 
   edit,
 
