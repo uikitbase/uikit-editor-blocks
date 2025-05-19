@@ -1,4 +1,4 @@
-/*! UIkit 3.23.1 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
+/*! UIkit 3.23.7 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
@@ -19,6 +19,12 @@
         }
       }
     };
+
+    function maybeDefaultPreventClick(e) {
+      if (e.target.closest('a[href="#"],a[href=""]')) {
+        e.preventDefault();
+      }
+    }
 
     var Component = {
       mixins: [Container],
@@ -67,9 +73,7 @@
       },
       events: {
         click(e) {
-          if (e.target.closest('a[href="#"],a[href=""]')) {
-            e.preventDefault();
-          }
+          maybeDefaultPreventClick(e);
           this.close();
         },
         [uikitUtil.pointerEnter]() {

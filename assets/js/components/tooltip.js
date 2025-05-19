@@ -1,4 +1,4 @@
-/*! UIkit 3.23.1 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
+/*! UIkit 3.23.7 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
@@ -401,7 +401,7 @@
     };
     function makeFocusable(el) {
       if (!util.isFocusable(el)) {
-        util.attr(el, "tabindex", "0");
+        el.tabIndex = 0;
       }
     }
     function getAlignment(el, target, [dir, align]) {

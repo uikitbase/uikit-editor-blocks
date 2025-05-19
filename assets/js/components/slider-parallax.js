@@ -1,4 +1,4 @@
-/*! UIkit 3.23.1 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
+/*! UIkit 3.23.7 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
@@ -168,6 +168,7 @@
       return [position, selector.slice(position.length + 1)];
     });
     function _query(selector, context = document, queryFn) {
+      var _a;
       const parsed = parseSelector(selector);
       if (!parsed.isContextSelector) {
         return parsed.selector ? _doQuery(context, queryFn, parsed.selector) : selector;
@@ -179,7 +180,7 @@
         let ctx = context;
         if (sel[0] === "!") {
           [positionSel, sel] = parsePositionSelector(sel);
-          ctx = context.parentElement.closest(positionSel);
+          ctx = (_a = context.parentElement) == null ? void 0 : _a.closest(positionSel);
           if (!sel && isSingle) {
             return ctx;
           }
@@ -316,9 +317,7 @@
       },
       methods: {
         reset() {
-          for (const prop in this.getCss(0)) {
-            uikitUtil.css(this.$el, prop, "");
-          }
+          uikitUtil.resetProps(this.$el, this.getCss(0));
         },
         getCss(percent) {
           const css2 = {};

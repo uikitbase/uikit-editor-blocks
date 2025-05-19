@@ -1,4 +1,4 @@
-/*! UIkit 3.23.1 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
+/*! UIkit 3.23.7 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
@@ -157,15 +157,16 @@
       }
       prevented = true;
       const { scrollingElement } = document;
-      util.css(scrollingElement, {
+      const props = {
         overflowY: CSS.supports("overflow", "clip") ? "clip" : "hidden",
         touchAction: "none",
         paddingRight: util.width(window) - scrollingElement.clientWidth || ""
-      });
+      };
+      util.css(scrollingElement, props);
       return () => {
         prevented = false;
         off();
-        util.css(scrollingElement, { overflowY: "", touchAction: "", paddingRight: "" });
+        util.resetProps(scrollingElement, props);
       };
     }
 
@@ -188,6 +189,12 @@
         }
       }
     };
+
+    function maybeDefaultPreventClick(e) {
+      if (e.target.closest('a[href="#"],a[href=""]')) {
+        e.preventDefault();
+      }
+    }
 
     function storeScrollPosition(element) {
       const scrollElement = util.scrollParent(element);
@@ -409,9 +416,10 @@
         }
       },
       connected() {
-        util.attr(this.panel || this.$el, "role", this.role);
+        const el = this.panel || this.$el;
+        el.role = this.role;
         if (this.overlay) {
-          util.attr(this.panel || this.$el, "aria-modal", true);
+          el.ariaModal = true;
         }
       },
       beforeDisconnect() {
@@ -429,7 +437,7 @@
             if (!defaultPrevented && hash && util.isSameSiteAnchor(current) && !this.$el.contains(util.$(hash))) {
               this.hide();
             } else if (util.matches(current, this.selClose)) {
-              e.preventDefault();
+              maybeDefaultPreventClick(e);
               this.hide();
             }
           }
@@ -489,7 +497,7 @@
           self: true,
           handler() {
             if (!util.isFocusable(this.$el)) {
-              util.attr(this.$el, "tabindex", "-1");
+              this.$el.tabIndex = -1;
             }
             if (!util.matches(this.$el, ":focus-within")) {
               this.$el.focus();
@@ -639,9 +647,7 @@
           return util.Transition.cancel([next, prev]);
         },
         reset() {
-          for (const prop in props[0]) {
-            util.css([next, prev], prop, "");
-          }
+          util.resetProps([next, prev], props[0]);
         },
         async forward(duration, percent2 = this.percent()) {
           await this.cancel();
@@ -967,7 +973,7 @@
                 ariaControls = slide.id;
               }
               ariaLabel = this.t("slideX", util.toFloat(cmd) + 1);
-              util.attr(button, "role", "tab");
+              button.role = "tab";
             } else {
               if (this.list) {
                 if (!this.list.id) {
@@ -977,10 +983,8 @@
               }
               ariaLabel = this.t(cmd);
             }
-            util.attr(button, {
-              "aria-controls": ariaControls,
-              "aria-label": util.attr(button, "aria-label") || ariaLabel
-            });
+            button.ariaControls = ariaControls;
+            button.ariaLabel = button.ariaLabel || ariaLabel;
           }
         },
         slides(slides) {
@@ -995,10 +999,8 @@
         }
       },
       connected() {
-        util.attr(this.$el, {
-          role: this.role,
-          "aria-roledescription": "carousel"
-        });
+        this.$el.role = this.role;
+        this.$el.ariaRoleDescription = "carousel";
       },
       update: [
         {
@@ -1016,7 +1018,7 @@
           filter: ({ parallax }) => !parallax,
           handler(e) {
             if (e.target.closest("a,button") && (e.type === "click" || e.keyCode === keyMap.SPACE)) {
-              e.preventDefault();
+              maybeDefaultPreventClick(e);
               this.show(util.data(e.current, this.attrItem));
             }
           }
@@ -1056,10 +1058,8 @@
               const active = item === index;
               util.toggleClass(el, this.clsActive, active);
               util.toggleClass(button, "uk-disabled", !!this.parallax);
-              util.attr(button, {
-                "aria-selected": active,
-                tabindex: active && !this.parallax ? null : -1
-              });
+              button.ariaSelected = active;
+              button.tabIndex = active && !this.parallax ? null : -1;
               if (active && button && util.matches(util.parent(el), ":focus-within")) {
                 button.focus();
               }
@@ -1448,7 +1448,7 @@
           name: "keyup",
           el: () => document,
           handler({ keyCode }) {
-            if (!this.isToggled(this.$el) || !this.draggable) {
+            if (!this.isToggled() || !this.draggable) {
               return;
             }
             let i = -1;
@@ -1667,7 +1667,7 @@
           this.hide();
           for (const toggle of toggles) {
             if (util.isTag(toggle, "a")) {
-              util.attr(toggle, "role", "button");
+              toggle.role = "button";
             }
           }
         }

@@ -285,7 +285,7 @@ if ( ! class_exists( '\Uikit_Editor_Blocks\Settings', false ) ) :
             switch ( $field['type'] ) {
                 case 'checkbox':
                     // For checkbox, return boolean value
-                    return boolval( $value );
+                    return $value === '1' ? 1 : 0;
 
                 case 'select-multiple':
                     // For select-multiple, sanitize each array element

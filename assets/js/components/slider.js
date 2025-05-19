@@ -1,4 +1,4 @@
-/*! UIkit 3.23.1 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
+/*! UIkit 3.23.7 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
@@ -338,6 +338,12 @@
       LEFT: 37,
       RIGHT: 39};
 
+    function maybeDefaultPreventClick(e) {
+      if (e.target.closest('a[href="#"],a[href=""]')) {
+        e.preventDefault();
+      }
+    }
+
     var SliderNav = {
       i18n: {
         next: "Next slide",
@@ -394,7 +400,7 @@
                 ariaControls = slide.id;
               }
               ariaLabel = this.t("slideX", util.toFloat(cmd) + 1);
-              util.attr(button, "role", "tab");
+              button.role = "tab";
             } else {
               if (this.list) {
                 if (!this.list.id) {
@@ -404,10 +410,8 @@
               }
               ariaLabel = this.t(cmd);
             }
-            util.attr(button, {
-              "aria-controls": ariaControls,
-              "aria-label": util.attr(button, "aria-label") || ariaLabel
-            });
+            button.ariaControls = ariaControls;
+            button.ariaLabel = button.ariaLabel || ariaLabel;
           }
         },
         slides(slides) {
@@ -422,10 +426,8 @@
         }
       },
       connected() {
-        util.attr(this.$el, {
-          role: this.role,
-          "aria-roledescription": "carousel"
-        });
+        this.$el.role = this.role;
+        this.$el.ariaRoleDescription = "carousel";
       },
       update: [
         {
@@ -443,7 +445,7 @@
           filter: ({ parallax }) => !parallax,
           handler(e) {
             if (e.target.closest("a,button") && (e.type === "click" || e.keyCode === keyMap.SPACE)) {
-              e.preventDefault();
+              maybeDefaultPreventClick(e);
               this.show(util.data(e.current, this.attrItem));
             }
           }
@@ -483,10 +485,8 @@
               const active = item === index;
               util.toggleClass(el, this.clsActive, active);
               util.toggleClass(button, "uk-disabled", !!this.parallax);
-              util.attr(button, {
-                "aria-selected": active,
-                tabindex: active && !this.parallax ? null : -1
-              });
+              button.ariaSelected = active;
+              button.tabIndex = active && !this.parallax ? null : -1;
               if (active && button && util.matches(util.parent(el), ":focus-within")) {
                 button.focus();
               }
@@ -802,6 +802,7 @@
       return [position, selector.slice(position.length + 1)];
     });
     function _query(selector, context = document, queryFn) {
+      var _a;
       const parsed = parseSelector(selector);
       if (!parsed.isContextSelector) {
         return parsed.selector ? _doQuery(context, queryFn, parsed.selector) : selector;
@@ -813,7 +814,7 @@
         let ctx = context;
         if (sel[0] === "!") {
           [positionSel, sel] = parsePositionSelector(sel);
-          ctx = context.parentElement.closest(positionSel);
+          ctx = (_a = context.parentElement) == null ? void 0 : _a.closest(positionSel);
           if (!sel && isSingle) {
             return ctx;
           }
@@ -1609,12 +1610,12 @@
           for (const slide of this.slides) {
             const active = util.includes(actives, slide);
             util.toggleClass(slide, activeClasses, active);
-            util.attr(slide, "aria-hidden", !active);
+            slide.ariaHidden = !active;
             for (const focusable of util.$$(util.selFocusable, slide)) {
               if (!util.hasOwn(focusable, "_tabindex")) {
-                focusable._tabindex = util.attr(focusable, "tabindex");
+                focusable._tabindex = focusable.tabIndex;
               }
-              util.attr(focusable, "tabindex", active ? focusable._tabindex : -1);
+              focusable.tabIndex = active ? focusable._tabindex : -1;
             }
           }
         },

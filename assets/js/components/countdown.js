@@ -1,4 +1,4 @@
-/*! UIkit 3.23.1 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
+/*! UIkit 3.23.7 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
@@ -28,7 +28,7 @@
         reload: false
       },
       connected() {
-        uikitUtil.attr(this.$el, "role", this.role);
+        this.$el.role = this.role;
         this.date = uikitUtil.toFloat(Date.parse(this.$props.date));
         this.started = this.end = false;
         this.start();

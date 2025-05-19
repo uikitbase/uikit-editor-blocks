@@ -1,4 +1,4 @@
-/*! UIkit 3.23.1 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
+/*! UIkit 3.23.7 | https://www.getuikit.com | (c) 2014 - 2025 YOOtheme | MIT License */
 
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('uikit-util')) :
@@ -87,10 +87,19 @@
           options: {
             attributes: true,
             attributeFilter: ["style"]
-          },
-          target: ({ $el }) => [$el, ...uikitUtil.children($el)]
+          }
         }),
         resize({
+          handler(mutations) {
+            for (const {
+              borderBoxSize: [{ inlineSize, blockSize }]
+            } of mutations) {
+              if (inlineSize || blockSize) {
+                this.$emit("resize");
+                return;
+              }
+            }
+          },
           target: ({ $el }) => [$el, ...uikitUtil.children($el)]
         })
       ]});
@@ -147,6 +156,82 @@
       };
     }
 
+    const clsLeave = "uk-transition-leave";
+    const clsEnter = "uk-transition-enter";
+    function fade(action, target, duration, stagger = 0) {
+      const index = transitionIndex(target, true);
+      const propsIn = { opacity: 1 };
+      const propsOut = { opacity: 0 };
+      const isCurrentIndex = () => index === transitionIndex(target);
+      const wrapIndexFn = (fn) => () => isCurrentIndex() ? fn() : Promise.reject();
+      const leaveFn = wrapIndexFn(async () => {
+        uikitUtil.addClass(target, clsLeave);
+        await (stagger ? Promise.all(
+          getTransitionNodes(target).map(async (child, i) => {
+            await awaitTimeout(i * stagger);
+            return uikitUtil.Transition.start(child, propsOut, duration / 2, "ease");
+          })
+        ) : uikitUtil.Transition.start(target, propsOut, duration / 2, "ease"));
+        uikitUtil.removeClass(target, clsLeave);
+      });
+      const enterFn = wrapIndexFn(async () => {
+        const oldHeight = uikitUtil.height(target);
+        uikitUtil.addClass(target, clsEnter);
+        action();
+        uikitUtil.css(stagger ? uikitUtil.children(target) : target, propsOut);
+        uikitUtil.height(target, oldHeight);
+        await awaitTimeout();
+        uikitUtil.height(target, "");
+        const newHeight = uikitUtil.height(target);
+        uikitUtil.css(target, "alignContent", "flex-start");
+        uikitUtil.height(target, oldHeight);
+        let transitions = [];
+        let targetDuration = duration / 2;
+        if (stagger) {
+          const nodes = getTransitionNodes(target);
+          uikitUtil.css(uikitUtil.children(target), propsOut);
+          transitions = nodes.map(async (child, i) => {
+            await awaitTimeout(i * stagger);
+            await uikitUtil.Transition.start(child, propsIn, duration / 2, "ease");
+            if (isCurrentIndex()) {
+              uikitUtil.resetProps(child, propsIn);
+            }
+          });
+          targetDuration += nodes.length * stagger;
+        }
+        if (!stagger || oldHeight !== newHeight) {
+          const targetProps = { height: newHeight, ...stagger ? {} : propsIn };
+          transitions.push(uikitUtil.Transition.start(target, targetProps, targetDuration, "ease"));
+        }
+        await Promise.all(transitions);
+        uikitUtil.removeClass(target, clsEnter);
+        if (isCurrentIndex()) {
+          uikitUtil.resetProps(target, { height: "", alignContent: "", ...propsIn });
+          delete target.dataset.transition;
+        }
+      });
+      return uikitUtil.hasClass(target, clsLeave) ? waitTransitionend(target).then(enterFn) : uikitUtil.hasClass(target, clsEnter) ? waitTransitionend(target).then(leaveFn).then(enterFn) : leaveFn().then(enterFn);
+    }
+    function transitionIndex(target, next) {
+      if (next) {
+        target.dataset.transition = 1 + transitionIndex(target);
+      }
+      return uikitUtil.toNumber(target.dataset.transition) || 0;
+    }
+    function waitTransitionend(target) {
+      return Promise.all(
+        uikitUtil.children(target).filter(uikitUtil.Transition.inProgress).map(
+          (el) => new Promise((resolve) => uikitUtil.once(el, "transitionend transitioncanceled", resolve))
+        )
+      );
+    }
+    function getTransitionNodes(target) {
+      return getRows(uikitUtil.children(target)).flat().filter(uikitUtil.isVisible);
+    }
+    function awaitTimeout(timeout) {
+      return new Promise((resolve) => setTimeout(resolve, timeout));
+    }
+
     async function slide(action, target, duration) {
       await awaitFrame();
       let nodes = uikitUtil.children(target);
@@ -179,7 +264,7 @@
         uikitUtil.attr(target, "style", targetStyle);
       } catch (e) {
         uikitUtil.attr(nodes, "style", "");
-        resetProps(target, targetProps);
+        uikitUtil.resetProps(target, targetProps);
       }
     }
     function getProps(el, opacity) {
@@ -216,11 +301,6 @@
       });
       return [propsTo, propsFrom];
     }
-    function resetProps(el, props) {
-      for (const prop in props) {
-        uikitUtil.css(el, prop, "");
-      }
-    }
     function getPositionWithMargin(el) {
       const { height, width } = uikitUtil.dimensions(el);
       return {
@@ -233,86 +313,6 @@
     }
     function awaitFrame() {
       return new Promise((resolve) => requestAnimationFrame(resolve));
-    }
-
-    const clsLeave = "uk-transition-leave";
-    const clsEnter = "uk-transition-enter";
-    function fade(action, target, duration, stagger = 0) {
-      const index = transitionIndex(target, true);
-      const propsIn = { opacity: 1 };
-      const propsOut = { opacity: 0 };
-      const wrapIndexFn = (fn) => () => index === transitionIndex(target) ? fn() : Promise.reject();
-      const leaveFn = wrapIndexFn(async () => {
-        uikitUtil.addClass(target, clsLeave);
-        await Promise.all(
-          getTransitionNodes(target).map(
-            (child, i) => new Promise(
-              (resolve) => setTimeout(
-                () => uikitUtil.Transition.start(child, propsOut, duration / 2, "ease").then(
-                  resolve
-                ),
-                i * stagger
-              )
-            )
-          )
-        );
-        uikitUtil.removeClass(target, clsLeave);
-      });
-      const enterFn = wrapIndexFn(async () => {
-        const oldHeight = uikitUtil.height(target);
-        uikitUtil.addClass(target, clsEnter);
-        action();
-        uikitUtil.css(uikitUtil.children(target), { opacity: 0 });
-        await awaitFrame();
-        const nodes = uikitUtil.children(target);
-        const newHeight = uikitUtil.height(target);
-        uikitUtil.css(target, "alignContent", "flex-start");
-        uikitUtil.height(target, oldHeight);
-        const transitionNodes = getTransitionNodes(target);
-        uikitUtil.css(nodes, propsOut);
-        const transitions = transitionNodes.map(async (child, i) => {
-          await awaitTimeout(i * stagger);
-          await uikitUtil.Transition.start(child, propsIn, duration / 2, "ease");
-        });
-        if (oldHeight !== newHeight) {
-          transitions.push(
-            uikitUtil.Transition.start(
-              target,
-              { height: newHeight },
-              duration / 2 + transitionNodes.length * stagger,
-              "ease"
-            )
-          );
-        }
-        await Promise.all(transitions).then(() => {
-          uikitUtil.removeClass(target, clsEnter);
-          if (index === transitionIndex(target)) {
-            uikitUtil.css(target, { height: "", alignContent: "" });
-            uikitUtil.css(nodes, { opacity: "" });
-            delete target.dataset.transition;
-          }
-        });
-      });
-      return uikitUtil.hasClass(target, clsLeave) ? waitTransitionend(target).then(enterFn) : uikitUtil.hasClass(target, clsEnter) ? waitTransitionend(target).then(leaveFn).then(enterFn) : leaveFn().then(enterFn);
-    }
-    function transitionIndex(target, next) {
-      if (next) {
-        target.dataset.transition = 1 + transitionIndex(target);
-      }
-      return uikitUtil.toNumber(target.dataset.transition) || 0;
-    }
-    function waitTransitionend(target) {
-      return Promise.all(
-        uikitUtil.children(target).filter(uikitUtil.Transition.inProgress).map(
-          (el) => new Promise((resolve) => uikitUtil.once(el, "transitionend transitioncanceled", resolve))
-        )
-      );
-    }
-    function getTransitionNodes(target) {
-      return getRows(uikitUtil.children(target)).flat().filter(uikitUtil.isVisible);
-    }
-    function awaitTimeout(timeout) {
-      return new Promise((resolve) => setTimeout(resolve, timeout));
     }
 
     var Animate = {
@@ -335,6 +335,12 @@
         }
       }
     };
+
+    function maybeDefaultPreventClick(e) {
+      if (e.target.closest('a[href="#"],a[href=""]')) {
+        e.preventDefault();
+      }
+    }
 
     const keyMap = {
       SPACE: 32};
@@ -367,7 +373,7 @@
             }
             const button = findButton(toggle);
             if (uikitUtil.isTag(button, "a")) {
-              uikitUtil.attr(button, "role", "button");
+              button.role = "button";
             }
           }
         },
@@ -385,7 +391,7 @@
             return;
           }
           if (e.target.closest("a,button")) {
-            e.preventDefault();
+            maybeDefaultPreventClick(e);
             this.apply(e.current);
           }
         }
@@ -423,8 +429,8 @@
         }
       }
     };
-    function getFilter(el, attr2) {
-      return parseOptions(uikitUtil.data(el, attr2), ["filter"]);
+    function getFilter(el, attr) {
+      return parseOptions(uikitUtil.data(el, attr), ["filter"]);
     }
     function isEqualState(stateA, stateB) {
       return ["filter", "sort"].every((prop) => uikitUtil.isEqual(stateA[prop], stateB[prop]));
@@ -445,8 +451,8 @@
         }
       }
     }
-    function mergeState(el, attr2, state) {
-      const { filter, group, sort, order = "asc" } = getFilter(el, attr2);
+    function mergeState(el, attr, state) {
+      const { filter, group, sort, order = "asc" } = getFilter(el, attr);
       if (filter || uikitUtil.isUndefined(sort)) {
         if (group) {
           if (filter) {
@@ -467,8 +473,8 @@
       }
       return state;
     }
-    function matchFilter(el, attr2, { filter: stateFilter = { "": "" }, sort: [stateSort, stateOrder] }) {
-      const { filter = "", group = "", sort, order = "asc" } = getFilter(el, attr2);
+    function matchFilter(el, attr, { filter: stateFilter = { "": "" }, sort: [stateSort, stateOrder] }) {
+      const { filter = "", group = "", sort, order = "asc" } = getFilter(el, attr);
       return uikitUtil.isUndefined(sort) ? group in stateFilter && filter === stateFilter[group] || !filter && group && !(group in stateFilter) && !stateFilter[""] : stateSort === sort && stateOrder === order;
     }
     function sortItems(nodes, sort, order) {
