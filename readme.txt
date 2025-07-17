@@ -1,9 +1,9 @@
 === UIkit Editor Blocks ===
 Tags: uikit, block-editor, blocks
 Requires at least: 6.0
-Tested up to: 6.8.1
+Tested up to: 6.8.2
 Requires PHP: 7.4
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,11 @@ By using this plugin, users agree to the terms and conditions of YouTube and Vim
 2. UIkit blocks settings page.
 
 == Changelog ==
+
+= 1.0.6 =
+* Updated: UIkit framework to version 3.23.11.
+* Improved: Switched to minified versions of UIkit CSS and JS for better performance.
+* Updated: Settings menu label.
 
 = 1.0.5 =
 * Updated: UIkit framework to version 3.23.7.

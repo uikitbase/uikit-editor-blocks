@@ -58,7 +58,7 @@ class Uikit_Editor_Blocks {
      *
      * @var string
      */
-    public static $version = '1.0.5';
+    public static $version = '1.0.6';
 
     /**
      * The plugin token.
@@ -235,21 +235,21 @@ class Uikit_Editor_Blocks {
 
         wp_enqueue_style(
             'uikit-editor', // Handle
-            UIKIT_EDITOR_BLOCKS_PLUGIN_URL . 'assets/css/uikit' . ( is_rtl() ? '-rtl' : '' ) . '.css',
+            UIKIT_EDITOR_BLOCKS_PLUGIN_URL . 'assets/css/uikit' . ( is_rtl() ? '-rtl' : '' ) . '.min.css',
             array(), // Dependencies
             self::$version
         );
 
         wp_enqueue_script(
             'uikit-editor', // Handle
-            UIKIT_EDITOR_BLOCKS_PLUGIN_URL . 'assets/js/uikit.js',
+            UIKIT_EDITOR_BLOCKS_PLUGIN_URL . 'assets/js/uikit.min.js',
             array(), // Dependencies
             self::$version
         );
 
         wp_enqueue_script(
             'uikit-icons-editor', // Handle
-            UIKIT_EDITOR_BLOCKS_PLUGIN_URL . 'assets/js/uikit-icons.js',
+            UIKIT_EDITOR_BLOCKS_PLUGIN_URL . 'assets/js/uikit-icons.min.js',
             array(), // Dependencies
             self::$version
         );
@@ -419,16 +419,16 @@ class Uikit_Editor_Blocks {
             return;
         }
 
-        wp_enqueue_style( 'uikit', UIKIT_EDITOR_BLOCKS_PLUGIN_URL . 'assets/css/' . ( $uikit_theme ? $uikit_theme : 'uikit' ) . ( is_rtl() ? '-rtl' : '' ) . '.css', array(), self::$version );
+        wp_enqueue_style( 'uikit', UIKIT_EDITOR_BLOCKS_PLUGIN_URL . 'assets/css/' . ( $uikit_theme ? $uikit_theme : 'uikit' ) . ( is_rtl() ? '-rtl' : '' ) . '.min.css', array(), self::$version );
 
         if( ! Settings::is_exclude_load_uikit_icons_enabled() ) {
-            wp_enqueue_script( 'uikit-icons', UIKIT_EDITOR_BLOCKS_PLUGIN_URL . 'assets/js/uikit-icons.js', array( 'uikit' ), self::$version, false );
+            wp_enqueue_script( 'uikit-icons', UIKIT_EDITOR_BLOCKS_PLUGIN_URL . 'assets/js/uikit-icons.min.js', array( 'uikit' ), self::$version, false );
         }
 
         if( ! Settings::is_exclude_load_uikit_components_enabled() ) {
-            wp_enqueue_script( 'uikit', UIKIT_EDITOR_BLOCKS_PLUGIN_URL . 'assets/js/uikit.js', array(), self::$version, false );
+            wp_enqueue_script( 'uikit', UIKIT_EDITOR_BLOCKS_PLUGIN_URL . 'assets/js/uikit.min.js', array(), self::$version, false );
         } else {
-            wp_enqueue_script( 'uikit', UIKIT_EDITOR_BLOCKS_PLUGIN_URL . 'assets/js/uikit-core.js', array(), self::$version, false );
+            wp_enqueue_script( 'uikit', UIKIT_EDITOR_BLOCKS_PLUGIN_URL . 'assets/js/uikit-core.min.js', array(), self::$version, false );
 
             $components = array(
                 'countdown',
@@ -448,7 +448,7 @@ class Uikit_Editor_Blocks {
 
             foreach( $components as $component ) {
                 if( ! in_array( $component, $exclude_load_uikit_components ) ) {
-                    wp_enqueue_script( "uikit-$component", UIKIT_EDITOR_BLOCKS_PLUGIN_URL . "assets/js/components/$component.js", array( 'uikit' ), self::$version, false );
+                    wp_enqueue_script( "uikit-$component", UIKIT_EDITOR_BLOCKS_PLUGIN_URL . "assets/js/components/$component.min.js", array( 'uikit' ), self::$version, false );
                 }
             }
         }

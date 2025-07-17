@@ -147,7 +147,7 @@ if ( ! class_exists( '\Uikit_Editor_Blocks\Settings', false ) ) :
          * Add settings page to admin menu.
          */
         public static function add_menu_item() {
-            add_options_page( __( 'UIkit Blocks Settings', 'uikit-editor-blocks' ), __( 'UIkit Blocks', 'uikit-editor-blocks' ), 'manage_options', self::MENU_SLUG, array( __CLASS__, 'settings_page' ) );
+            add_options_page( __( 'UIkit Editor Blocks Settings', 'uikit-editor-blocks' ), __( 'UIkit Editor Blocks', 'uikit-editor-blocks' ), 'manage_options', self::MENU_SLUG, array( __CLASS__, 'settings_page' ) );
         }
 
         /**
