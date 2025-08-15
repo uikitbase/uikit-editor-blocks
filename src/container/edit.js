@@ -43,10 +43,13 @@ class UikitContainerEdit extends Component {
       setAttributes( { blockId: clientId } );
     }
 
+    const general = useGeneralBlockProps(attributes);
+    const { className: generalClassName, ...generalDataAttrs } = general;
+
     // Define block-level attributes
     const blockProps = {
       className: clsx(
-        useGeneralBlockProps(attributes)?.className,
+        generalClassName,
         className
       ),
     };
@@ -76,7 +79,7 @@ class UikitContainerEdit extends Component {
             />
           </PanelBody>
         </InspectorControls>
-        <div className={blockProps.className}>
+        <div className={blockProps.className} {...generalDataAttrs} >
           <InnerBlocks
             renderAppender={
               hasChildBlocks

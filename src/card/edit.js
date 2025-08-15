@@ -22,7 +22,6 @@ import useGeneralBlockProps from '../use-general-block-props';
 // Fallback to deprecated '@wordpress/editor' for backwards compatibility
 const {
   InspectorControls,
-  RichText,
 } = BlockEditor || Editor;
 
 class UikitCardEdit extends Component {
@@ -55,10 +54,13 @@ class UikitCardEdit extends Component {
       }
     }
 
+    const general = useGeneralBlockProps(attributes);
+    const { className: generalClassName, ...generalDataAttrs } = general;
+
     // Define block-level attributes
     const blockProps = {
       className: clsx(
-        useGeneralBlockProps(attributes)?.className,
+        generalClassName,
         'uk-card uk-card-body',
         {
           [`uk-card-${style}`]: style,
@@ -173,7 +175,7 @@ class UikitCardEdit extends Component {
             />
           </PanelBody>
         </InspectorControls>
-        <div className={blockProps.className}>
+        <div className={blockProps.className} {...generalDataAttrs} >
           {titleElm}
           {contentElm}
         </div>

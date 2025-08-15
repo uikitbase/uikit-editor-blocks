@@ -54,10 +54,13 @@ class UikitButtonEdit extends Component {
       setAttributes( { blockId: clientId } );
     }
 
+    const general = useGeneralBlockProps(attributes);
+    const { className: generalClassName, ...generalDataAttrs } = general;
+
     // Define block-level attributes
     const blockProps = {
       className: clsx(
-        useGeneralBlockProps(attributes)?.className,
+        generalClassName,
         'uk-button',
         {
           [`uk-button-${style}`]: style,
@@ -87,23 +90,18 @@ class UikitButtonEdit extends Component {
 
     return (
       <Fragment>
-        <div className={ blockProps.className }>
+        <div className={ blockProps.className } {...generalDataAttrs} >
           <RichText
             placeholder={ __( 'Add text...', 'uikit-editor-blocks' ) }
             value={ text }
             onChange={ ( value ) =>
               setAttributes( { text: value } )
             }
-            formattingControls={ [] }
+            allowedFormats={ [] }
             keepPlaceholderOnFocus
           />
           <InspectorControls>
             <PanelBody title={ __( 'Block Content', 'uikit-editor-blocks' ) }>
-              <TextControl
-                label={ __( 'Text', 'uikit-editor-blocks' ) }
-                value={ text }
-                onChange={ ( value ) => setAttributes( { text: value } ) }
-              />
               <TextControl
                 label={ __( 'Link URL', 'uikit-editor-blocks' ) }
                 value={ linkUrl }

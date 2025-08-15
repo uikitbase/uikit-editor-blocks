@@ -5,28 +5,23 @@
  * This template can be overridden by copying it to theme/uikit-editor-blocks/social-icons-item.php.
  *
  * @package uikit-editor-blocks/templates/social-icons-item
- * @version 1.0.0
- */
-
-/**
- * Block attributes.
- * Defined in uikit_editor_blocks_get_template() which requires this template.
- *
- * The following attributes are available:
- *
- * @var $attributes array(
- *   'className' (string) => Additional class names which should be added to block.
- * )
+ * @version 1.0.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-$block_elm_classes = [];
-$a_elm_classes     = [];
+$wrapper_attrs   = [];
+$wrapper_classes = [];
 
-$linkStyle_classes = [
+$wrapper_link_attrs   = [];
+$wrapper_link_classes = [];
+
+$icon_attrs     = [];
+$icon_icon_data = [];
+
+$linkStyle_variants = [
     'default'    => 'uk-icon-link',
     'button'     => 'uk-icon-button',
     'link-muted' => 'uk-link-muted',
@@ -34,54 +29,80 @@ $linkStyle_classes = [
     'link-reset' => 'uk-link-reset',
 ];
 
-if ( ! empty( $block->context['uikit-editor-blocks/social-icons-linkStyle'] ) ) {
-    if ( isset( $linkStyle_classes[ $block->context['uikit-editor-blocks/social-icons-linkStyle'] ] ) ) {
-        $a_elm_classes[] = $linkStyle_classes[ $block->context['uikit-editor-blocks/social-icons-linkStyle'] ];
+/**
+ * Wrapper classes
+ */
+if ( isset( $attributes['className'] ) ) {
+    $wrapper_classes[] = $attributes['className'];
+}
+
+/**
+ * Wrapper link classes
+ */
+if ( $block->context['uikit-editor-blocks/social-icons-linkStyle'] ) {
+    if ( isset( $linkStyle_variants[ $block->context['uikit-editor-blocks/social-icons-linkStyle'] ] ) ) {
+        $wrapper_link_classes[] = $linkStyle_variants[ $block->context['uikit-editor-blocks/social-icons-linkStyle'] ];
     }
 }
 
-/*
- * Custom classes
+/**
+ * Icon icon-data
  */
-if ( ! empty( $attributes['className'] ) ) {
-    $block_elm_classes[] = $attributes['className'];
+if ( $attributes['icon'] ) {
+    $icon_icon_data[] = $attributes['icon'];
 }
 
 /**
  * Filters social-icons-item block classes.
  *
- * @param array $block_elm_classes Classes which should be added to the block.
+ * @param array $wrapper_classes Classes which should be added to the block.
  * @param array $attributes Block attributes.
  */
-$block_elm_classes = apply_filters( 'uikit_editor_blocks_social_icons_item_classes', $block_elm_classes, $attributes );
+$wrapper_classes = apply_filters( 'uikit_editor_blocks_social_icons_item_classes', $wrapper_classes, $attributes );
+
+/**
+ * Wrapper attributes
+ */
+if ( $wrapper_classes ) {
+    $wrapper_attrs[] = 'class="' . esc_attr( implode( ' ', $wrapper_classes ) ) . '"';
+}
+
+/**
+ * Wrapper link attributes
+ */
+if ( $attributes['linkUrl'] ) {
+    $wrapper_link_attrs[] = 'href="' . esc_attr( $attributes['linkUrl'] ) . '"';
+}
+
+if ( $attributes['linkTarget'] ) {
+    $wrapper_link_attrs[] = 'target="' . esc_attr( $attributes['linkTarget'] ) . '"';
+}
+
+if ( $attributes['linkTitle'] ) {
+    $wrapper_link_attrs[] = 'title="' . esc_attr( $attributes['linkTitle'] ) . '"';
+}
+
+if ( $attributes['linkRel'] ) {
+    $wrapper_link_attrs[] = 'rel="' . esc_attr( $attributes['linkRel'] ) . '"';
+}
+
+if ( $attributes['linkAriaLabel'] ) {
+    $wrapper_link_attrs[] = 'aria-label="' . esc_attr( $attributes['linkAriaLabel'] ) . '"';
+}
+
+if ( $wrapper_link_classes ) {
+    $wrapper_link_attrs[] = 'class="' . esc_attr( implode( ' ', $wrapper_link_classes ) ) . '"';
+}
+
+/**
+ * Icon attributes
+ */
+if ( $icon_icon_data ) {
+    $icon_attrs[] = 'data-uk-icon="' . esc_attr( implode( '; ', $icon_icon_data ) ) . '"';
+}
 ?>
-<div
-    <?php if ( ! empty( $block_elm_classes ) ) : ?>
-        class="<?php echo esc_attr( implode( ' ', $block_elm_classes ) ); ?>"
-    <?php endif; ?>
->
-    <a
-        <?php if ( ! empty( $attributes['linkUrl'] ) ) : ?>
-            href="<?php echo esc_attr( $attributes['linkUrl'] ); ?>"
-        <?php endif; ?>
-        <?php if ( ! empty( $attributes['linkTitle'] ) ) : ?>
-            title="<?php echo esc_attr( $attributes['linkTitle'] ); ?>"
-        <?php endif; ?>
-        <?php if ( ! empty( $attributes['linkRel'] ) ) : ?>
-            rel="<?php echo esc_attr( $attributes['linkRel'] ); ?>"
-        <?php endif; ?>
-        <?php if ( ! empty( $attributes['linkAriaLabel'] ) ) : ?>
-            aria-label="<?php echo esc_attr( $attributes['linkAriaLabel'] ); ?>"
-        <?php endif; ?>
-        <?php if ( ! empty( $a_elm_classes ) ) : ?>
-            class="<?php echo esc_attr( implode( ' ', $a_elm_classes ) ); ?>"
-        <?php endif; ?>
-    >
-        <span
-            <?php if ( ! empty( $attributes['icon'] ) ) : ?>
-                data-uk-icon="icon: <?php echo esc_attr( $attributes['icon'] ); ?>;"
-            <?php endif; ?>
-        >
-        </span>
+<div <?php echo implode( ' ', $wrapper_attrs ); ?>>
+    <a <?php echo implode( ' ', $wrapper_link_attrs ); ?>>
+        <span <?php echo implode( ' ', $icon_attrs ); ?>></span>
     </a>
 </div>

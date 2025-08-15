@@ -5,44 +5,33 @@
  * This template can be overridden by copying it to theme/uikit-editor-blocks/alert.php.
  *
  * @package uikit-editor-blocks/templates/alert
- * @version 1.0.3
- */
-
-/**
- * Block attributes.
- * Defined in uikit_editor_blocks_get_template() which requires this template.
- *
- * The following attributes are available:
- *
- * @var $attributes array(
- *   'className' (string) => Additional class names which should be added to block.
- * )
- */
-
-/**
- * Block content.
- * Defined in uikit_editor_blocks_get_template() which requires this template.
- *
- * @var $content string
+ * @version 1.0.4
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-$block_elm_classes   = ['uk-alert'];
-$link_elm_classes    = ['uk-link-reset'];
-$title_elm_classes   = [];
-$content_elm_classes = ['uk-panel'];
+$wrapper_attrs   = [];
+$wrapper_classes = ['uk-alert'];
 
-$style_classes = [
+$wrapper_link_attrs   = [];
+$wrapper_link_classes = ['uk-link-reset'];
+
+$title_attrs   = [];
+$title_classes = [];
+
+$content_attrs   = [];
+$content_classes = ['uk-panel'];
+
+$style_variants = [
     'primary' => 'uk-alert-primary',
     'success' => 'uk-alert-success',
     'warning' => 'uk-alert-warning',
     'danger'  => 'uk-alert-danger',
 ];
 
-$titleStyle_classes = [
+$titleStyle_variants = [
     'text-bold'     => 'uk-text-bold',
     'heading-small' => 'uk-heading-small',
     'h1'            => 'uk-h1',
@@ -53,12 +42,12 @@ $titleStyle_classes = [
     'h6'            => 'uk-h6',
 ];
 
-$contentStyle_classes = [
+$contentStyle_variants = [
     'lead' => 'uk-text-lead',
     'meta' => 'uk-text-meta',
 ];
 
-$contentTopMargin_classes = [
+$contentTopMargin_variants = [
     'default' => 'uk-margin-top',
     'small'   => 'uk-margin-small-top',
     'medium'  => 'uk-margin-medium-top',
@@ -66,93 +55,118 @@ $contentTopMargin_classes = [
     'xlarge'  => 'uk-margin-xlarge-top',
 ];
 
-if ( ! empty( $attributes['style'] ) ) {
-    if( isset( $style_classes[ $attributes['style'] ] ) ) {
-        $block_elm_classes[] = $style_classes[ $attributes['style'] ];
-    }
-}
-
-if ( ! empty( $attributes['largerPadding'] ) ) {
-    $block_elm_classes[] = 'uk-padding';
-}
-
-if( ! empty( $attributes['titleStyle'] ) ) {
-    if ( isset( $titleStyle_classes[ $attributes['titleStyle'] ] ) ) {
-        $title_elm_classes[] = $titleStyle_classes[ $attributes['titleStyle'] ];
-    }
-}
-
-if( ! empty( $attributes['contentStyle'] ) ) {
-    if ( isset( $contentStyle_classes[ $attributes['contentStyle'] ] ) ) {
-        $content_elm_classes[] = $contentStyle_classes[ $attributes['contentStyle'] ];
-    }
-}
-
-if( ! empty( $attributes['contentTopMargin'] ) ) {
-    if ( isset( $contentTopMargin_classes[ $attributes['contentTopMargin'] ] ) ) {
-        $content_elm_classes[] = $contentTopMargin_classes[ $attributes['contentTopMargin'] ];
-    }
-}
-
-/*
- * Custom classes
+/**
+ * Wrapper classes
  */
-if ( ! empty( $attributes['className'] ) ) {
-    $block_elm_classes[] = $attributes['className'];
+if ( $attributes['style'] ) {
+    if( isset( $style_variants[ $attributes['style'] ] ) ) {
+        $wrapper_classes[] = $style_variants[ $attributes['style'] ];
+    }
+}
+
+if ( $attributes['largerPadding'] ) {
+    $wrapper_classes[] = 'uk-padding';
+}
+
+if ( isset( $attributes['className'] ) ) {
+    $wrapper_classes[] = $attributes['className'];
+}
+
+/**
+ * Title classes
+ */
+if( $attributes['titleStyle'] ) {
+    if ( isset( $titleStyle_variants[ $attributes['titleStyle'] ] ) ) {
+        $title_classes[] = $titleStyle_variants[ $attributes['titleStyle'] ];
+    }
+}
+
+/**
+ * Content classes
+ */
+if( $attributes['contentStyle'] ) {
+    if ( isset( $contentStyle_variants[ $attributes['contentStyle'] ] ) ) {
+        $content_classes[] = $contentStyle_variants[ $attributes['contentStyle'] ];
+    }
+}
+
+if( $attributes['contentTopMargin'] ) {
+    if ( isset( $contentTopMargin_variants[ $attributes['contentTopMargin'] ] ) ) {
+        $content_classes[] = $contentTopMargin_variants[ $attributes['contentTopMargin'] ];
+    }
 }
 
 /**
  * Filters alert block classes.
  *
- * @param array $block_elm_classes Classes which should be added to the block.
+ * @param array $wrapper_classes Classes which should be added to the block.
  * @param array $attributes Block attributes.
  */
-$block_elm_classes = apply_filters( 'uikit_editor_blocks_alert_classes', $block_elm_classes, $attributes );
+$wrapper_classes = apply_filters( 'uikit_editor_blocks_alert_classes', $wrapper_classes, $attributes );
+
+/**
+ * Wrapper attributes
+ */
+if ( $wrapper_classes ) {
+    $wrapper_attrs[] = 'class="' . esc_attr( implode( ' ', $wrapper_classes ) ) . '"';
+}
+
+/**
+ * Wrapper link attributes
+ */
+if ( $attributes['linkUrl'] ) {
+    $wrapper_link_attrs[] = 'href="' . esc_attr( $attributes['linkUrl'] ) . '"';
+}
+
+if ( $attributes['linkTarget'] ) {
+    $wrapper_link_attrs[] = 'target="' . esc_attr( $attributes['linkTarget'] ) . '"';
+}
+
+if ( $attributes['linkTitle'] ) {
+    $wrapper_link_attrs[] = 'title="' . esc_attr( $attributes['linkTitle'] ) . '"';
+}
+
+if ( $attributes['linkRel'] ) {
+    $wrapper_link_attrs[] = 'rel="' . esc_attr( $attributes['linkRel'] ) . '"';
+}
+
+if ( $attributes['linkAriaLabel'] ) {
+    $wrapper_link_attrs[] = 'aria-label="' . esc_attr( $attributes['linkAriaLabel'] ) . '"';
+}
+
+if ( $wrapper_link_classes ) {
+    $wrapper_link_attrs[] = 'class="' . esc_attr( implode( ' ', $wrapper_link_classes ) ) . '"';
+}
+
+/**
+ * Title attributes
+ */
+if ( $title_classes ) {
+    $title_attrs[] = 'class="' . esc_attr( implode( ' ', $title_classes ) ) . '"';
+}
+
+/**
+ * Content attributes
+ */
+if ( $content_classes ) {
+    $content_attrs[] = 'class="' . esc_attr( implode( ' ', $content_classes ) ) . '"';
+}
 ?>
-<div
-    <?php if ( ! empty( $block_elm_classes ) ) : ?>
-        class="<?php echo esc_attr( implode( ' ', $block_elm_classes ) ); ?>"
+<div <?php echo implode( ' ', $wrapper_attrs ); ?>>
+    <?php if ( $attributes['linkUrl'] ) : ?>
+    <a <?php echo implode( ' ', $wrapper_link_attrs ); ?>>
     <?php endif; ?>
->
-    <?php if ( ! empty( $attributes['linkUrl'] ) ) : ?>
-        <a
-            href="<?php echo esc_url( $attributes['linkUrl'] ); ?>"
-            <?php if ( ! empty( $attributes['linkTarget'] ) ) : ?>
-                target="<?php echo esc_attr( $attributes['linkTarget'] ); ?>"
-            <?php endif; ?>
-            <?php if ( ! empty( $attributes['linkTitle'] ) ) : ?>
-                title="<?php echo esc_attr( $attributes['linkTitle'] ); ?>"
-            <?php endif; ?>
-            <?php if ( ! empty( $attributes['linkRel'] ) ) : ?>
-                rel="<?php echo esc_attr( $attributes['linkRel'] ); ?>"
-            <?php endif; ?>
-            <?php if ( ! empty( $attributes['linkAriaLabel'] ) ) : ?>
-                aria-label="<?php echo esc_attr( $attributes['linkAriaLabel'] ); ?>"
-            <?php endif; ?>
-            <?php if ( ! empty( $link_elm_classes ) ) : ?>
-                class="<?php echo esc_attr( implode( ' ', $link_elm_classes ) ); ?>"
-            <?php endif; ?>
-        >
-    <?php endif; ?>
-        <?php if ( ! empty( $attributes['titleText'] ) ) : ?>
-            <<?php echo esc_html( $attributes['titleElement'] ); ?>
-                <?php if ( ! empty( $title_elm_classes ) ) : ?>
-                    class="<?php echo esc_attr( implode( ' ', $title_elm_classes ) ); ?>"
-                <?php endif; ?>
-            >
-                <?php echo esc_html( $attributes['titleText'] ); ?>
-            </<?php echo esc_html( $attributes['titleElement'] ); ?>>
+        <?php if ( $attributes['titleText'] ) : ?>
+        <<?php echo tag_escape( $attributes['titleElement'] ); ?> <?php echo implode( ' ', $title_attrs ); ?>>
+            <?php echo esc_html( $attributes['titleText'] ); ?>
+        </<?php echo tag_escape( $attributes['titleElement'] ); ?>>
         <?php endif; ?>
-        <?php if ( ! empty( $attributes['contentText'] ) ) : ?>
-            <div
-                <?php if ( ! empty( $content_elm_classes ) ) : ?>
-                    class="<?php echo esc_attr( implode( ' ', $content_elm_classes ) ); ?>"
-                <?php endif; ?>
-            >
-                <p><?php echo esc_html( $attributes['contentText'] ); ?></p>
-            </div>
+        <?php if ( $attributes['contentText'] ) : ?>
+        <div <?php echo implode( ' ', $content_attrs ); ?>>
+            <?php echo wpautop( wp_kses_post( $attributes['contentText'] ) ); ?>
+        </div>
         <?php endif; ?>
-    <?php if ( ! empty( $attributes['linkUrl'] ) ) : ?>
-        <?php echo '</a>' ?>
+    <?php if ( $attributes['linkUrl'] ) : ?>
+    <?php echo '</a>' ?>
     <?php endif; ?>
 </div>

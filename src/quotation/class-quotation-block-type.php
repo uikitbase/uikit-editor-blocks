@@ -62,9 +62,6 @@ if ( ! class_exists( '\Uikit_Editor_Blocks\Quotation\Quotation_Block_Type', fals
             'linkStyle' => array(
                 'type' => 'string',
             ),
-            'alignment' => array(
-                'type' => 'string',
-            ),
         );
 
         /**
@@ -83,7 +80,6 @@ if ( ! class_exists( '\Uikit_Editor_Blocks\Quotation\Quotation_Block_Type', fals
             'authorLinkAriaLabel' => '',
             'footerText'          => '',
             'linkStyle'           => '',
-            'alignment'           => '',
         );
     }
 

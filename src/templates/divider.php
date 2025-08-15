@@ -5,97 +5,90 @@
  * This template can be overridden by copying it to theme/uikit-editor-blocks/divider.php.
  *
  * @package uikit-editor-blocks/templates/divider
- * @version 1.0.0
- */
-
-/**
- * Block attributes.
- * Defined in uikit_editor_blocks_get_template() which requires this template.
- *
- * The following attributes are available:
- *
- * @var $attributes array(
- *   'className' (string) => Additional class names which should be added to block.
- * )
+ * @version 1.0.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-$block_elm_classes = [];
+$wrapper_attrs   = [];
+$wrapper_classes = [];
 
-$style_classes = [
+$style_variants = [
     'icon'     => 'uk-divider-icon',
     'small'    => 'uk-divider-small',
     'vertical' => 'uk-divider-vertical',
 ];
 
-$alignment_classes = [
+$alignment_variants = [
     'left'   => 'uk-text-left',
     'center' => 'uk-text-center',
     'right'  => 'uk-text-right',
 ];
 
-$alignmentBreakpoint_classes = [
+$alignmentBreakpoint_variants = [
     'small'  => '@s',
     'medium' => '@m',
     'large'  => '@l',
     'xlarge' => '@xl',
 ];
 
-$alignmentFallback_classes = [
+$alignmentFallback_variants = [
     'left'    => 'uk-text-left',
     'center'  => 'uk-text-center',
     'right'   => 'uk-text-right',
     'justify' => 'uk-text-justify',
 ];
 
-if ( ! empty( $attributes['style'] ) ) {
-    if ( isset( $style_classes[ $attributes['style'] ] ) ) {
-        $block_elm_classes[] =$style_classes[ $attributes['style'] ];
+/**
+ * Wrapper classes
+ */
+if ( $attributes['style'] ) {
+    if ( isset( $style_variants[ $attributes['style'] ] ) ) {
+        $wrapper_classes[] =$style_variants[ $attributes['style'] ];
     }
 }
 
-if ( ! empty( $attributes['alignment'] ) ) {
-    if( empty( $attributes['alignmentBreakpoint'] ) ) {
-        if ( isset( $alignment_classes[ $attributes['alignment'] ] ) ) {
-            $block_elm_classes[] = $alignment_classes[ $attributes['alignment'] ];
+if ( $attributes['alignment'] ) {
+    if( ! $attributes['alignmentBreakpoint'] ) {
+        if ( isset( $alignment_variants[ $attributes['alignment'] ] ) ) {
+            $wrapper_classes[] = $alignment_variants[ $attributes['alignment'] ];
         }
     } else {
-        if ( isset( $alignment_classes[ $attributes['alignment'] ] ) && isset( $alignmentBreakpoint_classes[ $attributes['alignmentBreakpoint'] ] ) ) {
-            $block_elm_classes[] = $alignment_classes[ $attributes['alignment'] ] . $alignmentBreakpoint_classes[ $attributes['alignmentBreakpoint'] ];
+        if ( isset( $alignment_variants[ $attributes['alignment'] ] ) && isset( $alignmentBreakpoint_variants[ $attributes['alignmentBreakpoint'] ] ) ) {
+            $wrapper_classes[] = $alignment_variants[ $attributes['alignment'] ] . $alignmentBreakpoint_variants[ $attributes['alignmentBreakpoint'] ];
         }
     }
 
-    if ( ! empty( $attributes['alignmentFallback'] ) ) {
-        if ( isset( $alignmentFallback_classes[ $attributes['alignmentFallback'] ] ) ) {
-            $block_elm_classes[] = $alignmentFallback_classes[ $attributes['alignmentFallback'] ];
+    if ( $attributes['alignmentFallback'] ) {
+        if ( isset( $alignmentFallback_variants[ $attributes['alignmentFallback'] ] ) ) {
+            $wrapper_classes[] = $alignmentFallback_variants[ $attributes['alignmentFallback'] ];
         }
     }
 }
 
-/*
- * Custom classes
- */
-if ( ! empty( $attributes['className'] ) ) {
-    $block_elm_classes[] = $attributes['className'];
+if ( isset( $attributes['className'] ) ) {
+    $wrapper_classes[] = $attributes['className'];
 }
 
 /**
  * Filters divider block classes.
  *
- * @param array $block_elm_classes Classes which should be added to the block.
+ * @param array $wrapper_classes Classes which should be added to the block.
  * @param array $attributes Block attributes.
  */
-$block_elm_classes = apply_filters( 'uikit_editor_blocks_divider_classes', $block_elm_classes, $attributes );
+$wrapper_classes = apply_filters( 'uikit_editor_blocks_divider_classes', $wrapper_classes, $attributes );
+
+/**
+ * Wrapper attributes
+ */
+if ( $wrapper_classes ) {
+    $wrapper_attrs[] = 'class="' . esc_attr( implode( ' ', $wrapper_classes ) ) . '"';
+}
 ?>
 
-<<?php echo esc_html( $attributes['element'] ); ?>
-    <?php if ( ! empty( $block_elm_classes ) ) : ?>
-        class="<?php echo esc_attr( implode( ' ', $block_elm_classes ) ); ?>"
-    <?php endif; ?>
->
-<?php if ( $attributes['element'] != 'hr' ) : ?>
-    </<?php echo esc_html( $attributes['element'] ); ?>>
+<<?php echo tag_escape( $attributes['element'] ); ?> <?php echo implode( ' ', $wrapper_attrs ); ?>>
+<?php if ( $attributes['element'] !== 'hr' ) : ?>
+</<?php echo tag_escape( $attributes['element'] ); ?>>
 <?php endif; ?>

@@ -5,85 +5,83 @@
  * This template can be overridden by copying it to theme/uikit-editor-blocks/social-icons.php.
  *
  * @package uikit-editor-blocks/templates/social-icons
- * @version 1.0.0
- */
-
-/**
- * Block attributes.
- * Defined in uikit_editor_blocks_get_template() which requires this template.
- *
- * The following attributes are available:
- *
- * @var $attributes array(
- *   'className' (string) => Additional class names which should be added to block.
- * )
- */
-
-/**
- * Block content.
- * Defined in uikit_editor_blocks_get_template() which requires this template.
- *
- * @var $content string
+ * @version 1.0.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-$block_elm_classes = ['uk-child-width-auto', 'uk-flex-inline'];
+$wrapper_attrs       = [];
+$wrapper_classes     = ['uk-child-width-auto', 'uk-flex-inline'];
+$wrapper_toggle_data = [];
 
-$grid_classes = [
+$grid_variants = [
     'vertical' => 'uk-flex-column',
 ];
 
-$gridBreakpoint_classes = [
+$gridBreakpoint_variants = [
     'small'  => '@s',
     'medium' => '@m',
     'large'  => '@l',
     'xlarge' => '@xl',
 ];
 
-$gridGap_classes = [
+$gridGap_variants = [
     'small'  => 'uk-grid-small',
     'medium' => 'uk-grid-medium',
     'large'  => 'uk-grid-large',
 ];
 
-if( ! empty( $attributes['grid'] ) ) {
-    if ( isset( $grid_classes[ $attributes['grid'] ] ) ) {
-        $block_elm_classes[] = $grid_classes[ $attributes['grid'] ];
-    }
-}
-
-if( ! empty( $attributes['gridGap'] ) ) {
-    if ( isset( $gridGap_classes[ $attributes['gridGap'] ] ) ) {
-        $block_elm_classes[] = $gridGap_classes[ $attributes['gridGap'] ];
-    }
-}
-
-/*
- * Custom classes
+/**
+ * Wrapper classes
  */
-if ( ! empty( $attributes['className'] ) ) {
-    $block_elm_classes[] = $attributes['className'];
+if( $attributes['grid'] ) {
+    if ( isset( $grid_variants[ $attributes['grid'] ] ) ) {
+        $wrapper_classes[] = $grid_variants[ $attributes['grid'] ];
+    }
+}
+
+if( $attributes['gridGap'] ) {
+    if ( isset( $gridGap_variants[ $attributes['gridGap'] ] ) ) {
+        $wrapper_classes[] = $gridGap_variants[ $attributes['gridGap'] ];
+    }
+}
+
+if ( isset( $attributes['className'] ) ) {
+    $wrapper_classes[] = $attributes['className'];
+}
+
+/**
+ * Wrapper toggle-data
+ */
+if( $attributes['grid'] === 'vertical' && $attributes['gridBreakpoint'] !== '' ) {
+    $wrapper_toggle_data[] = 'cls: uk-flex-column';
+    $wrapper_toggle_data[] = 'mode: media';
+    $wrapper_toggle_data[] = 'media: ' . $gridBreakpoint_variants[ $attributes['gridBreakpoint'] ];
 }
 
 /**
  * Filters social-icons block classes.
  *
- * @param array $block_elm_classes Classes which should be added to the block.
+ * @param array $wrapper_classes Classes which should be added to the block.
  * @param array $attributes Block attributes.
  */
-$block_elm_classes = apply_filters( 'uikit_editor_blocks_social_icons_classes', $block_elm_classes, $attributes );
+$wrapper_classes = apply_filters( 'uikit_editor_blocks_social_icons_classes', $wrapper_classes, $attributes );
+
+/**
+ * Wrapper attributes
+ */
+if ( $wrapper_classes ) {
+    $wrapper_attrs[] = 'class="' . esc_attr( implode( ' ', $wrapper_classes ) ) . '"';
+}
+
+$wrapper_attrs[] = 'data-uk-grid=""';
+
+if ( $wrapper_toggle_data ) {
+    $wrapper_attrs[] = 'data-uk-toggle="' . esc_attr( implode( '; ', $wrapper_toggle_data ) ) . '"';
+}
 ?>
-<div
-    data-uk-grid
-    <?php if( $attributes['grid'] == 'vertical' && $attributes['gridBreakpoint'] != '' ) : ?>
-        data-uk-toggle="cls: uk-flex-column; mode: media; media: <?php echo esc_attr( $gridBreakpoint_classes[ $attributes['gridBreakpoint'] ] ); ?>"
-    <?php endif; ?>
-    <?php if ( ! empty( $block_elm_classes ) ) : ?>
-        class="<?php echo esc_attr( implode( ' ', $block_elm_classes ) ); ?>"
-    <?php endif; ?>
->
+<div <?php echo implode( ' ', $wrapper_attrs ); ?>>
     <?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 </div>

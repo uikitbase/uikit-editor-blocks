@@ -5,41 +5,30 @@
  * This template can be overridden by copying it to theme/uikit-editor-blocks/dropdown.php.
  *
  * @package uikit-editor-blocks/templates/dropdown
- * @version 1.0.0
- */
-
-/**
- * Block attributes.
- * Defined in uikit_editor_blocks_get_template() which requires this template.
- *
- * The following attributes are available:
- *
- * @var $attributes array(
- *   'className' (string) => Additional class names which should be added to block.
- * )
- */
-
-/**
- * Block content.
- * Defined in uikit_editor_blocks_get_template() which requires this template.
- *
- * @var $content string
+ * @version 1.0.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-$block_elm_classes = ['uk-inline'];
-$button_classes    = [];
-$dropdown_attr     = [];
+$wrapper_attrs   = [];
+$wrapper_classes = ['uk-inline'];
 
-$buttonSize_classes = [
+$button_attrs   = [];
+$button_classes = [];
+
+$icon_attrs = [];
+
+$dropdown_attrs         = [];
+$dropdown_dropdown_data = [];
+
+$buttonSize_variants = [
     'small' => 'uk-button-small',
     'large' => 'uk-button-large',
 ];
 
-$buttonStyle_classes = [
+$buttonStyle_variants = [
     'default'   => 'uk-button-default',
     'primary'   => 'uk-button-primary',
     'secondary' => 'uk-button-secondary',
@@ -48,52 +37,81 @@ $buttonStyle_classes = [
     'link'      => 'uk-button-link',
 ];
 
-if ( ! empty( $attributes['buttonStyle'] ) ) {
+/**
+ * Wrapper classes
+ */
+if ( isset( $attributes['className'] ) ) {
+    $wrapper_classes[] = $attributes['className'];
+}
+
+/**
+ * Button classes
+ */
+if ( $attributes['buttonStyle'] ) {
     $button_classes[] = 'uk-button';
 
-    if( isset( $buttonStyle_classes[ $attributes['buttonStyle'] ] ) ) {
-        $button_classes[] = $buttonStyle_classes[ $attributes['buttonStyle'] ];
+    if( isset( $buttonStyle_variants[ $attributes['buttonStyle'] ] ) ) {
+        $button_classes[] = $buttonStyle_variants[ $attributes['buttonStyle'] ];
     }
 
-    if ( ! empty( $attributes['buttonSize'] ) ) {
-        if( isset( $buttonSize_classes[ $attributes['buttonSize'] ] ) ) {
-            $button_classes[] = $buttonSize_classes[ $attributes['buttonSize'] ];
+    if ( $attributes['buttonSize'] ) {
+        if( isset( $buttonSize_variants[ $attributes['buttonSize'] ] ) ) {
+            $button_classes[] = $buttonSize_variants[ $attributes['buttonSize'] ];
         }
     }
 }
 
-if ( ! empty( $attributes['position'] ) ) {
-    $dropdown_attr[] = $attributes['position'];
-}
-
-/*
- * Custom classes
+/**
+ * Dropdown dropdown-data
  */
-if ( ! empty( $attributes['className'] ) ) {
-    $block_elm_classes[] = $attributes['className'];
+if ( $attributes['position'] ) {
+    $dropdown_dropdown_data[] = $attributes['position'];
 }
 
 /**
  * Filters dropdown block classes.
  *
- * @param array $block_elm_classes Classes which should be added to the block.
+ * @param array $wrapper_classes Classes which should be added to the block.
  * @param array $attributes Block attributes.
  */
-$block_elm_classes = apply_filters( 'uikit_editor_blocks_dropdown_classes', $block_elm_classes, $attributes );
+$wrapper_classes = apply_filters( 'uikit_editor_blocks_dropdown_classes', $wrapper_classes, $attributes );
+
+/**
+ * Wrapper attributes
+ */
+if ( $wrapper_classes ) {
+    $wrapper_attrs[] = 'class="' . esc_attr( implode( ' ', $wrapper_classes ) ) . '"';
+}
+
+/**
+ * Button attributes
+ */
+if ( $button_classes ) {
+    $button_attrs[] = 'class="' . esc_attr( implode( ' ', $button_classes ) ) . '"';
+}
+
+/**
+ * Icon attributes
+ */
+if ( $attributes['buttonIcon'] ) {
+    $icon_attrs[] = 'data-uk-icon="' . esc_attr( $attributes['buttonIcon'] ) . '"';
+    $icon_attrs[] = 'class="uk-margin-small-right"';
+}
+
+/**
+ * Dropdown attributes
+ */
+$dropdown_attrs[] = 'data-uk-dropdown="' . esc_attr( implode( '; ', $dropdown_dropdown_data ) ) . '"';
 ?>
-<div
-    <?php if ( ! empty( $block_elm_classes ) ) : ?>
-        class="<?php echo esc_attr( implode( ' ', $block_elm_classes ) ); ?>"
-    <?php endif; ?>
->
-    <a class="<?php echo esc_attr( implode( ' ', $button_classes ) ); ?>">
-        <?php if( ! empty( $attributes['buttonIcon'] ) ) : ?>
-            <span data-uk-icon="<?php echo esc_attr( $attributes['buttonIcon'] ); ?>" class="uk-margin-small-right"></span>
+<div <?php echo implode( ' ', $wrapper_attrs ); ?>>
+    <a <?php echo implode( ' ', $button_attrs ); ?>>
+        <?php if( $attributes['buttonIcon'] ) : ?>
+        <span <?php echo implode( ' ', $icon_attrs ); ?>></span>
         <?php endif; ?>
         <?php echo esc_html( $attributes['titleText'] ); ?>
         <span data-uk-drop-parent-icon></span>
     </a>
-    <div data-uk-dropdown="<?php echo esc_attr( implode( '; ', $dropdown_attr ) ); ?>">
+    <div <?php echo implode( ' ', $dropdown_attrs ); ?>>
         <ul class="uk-nav uk-dropdown-nav">
             <?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
         </ul>

@@ -54,6 +54,9 @@ class UikitAccordionItemEdit extends Component {
       }
     }
 
+    const general = useGeneralBlockProps(attributes);
+    const { className: generalClassName, ...generalDataAttrs } = general;
+
     const parentContentStyle = context['uikit-editor-blocks/accordion-contentStyle'];
     const parentContentTopMargin = context['uikit-editor-blocks/accordion-contentTopMargin'];
 
@@ -68,7 +71,7 @@ class UikitAccordionItemEdit extends Component {
     // Define block-level attributes
     const blockProps = {
       className: clsx(
-        useGeneralBlockProps(attributes)?.className,
+        generalClassName,
         className
       ),
     };
@@ -100,7 +103,7 @@ class UikitAccordionItemEdit extends Component {
             />
           </PanelBody>
         </InspectorControls>
-        <div className={blockProps.className}>
+        <div className={blockProps.className} {...generalDataAttrs} >
           <a class="uk-accordion-title" href>
             { titleText }
           </a>

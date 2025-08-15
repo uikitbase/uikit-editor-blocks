@@ -74,6 +74,9 @@ class UikitSectionEdit extends Component {
       setAttributes( { blockId: clientId } );
     }
 
+    const general = useGeneralBlockProps(attributes);
+    const { className: generalClassName, ...generalDataAttrs } = general;
+
     const paddingClasses = {
       'xsmall': 'uk-section-xsmall',
       'small': 'uk-section-small',
@@ -99,7 +102,7 @@ class UikitSectionEdit extends Component {
     // Define block-level attributes
     const blockProps = {
       className: clsx(
-        useGeneralBlockProps(attributes)?.className,
+        generalClassName,
         'uk-section',
         {
           [`uk-section-${style}`]: style,
@@ -139,6 +142,7 @@ class UikitSectionEdit extends Component {
       'div',
       {
         className: blockProps.className,
+        ...generalDataAttrs,
         style: blockStyles,
       },
       container ? createElement(

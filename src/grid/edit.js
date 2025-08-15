@@ -23,6 +23,9 @@ import { applyFilters } from '@wordpress/hooks';
 import { __ } from '@wordpress/i18n';
 import { templates as importedTemplates } from './templates';
 
+// Import the custom hook for applying general block settings
+import useGeneralBlockProps from '../use-general-block-props';
+
 // Fallback to deprecated '@wordpress/editor' for backwards compatibility
 const {
   InspectorControls,
@@ -128,6 +131,9 @@ class UikitGridEdit extends Component {
     if ( ! blockId ) {
       setAttributes( { blockId: clientId } );
     }
+
+    const general = useGeneralBlockProps(attributes);
+    const { className: generalClassName, ...generalDataAttrs } = general;
 
     const onTemplateChange = ( newSelectedTemplateName ) => {
       const template = templates.find(

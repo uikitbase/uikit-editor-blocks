@@ -23,6 +23,9 @@ import {
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 
+// Import the custom hook for applying general block settings
+import useGeneralBlockProps from '../use-general-block-props';
+
 // Fallback to deprecated '@wordpress/editor' for backwards compatibility
 const {
   InspectorControls,
@@ -110,6 +113,9 @@ class UikitPanelSliderEdit extends Component {
     if ( ! blockId ) {
       setAttributes( { blockId: clientId } );
     }
+
+    const general = useGeneralBlockProps(attributes);
+    const { className: generalClassName, ...generalDataAttrs } = general;
 
     return (
       <Fragment>

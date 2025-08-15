@@ -5,28 +5,21 @@
  * This template can be overridden by copying it to theme/uikit-editor-blocks/icon.php.
  *
  * @package uikit-editor-blocks/templates/icon
- * @version 1.0.2
- */
-
-/**
- * Block attributes.
- * Defined in uikit_editor_blocks_get_template() which requires this template.
- *
- * The following attributes are available:
- *
- * @var $attributes array(
- *   'className' (string) => Additional class names which should be added to block.
- * )
+ * @version 1.0.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-$block_elm_classes = [];
-$icon_elm_classes  = [];
+$wrapper_attrs   = [];
+$wrapper_classes = [];
 
-$color_classes = [
+$icon_attrs     = [];
+$icon_classes   = [];
+$icon_icon_data = [];
+
+$color_variants = [
     'muted'     => 'uk-text-muted',
     'emphasis'  => 'uk-text-emphasis',
     'primary'   => 'uk-text-primary',
@@ -36,43 +29,60 @@ $color_classes = [
     'danger'    => 'uk-text-danger',
 ];
 
-if ( ! empty( $attributes['color'] ) ) {
-    if ( isset( $color_classes[ $attributes['color'] ] ) ) {
-        $icon_elm_classes[] = $color_classes[ $attributes['color'] ];
+/**
+ * Wrapper classes
+ */
+if ( isset( $attributes['className'] ) ) {
+    $wrapper_classes[] = $attributes['className'];
+}
+
+/**
+ * Icon classes
+ */
+if ( $attributes['color'] ) {
+    if ( isset( $color_variants[ $attributes['color'] ] ) ) {
+        $icon_classes[] = $color_variants[ $attributes['color'] ];
     }
 }
 
-/*
- * Custom classes
+/**
+ * Icon icon-data
  */
-if ( ! empty( $attributes['className'] ) ) {
-    $block_elm_classes[] = $attributes['className'];
+if ( $attributes['icon'] ) {
+    $icon_icon_data[] = 'icon: ' . $attributes['icon'];
+}
+
+if ( $attributes['width'] ) {
+    $icon_icon_data[] = 'width: ' . $attributes['width'];
+    $icon_icon_data[] = 'height: ' . $attributes['width'];
 }
 
 /**
  * Filters icon block classes.
  *
- * @param array $block_elm_classes Classes which should be added to the block.
+ * @param array $wrapper_classes Classes which should be added to the block.
  * @param array $attributes Block attributes.
  */
-$block_elm_classes = apply_filters( 'uikit_editor_blocks_icon_classes', $block_elm_classes, $attributes );
+$wrapper_classes = apply_filters( 'uikit_editor_blocks_icon_classes', $wrapper_classes, $attributes );
+
+/**
+ * Wrapper attributes
+ */
+if ( $wrapper_classes ) {
+    $wrapper_attrs[] = 'class="' . esc_attr( implode( ' ', $wrapper_classes ) ) . '"';
+}
+
+/**
+ * Icon attributes
+ */
+if ( $icon_classes ) {
+    $icon_attrs[] = 'class="' . esc_attr( implode( ' ', $icon_classes ) ) . '"';
+}
+
+if ( $icon_icon_data ) {
+    $icon_attrs[] = 'data-uk-icon="' . esc_attr( implode( '; ', $icon_icon_data ) ) . '"';
+}
 ?>
-<div
-    <?php if ( ! empty( $block_elm_classes ) ) : ?>
-        class="<?php echo esc_attr( implode( ' ', $block_elm_classes ) ); ?>"
-    <?php endif; ?>
->
-    <span
-        <?php if ( ! empty( $icon_elm_classes ) ) : ?>
-            class="<?php echo esc_attr( implode( ' ', $icon_elm_classes ) ); ?>"
-        <?php endif; ?>
-        data-uk-icon="
-        <?php if ( ! empty( $attributes['icon'] ) ) : ?>
-            icon: <?php echo esc_attr( $attributes['icon'] ); ?>;
-        <?php endif; ?>
-        <?php if ( ! empty( $attributes['width'] ) ) : ?>
-            width: <?php echo esc_attr( $attributes['width'] ); ?>;
-            height: <?php echo esc_attr( $attributes['width'] ); ?>;
-        <?php endif; ?>
-    "></span>
+<div <?php echo implode( ' ', $wrapper_attrs ); ?>>
+    <span <?php echo implode( ' ', $icon_attrs ); ?>></span>
 </div>

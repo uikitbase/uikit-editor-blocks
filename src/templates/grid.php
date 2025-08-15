@@ -5,95 +5,82 @@
  * This template can be overridden by copying it to theme/uikit-editor-blocks/grid.php.
  *
  * @package uikit-editor-blocks/templates/grid
- * @version 1.0.0
- */
-
-/**
- * Block attributes.
- * Defined in uikit_editor_blocks_get_template() which requires this template.
- *
- * The following attributes are available:
- *
- * @var $attributes array(
- *   'className' (string) => Additional class names which should be added to block.
- * )
- */
-
-/**
- * Block content.
- * Defined in uikit_editor_blocks_get_template() which requires this template.
- *
- * @var $content string
+ * @version 1.0.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-$block_elm_classes = ['uk-grid'];
+$wrapper_attrs   = [];
+$wrapper_classes = ['uk-grid'];
 
-$columnGap_classes = [
+$columnGap_variants = [
     'small'  => 'uk-grid-column-small',
     'medium' => 'uk-grid-column-medium',
     'large'  => 'uk-grid-column-large',
     'none'   => 'uk-grid-column-collapse',
 ];
 
-$rowGap_classes = [
+$rowGap_variants = [
     'small'  => 'uk-grid-row-small',
     'medium' => 'uk-grid-row-medium',
     'large'  => 'uk-grid-row-large',
     'none'   => 'uk-grid-row-collapse',
 ];
 
-if ( ! empty( $attributes['columnGap'] ) ) {
-    if ( isset( $columnGap_classes[ $attributes['columnGap'] ] ) ) {
-        $block_elm_classes[] = $columnGap_classes[ $attributes['columnGap'] ];
-    }
-}
-
-if ( ! empty( $attributes['rowGap'] ) ) {
-    if ( isset( $rowGap_classes[ $attributes['rowGap'] ] ) ) {
-        $block_elm_classes[] = $rowGap_classes[ $attributes['rowGap'] ];
-    }
-}
-
-if ( ! empty( $attributes['columnMatch'] ) ) {
-    $block_elm_classes[] = 'uk-grid-match';
-}
-
-if ( ! empty( $attributes['divider'] ) ) {
-    $block_elm_classes[] = 'uk-grid-divider';
-}
-
-if ( ! empty( $attributes['centerColumns'] ) ) {
-    $block_elm_classes[] = 'uk-flex-center';
-}
-
-if ( ! empty( $attributes['centerRows'] ) ) {
-    $block_elm_classes[] = 'uk-flex-middle';
-}
-
-/*
- * Custom classes
+/**
+ * Wrapper classes
  */
-if ( ! empty( $attributes['className'] ) ) {
-    $block_elm_classes[] = $attributes['className'];
+if ( $attributes['columnGap'] ) {
+    if ( isset( $columnGap_variants[ $attributes['columnGap'] ] ) ) {
+        $wrapper_classes[] = $columnGap_variants[ $attributes['columnGap'] ];
+    }
+}
+
+if ( $attributes['rowGap'] ) {
+    if ( isset( $rowGap_variants[ $attributes['rowGap'] ] ) ) {
+        $wrapper_classes[] = $rowGap_variants[ $attributes['rowGap'] ];
+    }
+}
+
+if ( $attributes['columnMatch'] ) {
+    $wrapper_classes[] = 'uk-grid-match';
+}
+
+if ( $attributes['divider'] ) {
+    $wrapper_classes[] = 'uk-grid-divider';
+}
+
+if ( $attributes['centerColumns'] ) {
+    $wrapper_classes[] = 'uk-flex-center';
+}
+
+if ( $attributes['centerRows'] ) {
+    $wrapper_classes[] = 'uk-flex-middle';
+}
+
+if ( isset( $attributes['className'] ) ) {
+    $wrapper_classes[] = $attributes['className'];
 }
 
 /**
  * Filters grid block classes.
  *
- * @param array $block_elm_classes Classes which should be added to the block.
+ * @param array $wrapper_classes Classes which should be added to the block.
  * @param array $attributes Block attributes.
  */
-$block_elm_classes = apply_filters( 'uikit_editor_blocks_grid_classes', $block_elm_classes, $attributes );
+$wrapper_classes = apply_filters( 'uikit_editor_blocks_grid_classes', $wrapper_classes, $attributes );
+
+/**
+ * Wrapper attributes
+ */
+if ( $wrapper_classes ) {
+    $wrapper_attrs[] = 'class="' . esc_attr( implode( ' ', $wrapper_classes ) ) . '"';
+}
+
+$wrapper_attrs[] = 'data-uk-grid=""';
 ?>
-<div
-    <?php if ( ! empty( $block_elm_classes ) ) : ?>
-        class="<?php echo esc_attr( implode( ' ', $block_elm_classes ) ); ?>"
-    <?php endif; ?>
-    data-uk-grid
->
+<div <?php echo implode( ' ', $wrapper_attrs ); ?>>
     <?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 </div>

@@ -4,39 +4,38 @@
  *
  * This template can be overridden by copying it to theme/uikit-editor-blocks/switcher.php.
  *
- * @package uikit-editor-blocks/templates/switcher-item
- * @version 1.0.0
- */
-
-/**
- * Block attributes.
- * Defined in uikit_editor_blocks_get_template() which requires this template.
- *
- * The following attributes are available:
- *
- * @var $attributes array(
- *   'className' (string) => Additional class names which should be added to block.
- * )
+ * @package uikit-editor-blocks/templates/switcher
+ * @version 1.0.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-$block_elm_classes           = [];
-$nav_classes                 = [];
-$nav_data                    = [];
-$nav_grid_classes            = ['uk-grid', 'uk-child-width-expand'];
-$nav_grid_nav_column_classes = [];
+$wrapper_attrs   = [];
+$wrapper_classes = [];
 
-$navigationAlignment_classes = [
+$navigation_attrs         = [];
+$navigation_classes       = [];
+$navigation_tab_data      = [];
+$navigation_switcher_data = [];
+
+$switcher_content_attrs = [];
+
+$nav_grid_attrs          = [];
+$navigation_grid_classes = ['uk-grid', 'uk-child-width-expand'];
+
+$navigation_grid_column_attrs   = [];
+$navigation_grid_column_classes = [];
+
+$navigationAlignment_variants = [
     'left'    => 'uk-flex-left',
     'right'   => 'uk-flex-right',
     'center'  => 'uk-flex-center',
     'justify' => 'uk-child-width-expand',
 ];
 
-$navigationMargin_classes = [
+$navigationMargin_variants = [
     'small'   => 'uk-margin-small',
     'medium'  => 'uk-margin-medium',
     'large'   => 'uk-margin-large',
@@ -44,7 +43,7 @@ $navigationMargin_classes = [
     'default' => 'uk-margin',
 ];
 
-$navigationGridWidth_classes = [
+$navigationGridWidth_variants = [
     'auto'   => 'uk-width-auto',
     '1-2'    => 'uk-width-1-2',
     '1-3'    => 'uk-width-1-3',
@@ -55,139 +54,183 @@ $navigationGridWidth_classes = [
     'large'  => 'uk-width-large',
 ];
 
-$navigationGridColumnGap_classes = [
+$navigationGridColumnGap_variants = [
     'small'  => 'uk-grid-column-small',
     'medium' => 'uk-grid-column-medium',
     'large'  => 'uk-grid-column-large',
     'none'   => 'uk-grid-column-collapse',
 ];
 
-$navigationGridRowGap_classes = [
+$navigationGridRowGap_variants = [
     'small'  => 'uk-grid-row-small',
     'medium' => 'uk-grid-row-medium',
     'large'  => 'uk-grid-row-large',
     'none'   => 'uk-grid-row-collapse',
 ];
 
-$navigationGridBreakpoint_classes = [
+$navigationGridBreakpoint_variants = [
     'small'  => '@s',
     'medium' => '@m',
     'large'  => '@l',
     'xlarge' => '@xl',
 ];
 
-/*
- * Custom classes
+/**
+ * Wrapper classes
  */
-if ( ! empty( $attributes['className'] ) ) {
-    $block_elm_classes[] = $attributes['className'];
+if ( isset( $attributes['className'] ) ) {
+    $wrapper_classes[] = $attributes['className'];
 }
 
-/*
+/**
  * Navigation classes
  */
-if( ! empty( $attributes['navigation'] ) ) {
-    if( $attributes['navigation'] == 'tabs' ) {
-        $nav_classes[] = 'uk-tabs';
-        
-        if( $attributes['navigationPosition'] == 'left' ) {
-            $nav_classes[] = 'uk-tab-left';
-        } elseif( $attributes['navigationPosition'] == 'right' ) {
-            $nav_classes[] = 'uk-tab-right';
+if( $attributes['navigation'] ) {
+    if( $attributes['navigation'] === 'tabs' ) {
+        $navigation_classes[] = 'uk-tabs';
+
+        if( $attributes['navigationPosition'] === 'left' ) {
+            $navigation_classes[] = 'uk-tab-left';
+        } elseif( $attributes['navigationPosition'] === 'right' ) {
+            $navigation_classes[] = 'uk-tab-right';
         }
-    } elseif( $attributes['navigation'] == 'subnav-pill' ) {
-        $nav_classes[] = 'uk-subnav uk-subnav-pill';
-    } elseif( $attributes['navigation'] == 'subnav-divider' ) {
-        $nav_classes[] = 'uk-subnav uk-subnav-divider';
-    } elseif( $attributes['navigation'] == 'subnav' ) {
-        $nav_classes[] = 'uk-subnav';
+    } elseif( $attributes['navigation'] === 'subnav-pill' ) {
+        $navigation_classes[] = 'uk-subnav uk-subnav-pill';
+    } elseif( $attributes['navigation'] === 'subnav-divider' ) {
+        $navigation_classes[] = 'uk-subnav uk-subnav-divider';
+    } elseif( $attributes['navigation'] === 'subnav' ) {
+        $navigation_classes[] = 'uk-subnav';
     }
 
-    if( $attributes['navigationPosition'] == 'top' || $attributes['navigationPosition'] == 'bottom' ) {
-        if( ! empty( $attributes['navigationAlignment'] ) ) {
-            if ( isset( $navigationAlignment_classes[ $attributes['navigationAlignment'] ] ) ) {
-                $nav_classes[] = $navigationAlignment_classes[ $attributes['navigationAlignment'] ];
+    if( $attributes['navigationPosition'] === 'top' || $attributes['navigationPosition'] === 'bottom' ) {
+        if( $attributes['navigationAlignment'] ) {
+            if ( isset( $navigationAlignment_variants[ $attributes['navigationAlignment'] ] ) ) {
+                $navigation_classes[] = $navigationAlignment_variants[ $attributes['navigationAlignment'] ];
             }
         }
-        if( ! empty( $attributes['navigationMargin'] ) ) {
-            if ( isset( $navigationMargin_classes[ $attributes['navigationMargin'] ] ) ) {
-                $nav_classes[] = $navigationMargin_classes[ $attributes['navigationMargin'] ];
+        if( $attributes['navigationMargin'] ) {
+            if ( isset( $navigationMargin_variants[ $attributes['navigationMargin'] ] ) ) {
+                $navigation_classes[] = $navigationMargin_variants[ $attributes['navigationMargin'] ];
             }
         }
-    } else {
-        
     }
 }
 
-/*
- * Navigation grid classes
+/**
+ * Navigation tab-data
  */
-if( $attributes['navigationPosition'] == 'left' || $attributes['navigationPosition'] == 'right' ) {
-    if( ! empty( $attributes['navigationGridColumnGap'] ) ) {
-        if ( isset( $navigationGridColumnGap_classes[ $attributes['navigationGridColumnGap'] ] ) ) {
-            $nav_grid_classes[] = $navigationGridColumnGap_classes[ $attributes['navigationGridColumnGap'] ];
-        }
-    }
-    if( ! empty( $attributes['navigationGridRowGap'] ) ) {
-        if ( isset( $navigationGridRowGap_classes[ $attributes['navigationGridRowGap'] ] ) ) {
-            $nav_grid_classes[] = $navigationGridRowGap_classes[ $attributes['navigationGridRowGap'] ];
-        }
-    }
-    if( ! empty( $attributes['navigationVerticalAlignment'] ) ) {
-        $nav_grid_classes[] = 'uk-flex-middle';
-    }
-} 
+if ( $attributes['navigation'] === 'tabs' ) {
+    $navigation_tab_data[] = 'connect: #js-' . $attributes['blockId'];
 
-/*
- * Navigation grid div classes
- */
-if( $attributes['navigationPosition'] == 'left' || $attributes['navigationPosition'] == 'right' ) {
-    if( ! empty( $attributes['navigationGridWidth'] ) && ! empty( $attributes['navigationGridBreakpoint'] ) ) {
-        if ( isset( $navigationGridWidth_classes[ $attributes['navigationGridWidth'] ] ) && isset( $navigationGridBreakpoint_classes[ $attributes['navigationGridBreakpoint'] ] ) ) {
-            $nav_grid_nav_column_classes[] = $navigationGridWidth_classes[ $attributes['navigationGridWidth'] ] . $navigationGridBreakpoint_classes[ $attributes['navigationGridBreakpoint'] ];
-        }
+    if ( $attributes['animation'] ) {
+        $navigation_tab_data[] = 'animation: ' . $attributes['animation'];
     }
-} 
-
-$nav_data[] = 'connect: #js-' . esc_attr( $attributes['blockId'] );
-
-if ( ! empty( $attributes['animation'] ) ) {
-    $nav_data[] = 'animation: ' . esc_attr( $attributes['animation'] );
 }
+
+/**
+ * Navigation switcher-data
+ */
+if ( $attributes['navigation'] !== 'tabs' ) {
+    $navigation_switcher_data[] = 'connect: #js-' . $attributes['blockId'];
+
+    if ( $attributes['animation'] ) {
+        $navigation_switcher_data[] = 'animation: ' . $attributes['animation'];
+    }
+}
+
+/**
+ * Navigation grid class
+ */
+if( $attributes['navigationPosition'] === 'left' || $attributes['navigationPosition'] === 'right' ) {
+    if( $attributes['navigationGridColumnGap'] ) {
+        if ( isset( $navigationGridColumnGap_variants[ $attributes['navigationGridColumnGap'] ] ) ) {
+            $navigation_grid_classes[] = $navigationGridColumnGap_variants[ $attributes['navigationGridColumnGap'] ];
+        }
+    }
+    if( $attributes['navigationGridRowGap'] ) {
+        if ( isset( $navigationGridRowGap_variants[ $attributes['navigationGridRowGap'] ] ) ) {
+            $navigation_grid_classes[] = $navigationGridRowGap_variants[ $attributes['navigationGridRowGap'] ];
+        }
+    }
+    if( $attributes['navigationVerticalAlignment'] ) {
+        $navigation_grid_classes[] = 'uk-flex-middle';
+    }
+} 
+
+/**
+ * Navigation grid column class
+ */
+if( $attributes['navigationPosition'] === 'left' || $attributes['navigationPosition'] === 'right' ) {
+    if( $attributes['navigationGridWidth'] && $attributes['navigationGridBreakpoint'] ) {
+        if ( isset( $navigationGridWidth_variants[ $attributes['navigationGridWidth'] ] ) && isset( $navigationGridBreakpoint_variants[ $attributes['navigationGridBreakpoint'] ] ) ) {
+            $navigation_grid_column_classes[] = $navigationGridWidth_variants[ $attributes['navigationGridWidth'] ] . $navigationGridBreakpoint_variants[ $attributes['navigationGridBreakpoint'] ];
+        }
+    }
+} 
 
 /**
  * Filters switcher block classes.
  *
- * @param array $block_elm_classes Classes which should be added to the block.
+ * @param array $wrapper_classes Classes which should be added to the block.
  * @param array $attributes Block attributes.
  */
-$block_elm_classes = apply_filters( 'uikit_editor_blocks_switcher_classes', $block_elm_classes, $attributes );
+$wrapper_classes = apply_filters( 'uikit_editor_blocks_switcher_classes', $wrapper_classes, $attributes );
+
+/**
+ * Wrapper attributes
+ */
+if ( $wrapper_classes ) {
+    $wrapper_attrs[] = 'class="' . esc_attr( implode( ' ', $wrapper_classes ) ) . '"';
+}
+
+/**
+ * Navigation attributes
+ */
+if ( $navigation_classes ) {
+    $navigation_attrs[] = 'class="' . esc_attr( implode( ' ', $navigation_classes ) ) . '"';
+}
+
+if ( $navigation_tab_data ) {
+    $navigation_attrs[] = 'data-uk-tab="' . esc_attr( implode( '; ', $navigation_tab_data ) ) . '"';
+}
+
+if ( $navigation_switcher_data ) {
+    $navigation_attrs[] = 'data-uk-switcher="' . esc_attr( implode( '; ', $navigation_switcher_data ) ) . '"';
+}
+
+/**
+ * Content attributes
+ */
+$switcher_content_attrs[] = 'id="js-' . esc_attr( $attributes['blockId'] ) . '"';
+$switcher_content_attrs[] = 'class="uk-switcher"';
+
+/**
+ * Navigation grid attributes
+ */
+if ( $navigation_grid_classes ) {
+    $navigation_grid_attrs[] = 'class="' . esc_attr( implode( ' ', $navigation_grid_classes ) ) . '"';
+}
+
+$navigation_grid_attrs[] = 'data-uk-grid=""';
+
+/**
+ * Navigation grid attributes
+ */
+if ( $navigation_grid_classes ) {
+    $navigation_grid_attrs[] = 'class="' . esc_attr( implode( ' ', $navigation_grid_classes ) ) . '"';
+}
+
+/**
+ * Navigation grid column attributes
+ */
+if ( $navigation_grid_column_classes ) {
+    $navigation_grid_column_attrs[] = 'class="' . esc_attr( implode( ' ', $navigation_grid_column_classes ) ) . '"';
+}
 ?>
-<div
-    <?php if ( ! empty( $block_elm_classes ) ) : ?>
-        class="<?php echo esc_attr( implode( ' ', $block_elm_classes ) ); ?>"
-    <?php endif; ?>
->
-    <?php if ( $attributes['navigationPosition'] == 'top' || $attributes['navigationPosition'] == 'bottom' ) : ?>
-        <?php if ( $attributes['navigationPosition'] == 'top' ) : ?>
-            <ul
-                <?php if ( ! empty( $nav_classes ) ) : ?>
-                    class="<?php echo esc_attr( implode( ' ', $nav_classes ) ); ?>"
-                <?php endif; ?>
-                <?php if ( $attributes['navigation'] == 'tabs' ) : ?>
-                    data-uk-tab="
-                    <?php if ( ! empty( $nav_data ) ) : ?>
-                        <?php echo esc_attr( implode( '; ', $nav_data ) ); ?>
-                    <?php endif; ?>
-                    "
-                <?php else : ?>
-                    data-uk-switcher="
-                    <?php if ( ! empty( $nav_data ) ) : ?>
-                        <?php echo esc_attr( implode( '; ', $nav_data ) ); ?>
-                    <?php endif; ?>
-                    "
-                <?php endif; ?>
-            >
+<div <?php echo implode( ' ', $wrapper_attrs ); ?>>
+    <?php if ( $attributes['navigationPosition'] === 'top' || $attributes['navigationPosition'] === 'bottom' ) : ?>
+        <?php if ( $attributes['navigationPosition'] === 'top' ) : ?>
+            <ul <?php echo implode( ' ', $navigation_attrs ); ?>>
                 <?php
                 foreach ( $block->inner_blocks as $inner_block ) {
                     echo '<li><a href="#">' . esc_html( $inner_block->attributes['titleText'] ) . '</a></li>';
@@ -195,28 +238,11 @@ $block_elm_classes = apply_filters( 'uikit_editor_blocks_switcher_classes', $blo
                 ?>
             </ul>
         <?php endif; ?>
-        <div id="js-<?php echo esc_attr( $attributes['blockId'] ); ?>" class="uk-switcher">
+        <div <?php echo implode( ' ', $switcher_content_attrs ); ?>>
             <?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
         </div>
-        <?php if ( $attributes['navigationPosition'] == 'bottom' ) : ?>
-            <ul
-                <?php if ( ! empty( $nav_classes ) ) : ?>
-                    class="<?php echo esc_attr( implode( ' ', $nav_classes ) ); ?>"
-                <?php endif; ?>
-                <?php if ( $attributes['navigation'] == 'tabs' ) : ?>
-                    data-uk-tab="
-                    <?php if ( ! empty( $nav_data ) ) : ?>
-                        <?php echo esc_attr( implode( '; ', $nav_data ) ); ?>
-                    <?php endif; ?>
-                    "
-                <?php else : ?>
-                    data-uk-switcher="
-                    <?php if ( ! empty( $nav_data ) ) : ?>
-                        <?php echo esc_attr( implode( '; ', $nav_data ) ); ?>
-                    <?php endif; ?>
-                    "
-                <?php endif; ?>
-            >
+        <?php if ( $attributes['navigationPosition'] === 'bottom' ) : ?>
+            <ul <?php echo implode( ' ', $navigation_attrs ); ?>>
                 <?php
                 foreach ( $block->inner_blocks as $inner_block ) {
                     echo '<li><a href="#">' . esc_html( $inner_block->attributes['titleText'] ) . '</a></li>';
@@ -225,85 +251,38 @@ $block_elm_classes = apply_filters( 'uikit_editor_blocks_switcher_classes', $blo
             </ul>
         <?php endif; ?>
     <?php else : ?>
-        <div
-            <?php if ( ! empty( $nav_grid_classes ) ) : ?>
-                class="<?php echo esc_attr( implode( ' ', $nav_grid_classes ) ); ?>"
-            <?php endif; ?>
-            data-uk-grid
-        >
-            <?php if ( $attributes['navigationPosition'] == 'left' ) : ?>
-            <div
-                <?php if ( ! empty( $nav_grid_nav_column_classes ) ) : ?>
-                    class="<?php echo esc_attr( implode( ' ', $nav_grid_nav_column_classes ) ); ?>"
-                <?php endif; ?>
-            >
-                <ul
-                    <?php if ( ! empty( $nav_classes ) ) : ?>
-                        class="<?php echo esc_attr( implode( ' ', $nav_classes ) ); ?>"
-                    <?php endif; ?>
-                    <?php if ( $attributes['navigation'] == 'tabs' ) : ?>
-                        data-uk-tab="
-                        <?php if ( ! empty( $nav_data ) ) : ?>
-                            <?php echo esc_attr( implode( '; ', $nav_data ) ); ?>
-                        <?php endif; ?>
-                        "
-                    <?php else : ?>
-                        data-uk-switcher="
-                        <?php if ( ! empty( $nav_data ) ) : ?>
-                            <?php echo esc_attr( implode( '; ', $nav_data ) ); ?>
-                        <?php endif; ?>
-                        "
-                    <?php endif; ?>
-                >
-                    <?php
-                    foreach ( $block->inner_blocks as $inner_block ) {
-                        echo '<li><a href="#">' . esc_html( $inner_block->attributes['titleText'] ) . '</a></li>';
-                    }
-                    ?>
-                </ul>
-            </div>
-            <div>
-                <div id="js-<?php echo esc_attr( $attributes['blockId'] ); ?>" class="uk-switcher">
-                    <?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-                </div>
-            </div>
-            <?php elseif( $attributes['navigationPosition'] == 'right' ) : ?>
-                <div>
-                    <div id="js-<?php echo esc_attr( $attributes['blockId'] ); ?>" class="uk-switcher">
-                        <?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
-                    </div>
-                </div>
-                <div
-                    <?php if ( ! empty( $nav_grid_nav_column_classes ) ) : ?>
-                        class="<?php echo esc_attr( implode( ' ', $nav_grid_nav_column_classes ) ); ?>"
-                    <?php endif; ?>
-                >
-                    <ul
-                        <?php if ( ! empty( $nav_classes ) ) : ?>
-                            class="<?php echo esc_attr( implode( ' ', $nav_classes ) ); ?>"
-                        <?php endif; ?>
-                        <?php if ( $attributes['navigation'] == 'tabs' ) : ?>
-                            data-uk-tab="
-                            <?php if ( ! empty( $nav_data ) ) : ?>
-                                <?php echo esc_attr( implode( '; ', $nav_data ) ); ?>
-                            <?php endif; ?>
-                            "
-                        <?php else : ?>
-                            data-uk-switcher="
-                            <?php if ( ! empty( $nav_data ) ) : ?>
-                                <?php echo esc_attr( implode( '; ', $nav_data ) ); ?>
-                            <?php endif; ?>
-                            "
-                        <?php endif; ?>
-                    >
-                        <?php
-                        foreach ( $block->inner_blocks as $inner_block ) {
-                            echo '<li><a href="#">' . esc_html( $inner_block->attributes['titleText'] ) . '</a></li>';
-                        }
-                        ?>
-                    </ul>
-                </div>
-            <?php endif; ?>
+    <div <?php echo implode( ' ', $navigation_grid_attrs ); ?>>
+        <?php if ( $attributes['navigationPosition'] === 'left' ) : ?>
+        <div <?php echo implode( ' ', $navigation_grid_column_attrs ); ?>>
+            <ul <?php echo implode( ' ', $navigation_attrs ); ?>>
+                <?php
+                foreach ( $block->inner_blocks as $inner_block ) {
+                    echo '<li><a href="#">' . esc_html( $inner_block->attributes['titleText'] ) . '</a></li>';
+                }
+                ?>
+            </ul>
         </div>
+        <div>
+            <div <?php echo implode( ' ', $switcher_content_attrs ); ?>>
+                <?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+            </div>
+        </div>
+        <?php elseif( $attributes['navigationPosition'] === 'right' ) : ?>
+        <div>
+            <div <?php echo implode( ' ', $switcher_content_attrs ); ?>>
+                <?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+            </div>
+        </div>
+        <div <?php echo implode( ' ', $navigation_grid_column_attrs ); ?>>
+            <ul <?php echo implode( ' ', $navigation_attrs ); ?>>
+                <?php
+                foreach ( $block->inner_blocks as $inner_block ) {
+                    echo '<li><a href="#">' . esc_html( $inner_block->attributes['titleText'] ) . '</a></li>';
+                }
+                ?>
+            </ul>
+        </div>
+        <?php endif; ?>
+    </div>
     <?php endif; ?>
 </div>

@@ -5,28 +5,20 @@
  * This template can be overridden by copying it to theme/uikit-editor-blocks/button.php.
  *
  * @package uikit-editor-blocks/templates/button
- * @version 1.0.2
- */
-
-/**
- * Block attributes.
- * Defined in uikit_editor_blocks_get_template() which requires this template.
- *
- * The following attributes are available:
- *
- * @var $attributes array(
- *   'className' (string) => Additional class names which should be added to block.
- * )
+ * @version 1.0.3
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-$block_elm_classes  = [];
-$button_elm_classes = ['uk-button'];
+$wrapper_attrs   = [];
+$wrapper_classes = [];
 
-$style_classes = [
+$button_attrs   = [];
+$button_classes = ['uk-button'];
+
+$style_variants = [
     'default'   => 'uk-button-default',
     'primary'   => 'uk-button-primary',
     'secondary' => 'uk-button-secondary',
@@ -35,67 +27,81 @@ $style_classes = [
     'link'      => 'uk-button-link',
 ];
 
-$size_classes = [
+$size_variants = [
     'small' => 'uk-button-small',
     'large' => 'uk-button-large',
 ];
 
-if ( ! empty( $attributes['style'] ) ) {
-    if ( isset( $style_classes[ $attributes['style'] ] ) ) {
-        $button_elm_classes[] = $style_classes[ $attributes['style'] ];
-    }
-}
-
-if ( ! empty( $attributes['size'] ) ) {
-    if ( isset( $size_classes[ $attributes['size'] ] ) ) {
-        $button_elm_classes[] = $size_classes[ $attributes['size'] ];
-    }
-}
-
-if ( ! empty( $attributes['fullWidth'] ) && $attributes['fullWidth'] ) {
-    $button_elm_classes[] = 'uk-width-1-1';
-}
-
-/*
- * Custom classes
+/**
+ * Wrapper classes
  */
-if ( ! empty( $attributes['className'] ) ) {
-    $block_elm_classes[] = $attributes['className'];
+if ( isset( $attributes['className'] ) ) {
+    $wrapper_classes[] = $attributes['className'];
+}
+
+/**
+ * Button classes
+ */
+if ( $attributes['style'] ) {
+    if ( isset( $style_variants[ $attributes['style'] ] ) ) {
+        $button_classes[] = $style_variants[ $attributes['style'] ];
+    }
+}
+
+if ( $attributes['size'] ) {
+    if ( isset( $size_variants[ $attributes['size'] ] ) ) {
+        $button_classes[] = $size_variants[ $attributes['size'] ];
+    }
+}
+
+if ( $attributes['fullWidth'] ) {
+    $button_classes[] = 'uk-width-1-1';
 }
 
 /**
  * Filters button block classes.
  *
- * @param array $block_elm_classes Classes which should be added to the wrapper block of the button.
+ * @param array $wrapper_classes Classes which should be added to the wrapper block of the button.
  * @param array $attributes Block attributes.
  */
-$block_elm_classes = apply_filters( 'uikit_editor_blocks_button_classes', $block_elm_classes, $attributes );
+$wrapper_classes = apply_filters( 'uikit_editor_blocks_button_classes', $wrapper_classes, $attributes );
+
+/**
+ * Wrapper attributes
+ */
+if ( $wrapper_classes ) {
+    $wrapper_attrs[] = 'class="' . esc_attr( implode( ' ', $wrapper_classes ) ) . '"';
+}
+
+/**
+ * Button attributes
+ */
+if ( $attributes['linkUrl'] ) {
+    $button_attrs[] = 'href="' . esc_attr( $attributes['linkUrl'] ) . '"';
+}
+
+if ( $attributes['linkTarget'] ) {
+    $button_attrs[] = 'target="' . esc_attr( $attributes['linkTarget'] ) . '"';
+}
+
+if ( $attributes['linkTitle'] ) {
+    $button_attrs[] = 'title="' . esc_attr( $attributes['linkTitle'] ) . '"';
+}
+
+if ( $attributes['linkRel'] ) {
+    $button_attrs[] = 'rel="' . esc_attr( $attributes['linkRel'] ) . '"';
+}
+
+if ( $attributes['linkAriaLabel'] ) {
+    $button_attrs[] = 'aria-label="' . esc_attr( $attributes['linkAriaLabel'] ) . '"';
+}
+
+if ( $button_classes ) {
+    $button_attrs[] = 'class="' . esc_attr( implode( ' ', $button_classes ) ) . '"';
+}
 ?>
-<div
-    <?php if ( ! empty( $block_elm_classes ) ) : ?>
-        class="<?php echo esc_attr( implode( ' ', $block_elm_classes ) ); ?>"
-    <?php endif; ?>
->
-    <a
-        <?php if ( ! empty( $attributes['linkUrl'] ) ) : ?>
-            href="<?php echo esc_url( $attributes['linkUrl'] ); ?>"
-        <?php endif; ?>
-        <?php if ( ! empty( $attributes['linkTarget'] ) ) : ?>
-            target="<?php echo esc_attr( $attributes['linkTarget'] ); ?>"
-        <?php endif; ?>
-        <?php if ( ! empty( $attributes['linkTitle'] ) ) : ?>
-            title="<?php echo esc_attr( $attributes['linkTitle'] ); ?>"
-        <?php endif; ?>
-        <?php if ( ! empty( $attributes['linkRel'] ) ) : ?>
-            rel="<?php echo esc_attr( $attributes['linkRel'] ); ?>"
-        <?php endif; ?>
-        <?php if ( ! empty( $attributes['linkAriaLabel'] ) ) : ?>
-            aria-label="<?php echo esc_attr( $attributes['linkAriaLabel'] ); ?>"
-        <?php endif; ?>
-        <?php if ( ! empty( $button_elm_classes ) ) : ?>
-            class="<?php echo esc_attr( implode( ' ', $button_elm_classes ) ); ?>"
-        <?php endif; ?>
-    >
+<div <?php echo implode( ' ', $wrapper_attrs ); ?>>
+    <a <?php echo implode( ' ', $button_attrs ); ?>>
         <?php echo esc_html( $attributes['text'] ); ?>
     </a>
 </div>

@@ -64,10 +64,13 @@ class UikitImageEdit extends Component {
       setAttributes( { blockId: clientId } );
     }
 
+    const general = useGeneralBlockProps(attributes);
+    const { className: generalClassName, ...generalDataAttrs } = general;
+
     // Define block-level attributes
     const blockProps = {
       className: clsx(
-        useGeneralBlockProps(attributes)?.className,
+        generalClassName,
         {
           [`uk-border-${border}`]: border,
         },
@@ -257,7 +260,7 @@ class UikitImageEdit extends Component {
         </InspectorControls>
         <div>
           { mediaUrl ? (
-            <img src={ mediaUrl } alt={ alt } style={ imageStyle } className={blockProps.className} />
+            <img src={ mediaUrl } alt={ alt } style={ imageStyle } className={blockProps.className} {...generalDataAttrs} />
           ) : (
             placeholder
           )}

@@ -58,10 +58,13 @@ class UikitAccordionEdit extends Component {
       setAttributes( { blockId: clientId } );
     }
 
+    const general = useGeneralBlockProps(attributes);
+    const { className: generalClassName, ...generalDataAttrs } = general;
+
     // Define block-level attributes
     const blockProps = {
       className: clsx(
-        useGeneralBlockProps(attributes)?.className,
+        generalClassName,
         className
       ),
     };
@@ -121,7 +124,7 @@ class UikitAccordionEdit extends Component {
             />
           </PanelBody>
         </InspectorControls>
-        <div className={blockProps.className} data-uk-accordion={`targets: div[data-type='uikit-editor-blocks/accordion-item'] > div; ${accordionDataAttribute}`}>
+        <div className={blockProps.className} {...generalDataAttrs} data-uk-accordion={`targets: div[data-type='uikit-editor-blocks/accordion-item'] > div; ${accordionDataAttribute}`}>
           <InnerBlocks
             allowedBlocks={ ALLOWED_BLOCKS }
             renderAppender={false}

@@ -5,34 +5,17 @@
  * This template can be overridden by copying it to theme/uikit-editor-blocks/container.php.
  *
  * @package uikit-editor-blocks/templates/container
- * @version 1.0.0
- */
-
-/**
- * Block attributes.
- * Defined in uikit_editor_blocks_get_template() which requires this template.
- *
- * The following attributes are available:
- *
- * @var $attributes array(
- *   'className' (string) => Additional class names which should be added to block.
- * )
- */
-
-/**
- * Block content.
- * Defined in uikit_editor_blocks_get_template() which requires this template.
- *
- * @var $content string
+ * @version 1.0.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-$block_elm_classes = ['uk-container'];
+$wrapper_attrs   = [];
+$wrapper_classes = ['uk-container'];
 
-$size_classes = [
+$size_variants = [
     'xsmall' => 'uk-container-xsmall',
     'small'  => 'uk-container-small',
     'large'  => 'uk-container-large',
@@ -40,34 +23,34 @@ $size_classes = [
     'expand' => 'uk-container-expand',
 ];
 
-/*
- * Container options
+/**
+ * Wrapper classes
  */
-if ( ! empty( $attributes['size'] ) ) {
-    if ( isset( $size_classes[ $attributes['size'] ] ) ) {
-        $block_elm_classes[] = $size_classes[ $attributes['size'] ];
+if ( $attributes['size'] ) {
+    if ( isset( $size_variants[ $attributes['size'] ] ) ) {
+        $wrapper_classes[] = $size_variants[ $attributes['size'] ];
     }
 }
 
-/*
- * Custom classes
- */
-if ( ! empty( $attributes['className'] ) ) {
-    $block_elm_classes[] = $attributes['className'];
+if ( isset( $attributes['className'] ) ) {
+    $wrapper_classes[] = $attributes['className'];
 }
 
 /**
  * Filters container block classes.
  *
- * @param array $block_elm_classes Classes which should be added to the block.
+ * @param array $wrapper_classes Classes which should be added to the block.
  * @param array $attributes Block attributes.
  */
-$block_elm_classes = apply_filters( 'uikit_editor_blocks_container_classes', $block_elm_classes, $attributes );
+$wrapper_classes = apply_filters( 'uikit_editor_blocks_container_classes', $wrapper_classes, $attributes );
+
+/**
+ * Wrapper attributes
+ */
+if ( $wrapper_classes ) {
+    $wrapper_attrs[] = 'class="' . esc_attr( implode( ' ', $wrapper_classes ) ) . '"';
+}
 ?>
-<div
-    <?php if ( ! empty( $block_elm_classes ) ) : ?>
-        class="<?php echo esc_attr( implode( ' ', $block_elm_classes ) ); ?>"
-    <?php endif; ?>
->
+<div <?php echo implode( ' ', $wrapper_attrs ); ?>>
     <?php echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 </div>

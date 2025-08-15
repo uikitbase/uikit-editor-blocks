@@ -49,10 +49,13 @@ class UikitTextEdit extends Component {
       setAttributes( { blockId: clientId } );
     }
 
+    const general = useGeneralBlockProps(attributes);
+    const { className: generalClassName, ...generalDataAttrs } = general;
+
     // Define block-level attributes
     const blockProps = {
       className: clsx(
-        useGeneralBlockProps(attributes)?.className,
+        generalClassName,
         {
           'uk-dropcap': dropCap,
           [`uk-text-${style}`]: style,
@@ -82,11 +85,13 @@ class UikitTextEdit extends Component {
           <RichText
             tagName={ element || 'p' }
             className={ blockProps.className }
+            {...generalDataAttrs}
             placeholder={ __( 'Enter text here...', 'uikit-editor-blocks' ) }
             value={ text }
             onChange={ ( value ) =>
               setAttributes( { text: value } )
             }
+            allowedFormats={ [ 'core/bold', 'core/italic', 'core/link' ] }
             keepPlaceholderOnFocus
           />
           <InspectorControls>

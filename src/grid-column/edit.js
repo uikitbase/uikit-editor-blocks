@@ -22,6 +22,9 @@ import { compose } from '@wordpress/compose';
 import { withSelect } from '@wordpress/data';
 import { __ } from '@wordpress/i18n';
 
+// Import the custom hook for applying general block settings
+import useGeneralBlockProps from '../use-general-block-props';
+
 // Fallback to deprecated '@wordpress/editor' for backwards compatibility
 const {
   InspectorControls,
@@ -93,6 +96,8 @@ class UikitColumnEdit extends Component {
       largeWidth,
       xlargeWidth,
       orderFirst,
+      verticalAlignment,
+      padding,
       bgColor,
       bgImageMediaId,
       bgImageSize,
@@ -110,6 +115,9 @@ class UikitColumnEdit extends Component {
     if ( ! blockId ) {
       setAttributes( { blockId: clientId } );
     }
+
+    const general = useGeneralBlockProps(attributes);
+    const { className: generalClassName, ...generalDataAttrs } = general;
 
     const onUpdateImage = ( image ) => {
       setAttributes( {
@@ -180,6 +188,33 @@ class UikitColumnEdit extends Component {
               ]}
               onChange={( value ) => {
                 setAttributes( { orderFirst: value } );
+              }}
+            />
+            <SelectControl 
+              label={ __( 'Vertical Alignment', 'uikit-editor-blocks' ) }
+              value={ verticalAlignment }
+              options={[
+                { label: __( 'Top', 'uikit-editor-blocks' ), value: '' },
+                { label: __( 'Middle', 'uikit-editor-blocks' ), value: 'middle' },
+                { label: __( 'Bottom', 'uikit-editor-blocks' ), value: 'bottom' },
+              ]}
+              onChange={( value ) => {
+                setAttributes( { verticalAlignment: value } );
+              }}
+            />
+            <SelectControl 
+              label={ __( 'Padding', 'uikit-editor-blocks' ) }
+              value={ padding }
+              options={[
+                { label: __( 'Default', 'uikit-editor-blocks' ), value: 'default' },
+                { label: __( 'X-Small', 'uikit-editor-blocks' ), value: 'xsmall' },
+                { label: __( 'Small', 'uikit-editor-blocks' ), value: 'small' },
+                { label: __( 'Large', 'uikit-editor-blocks' ), value: 'large' },
+                { label: __( 'X-Large', 'uikit-editor-blocks' ), value: 'xlarge' },
+                { label: __( 'None', 'uikit-editor-blocks' ), value: '' },
+              ]}
+              onChange={( value ) => {
+                setAttributes( { padding: value } );
               }}
             />
           </PanelBody>

@@ -203,7 +203,7 @@ if ( ! class_exists( '\Uikit_Editor_Blocks\General', false ) ) :
                     $scrollspy_attr = array();
 
                     if ( isset( $animation_classes[ $block['attrs']['ueb_animation'] ] ) ) {
-                        array_push( $scrollspy_attr, 'cls:' . $animation_classes[ $block['attrs']['ueb_animation'] ] );
+                        array_push( $scrollspy_attr, 'cls: ' . $animation_classes[ $block['attrs']['ueb_animation'] ] );
                     }
                     
                     if( ! empty( $block['attrs']['ueb_animationDelay'] ) ) {
@@ -371,26 +371,39 @@ if ( ! class_exists( '\Uikit_Editor_Blocks\General', false ) ) :
         }
 
         public static function add_attribute_to_first_html_element( $block_content, $attribute_name, $attribute_value ) {
-            // Find the first HTML tag in the content
-            preg_match( '/<([a-zA-Z0-9]+)(\s[^>]*)?>/su', $block_content, $attr_matches );
-
-            // If the attribute does not exist in the first tag, add it
-            if ( ! empty( $attr_matches ) && strpos( $attr_matches[0], $attribute_name ) === false ) {
-                // Combine attribute values into a single string
-                $attribute_value_combined = implode( '; ', $attribute_value );
-                
-                 // Construct the new tag with the new attribute
-                $newTag = preg_replace(
-                    '/<([a-zA-Z0-9]+)(\s[^>]*)?>/su',
-                    '<$1$2 ' . $attribute_name . '="' . $attribute_value_combined . '">',
-                    $attr_matches[0],
-                    1
-                );
-
-                $block_content = str_replace( $attr_matches[0], $newTag, $block_content );
+            // Validate attribute name to avoid malformed HTML
+            if ( ! preg_match( '/^[a-zA-Z_:][a-zA-Z0-9:._-]*$/', $attribute_name ) ) {
+                return $block_content;
             }
 
-            return $block_content;
+            // Find the first HTML tag
+            if ( ! preg_match( '/<([a-zA-Z0-9]+)(\s[^>]*)?>/su', $block_content, $m, PREG_OFFSET_CAPTURE ) ) {
+                return $block_content;
+            }
+
+            $fullTag = $m[0][0];
+            $pos     = $m[0][1];
+
+            // If attribute already exists (case-insensitive), do nothing
+            if ( preg_match( '/\b' . preg_quote( $attribute_name, '/' ) . '\s*=/i', $fullTag ) ) {
+                return $block_content;
+            }
+
+            // Normalize/escape value
+            $val = is_array( $attribute_value ) ? implode( '; ', $attribute_value ) : (string) $attribute_value;
+            $val = htmlspecialchars( $val, ENT_QUOTES, 'UTF-8' );
+
+            // Preserve self-closing if present
+            if ( preg_match( '/\/>\s*$/', $fullTag ) ) {
+                // e.g. <img ... />
+                $newTag = preg_replace( '/\/>\s*$/', ' ' . $attribute_name . '="' . $val . '" />', $fullTag, 1 );
+            } else {
+                // e.g. <div ...>
+                $newTag = substr( $fullTag, 0, -1 ) . ' ' . $attribute_name . '="' . $val . '">';
+            }
+
+            // Replace exactly the matched occurrence using offset+length
+            return substr($block_content, 0, $pos) . $newTag . substr($block_content, $pos + strlen($fullTag));
         }
 
         public static function add_classes_to_first_html_element( $block_content, $classes ) {

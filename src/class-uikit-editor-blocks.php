@@ -58,7 +58,7 @@ class Uikit_Editor_Blocks {
      *
      * @var string
      */
-    public static $version = '1.0.6';
+    public static $version = '1.0.7';
 
     /**
      * The plugin token.

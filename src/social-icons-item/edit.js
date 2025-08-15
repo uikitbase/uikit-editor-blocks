@@ -21,6 +21,9 @@ import { __ } from '@wordpress/i18n';
 
 import UIkitIconInput from '../uikit-icon-input';
 
+// Import the custom hook for applying general block settings
+import useGeneralBlockProps from '../use-general-block-props';
+
 // Fallback to deprecated '@wordpress/editor' for backwards compatibility
 const {
   InspectorControls,
@@ -58,6 +61,9 @@ class UikitSocialIconsItemEdit extends Component {
     if ( ! blockId ) {
       setAttributes( { blockId: clientId } );
     }
+
+    const general = useGeneralBlockProps(attributes);
+    const { className: generalClassName, ...generalDataAttrs } = general;
 
     // Open in new tab behavior from core/button (source: https://github.com/WordPress/gutenberg/blob/master/packages/block-library/src/button/edit.js)
     const onToggleOpenInNewTab = ( value ) => {

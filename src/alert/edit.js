@@ -24,7 +24,6 @@ import useGeneralBlockProps from '../use-general-block-props';
 // Fallback to deprecated '@wordpress/editor' for backwards compatibility
 const {
   InspectorControls,
-  RichText,
 } = BlockEditor || Editor;
 
 const NEW_TAB_REL_DEFAULT_VALUE = 'noreferrer noopener';
@@ -66,10 +65,13 @@ class UikitAlertEdit extends Component {
       }
     }
 
+    const general = useGeneralBlockProps(attributes);
+    const { className: generalClassName, ...generalDataAttrs } = general;
+
     // Define block-level attributes
     const blockProps = {
       className: clsx(
-        useGeneralBlockProps(attributes)?.className,
+        generalClassName,
         'uk-alert',
         {
           [`uk-alert-${style}`]: style,
@@ -278,7 +280,7 @@ class UikitAlertEdit extends Component {
             />
           </PanelBody>
         </InspectorControls>
-        <div className={blockProps.className}>
+        <div className={blockProps.className} {...generalDataAttrs} >
           {titleElm}
           {contentElm}
         </div>

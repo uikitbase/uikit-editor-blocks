@@ -44,6 +44,9 @@ class UikitDividerEdit extends Component {
       setAttributes( { blockId: clientId } );
     }
 
+    const general = useGeneralBlockProps(attributes);
+    const { className: generalClassName, ...generalDataAttrs } = general;
+
     // Update className based on the element selected
     let elementClass = '';
     if (element === 'div') {
@@ -53,7 +56,7 @@ class UikitDividerEdit extends Component {
     // Define block-level attributes
     const blockProps = {
       className: clsx(
-        useGeneralBlockProps(attributes)?.className,
+        generalClassName,
         elementClass,
         {
           [`uk-divider-${style}`]: style,
@@ -70,7 +73,10 @@ class UikitDividerEdit extends Component {
     const blockElm = (
       createElement(
         blockTag,
-        { className: blockProps.className },
+        {
+        className: blockProps.className,
+        ...generalDataAttrs,
+        },
       )
     );
 

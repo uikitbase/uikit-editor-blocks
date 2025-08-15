@@ -20,6 +20,11 @@ import {
 import { __ } from '@wordpress/i18n';
 import { createBlock } from '@wordpress/blocks';
 
+import UIkitIconInput from '../uikit-icon-input';
+
+// Import the custom hook for applying general block settings
+import useGeneralBlockProps from '../use-general-block-props';
+
 // Fallback to deprecated '@wordpress/editor' for backwards compatibility
 const {
   InspectorControls,
@@ -53,6 +58,9 @@ class UikitDropdownEdit extends Component {
       setAttributes( { blockId: clientId } );
     }
 
+    const general = useGeneralBlockProps(attributes);
+    const { className: generalClassName, ...generalDataAttrs } = general;
+
     return (
       <Fragment>
         <InspectorControls>
@@ -70,18 +78,18 @@ class UikitDropdownEdit extends Component {
               label={ __( 'Position', 'uikit-editor-blocks' ) }
               value={ position }
               options={[
-                { label: __( 'top-left', 'uikit-editor-blocks' ), value: 'top-left' },
-                { label: __( 'top-center', 'uikit-editor-blocks' ), value: 'top-center' },
-                { label: __( 'top-right', 'uikit-editor-blocks' ), value: 'top-right' },
-                { label: __( 'bottom-left', 'uikit-editor-blocks' ), value: 'bottom-left' },
-                { label: __( 'bottom-center', 'uikit-editor-blocks' ), value: 'bottom-center' },
-                { label: __( 'bottom-right', 'uikit-editor-blocks' ), value: 'bottom-right' },
-                { label: __( 'left-top', 'uikit-editor-blocks' ), value: 'left-top' },
-                { label: __( 'left-center', 'uikit-editor-blocks' ), value: 'left-center' },
-                { label: __( 'left-bottom', 'uikit-editor-blocks' ), value: 'left-bottom' },
-                { label: __( 'right-top', 'uikit-editor-blocks' ), value: 'right-top' },
-                { label: __( 'right-center', 'uikit-editor-blocks' ), value: 'right-center' },
-                { label: __( 'right-bottom', 'uikit-editor-blocks' ), value: 'right-bottom' },
+                { label: __( 'Top Left', 'uikit-editor-blocks' ), value: 'top-left' },
+                { label: __( 'Top Center', 'uikit-editor-blocks' ), value: 'top-center' },
+                { label: __( 'Top Right', 'uikit-editor-blocks' ), value: 'top-right' },
+                { label: __( 'Bottom Left', 'uikit-editor-blocks' ), value: 'bottom-left' },
+                { label: __( 'Bottom Center', 'uikit-editor-blocks' ), value: 'bottom-center' },
+                { label: __( 'Bottom Right', 'uikit-editor-blocks' ), value: 'bottom-right' },
+                { label: __( 'Left Top', 'uikit-editor-blocks' ), value: 'left-top' },
+                { label: __( 'Left Center', 'uikit-editor-blocks' ), value: 'left-center' },
+                { label: __( 'Left Bottom', 'uikit-editor-blocks' ), value: 'left-bottom' },
+                { label: __( 'Right Top', 'uikit-editor-blocks' ), value: 'right-top' },
+                { label: __( 'Right Center', 'uikit-editor-blocks' ), value: 'right-center' },
+                { label: __( 'Right Bottom', 'uikit-editor-blocks' ), value: 'right-bottom' },
               ]}
               onChange={( value ) => {
                 setAttributes( { position: value } );
@@ -117,12 +125,13 @@ class UikitDropdownEdit extends Component {
                 setAttributes( { buttonStyle: value } );
               }}
             />
-            <TextControl
-            label={ __( 'Button Icon', 'uikit-editor-blocks' ) }
-              value={ buttonIcon }
-              onChange={( value ) => {
-                setAttributes( { buttonIcon: value } );
-              }}
+            <UIkitIconInput
+              label={ __( 'Button Icon', 'uikit-editor-blocks' ) }
+              help={ __( 'Enter icon name from UIkit or select one.', 'uikit-editor-blocks' ) }
+              value={ buttonIcon || '' }
+              onChange={ ( value ) =>
+                setAttributes( { buttonIcon: value } )
+              }
             />
           </PanelBody>
         </InspectorControls>

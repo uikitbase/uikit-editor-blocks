@@ -5,32 +5,22 @@
  * This template can be overridden by copying it to theme/uikit-editor-blocks/text.php.
  *
  * @package uikit-editor-blocks/templates/text
- * @version 1.0.0
- */
-
-/**
- * Block attributes.
- * Defined in uikit_editor_blocks_get_template() which requires this template.
- *
- * The following attributes are available:
- *
- * @var $attributes array(
- *   'className' (string) => Additional class names which should be added to block.
- * )
+ * @version 1.0.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-$block_elm_classes = [];
+$wrapper_attrs   = [];
+$wrapper_classes = [];
 
-$style_classes = [
+$style_variants = [
     'lead' => 'uk-text-lead',
     'meta' => 'uk-text-meta',
 ];
 
-$color_classes = [
+$color_variants = [
     'muted'     => 'uk-text-muted',
     'emphasis'  => 'uk-text-emphasis',
     'primary'   => 'uk-text-primary',
@@ -40,68 +30,71 @@ $color_classes = [
     'danger'    => 'uk-text-danger',
 ];
 
-$size_classes = [
+$size_variants = [
     'small' => 'uk-text-small',
     'large' => 'uk-text-large',
 ];
 
-$alignment_classes = [
+$alignment_variants = [
     'left'   => 'uk-text-left',
     'center' => 'uk-text-center',
     'right'  => 'uk-text-right',
 ];
 
-if ( ! empty( $attributes['dropCap'] ) && $attributes['dropCap'] ) {
-    $block_elm_classes[] = 'uk-dropcap';
-}
-
-if ( ! empty( $attributes['style'] ) ) {
-    if ( isset( $style_classes[ $attributes['style'] ] ) ) {
-        $block_elm_classes[] = $style_classes[ $attributes['style'] ];
-    }
-}
-
-if ( ! empty( $attributes['color'] ) ) {
-    if ( isset( $color_classes[ $attributes['color'] ] ) ) {
-        $block_elm_classes[] = $color_classes[ $attributes['color'] ];
-    }
-}
-
-if ( ! empty( $attributes['size'] ) ) {
-    if ( isset( $size_classes[ $attributes['size'] ] ) ) {
-        $block_elm_classes[] = $size_classes[ $attributes['size'] ];
-    }
-}
-
-if ( $attributes['element'] == 'div' ) {
-    $block_elm_classes[] = 'uk-panel';
-}
-
-if ( ! empty( $attributes['alignment'] ) ) {
-    if ( isset( $alignment_classes[ $attributes['alignment'] ] ) ) {
-        $block_elm_classes[] = $alignment_classes[ $attributes['alignment'] ];
-    }
-}
-
-/*
- * Custom classes
+/**
+ * Wrapper classes
  */
-if ( ! empty( $attributes['className'] ) ) {
-    $block_elm_classes[] = $attributes['className'];
+if ( $attributes['dropCap'] ) {
+    $wrapper_classes[] = 'uk-dropcap';
+}
+
+if ( $attributes['style'] ) {
+    if ( isset( $style_variants[ $attributes['style'] ] ) ) {
+        $wrapper_classes[] = $style_variants[ $attributes['style'] ];
+    }
+}
+
+if ( $attributes['color'] ) {
+    if ( isset( $color_variants[ $attributes['color'] ] ) ) {
+        $wrapper_classes[] = $color_variants[ $attributes['color'] ];
+    }
+}
+
+if ( $attributes['size'] ) {
+    if ( isset( $size_variants[ $attributes['size'] ] ) ) {
+        $wrapper_classes[] = $size_variants[ $attributes['size'] ];
+    }
+}
+
+if ( $attributes['element'] === 'div' ) {
+    $wrapper_classes[] = 'uk-panel';
+}
+
+if ( $attributes['alignment'] ) {
+    if ( isset( $alignment_variants[ $attributes['alignment'] ] ) ) {
+        $wrapper_classes[] = $alignment_variants[ $attributes['alignment'] ];
+    }
+}
+
+if ( isset( $attributes['className'] ) ) {
+    $wrapper_classes[] = $attributes['className'];
 }
 
 /**
  * Filters text block classes.
  *
- * @param array $block_elm_classes Classes which should be added to the block.
+ * @param array $wrapper_classes Classes which should be added to the block.
  * @param array $attributes Block attributes.
  */
-$block_elm_classes = apply_filters( 'uikit_editor_blocks_text_classes', $block_elm_classes, $attributes );
+$wrapper_classes = apply_filters( 'uikit_editor_blocks_text_classes', $wrapper_classes, $attributes );
+
+/**
+ * Wrapper attributes
+ */
+if ( $wrapper_classes ) {
+    $wrapper_attrs[] = 'class="' . esc_attr( implode( ' ', $wrapper_classes ) ) . '"';
+}
 ?>
-<<?php echo esc_html( $attributes['element'] ); ?>
-    <?php if ( ! empty( $block_elm_classes ) ) : ?>
-        class="<?php echo esc_attr( implode( ' ', $block_elm_classes ) ); ?>"
-    <?php endif; ?>
->
+<<?php echo tag_escape( $attributes['element'] ); ?> <?php echo implode( ' ', $wrapper_attrs ); ?>>
     <?php echo wp_kses_post( $attributes['text'] ); ?>
-</<?php echo esc_html( $attributes['element'] ); ?>>
+</<?php echo tag_escape( $attributes['element'] ); ?>>

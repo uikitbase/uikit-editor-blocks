@@ -50,10 +50,13 @@ class UikitIconEdit extends Component {
       }
     }
 
+    const general = useGeneralBlockProps(attributes);
+    const { className: generalClassName, ...generalDataAttrs } = general;
+
     // Define block-level attributes
     const blockProps = {
       className: clsx(
-        useGeneralBlockProps(attributes)?.className,
+        generalClassName,
         'uk-icon',
         {
           [`uk-text-${color}`]: color,
@@ -111,7 +114,7 @@ class UikitIconEdit extends Component {
             />
           </PanelBody>
         </InspectorControls>
-        <span className={blockProps.className} data-uk-icon={iconDataAttribute}></span>
+        <span className={blockProps.className} {...generalDataAttrs} data-uk-icon={iconDataAttribute}></span>
       </Fragment>
     );
   }

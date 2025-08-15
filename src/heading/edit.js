@@ -45,6 +45,9 @@ class UikitHeadingEdit extends Component {
       setAttributes( { blockId: clientId } );
     }
 
+    const general = useGeneralBlockProps(attributes);
+    const { className: generalClassName, ...generalDataAttrs } = general;
+
     const styleClasses = {
       'heading-3xlarge': 'uk-heading-3xlarge',
       'heading-2xlarge': 'uk-heading-2xlarge',
@@ -67,7 +70,7 @@ class UikitHeadingEdit extends Component {
     // Define block-level attributes
     const blockProps = {
       className: clsx(
-        useGeneralBlockProps(attributes)?.className,
+        generalClassName,
         {
           [styleClasses[style]]: style,
           [`uk-heading-${decoration}`]: decoration,
@@ -82,12 +85,13 @@ class UikitHeadingEdit extends Component {
         <RichText
           tagName={ element || 'div' }
           className={ blockProps.className }
+          {...generalDataAttrs}
           placeholder={ __( 'Heading', 'uikit-editor-blocks' ) }
           value={ text }
           onChange={ ( value ) =>
             setAttributes( { text: value } )
           }
-          formattingControls={ [] }
+          allowedFormats={ [ 'core/bold', 'core/italic', 'core/link' ] }
           keepPlaceholderOnFocus
         />
         <InspectorControls>
