@@ -3,7 +3,7 @@ Tags: uikit, block-editor, blocks
 Requires at least: 6.0
 Tested up to: 6.8.2
 Requires PHP: 7.4
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -102,6 +102,19 @@ By using this plugin, users agree to the terms and conditions of YouTube and Vim
 2. UIkit blocks settings page.
 
 == Changelog ==
+
+= 1.0.8 =
+* Updated: UIkit framework to version 3.23.12.
+* Fixed: Dropdown block now supports live preview in the Gutenberg editor.
+* Fixed: Grid block now supports live preview in the Gutenberg editor.
+* Fixed: Overlay block now supports live preview in the Gutenberg editor.
+* Fixed: Overlay slider block now supports live preview in the Gutenberg editor.
+* Fixed: Panel block now supports live preview in the Gutenberg editor.
+* Fixed: Panel slider block now supports live preview in the Gutenberg editor.
+* Fixed: Quotation block now supports live preview in the Gutenberg editor.
+* Fixed: Slideshow block now supports live preview in the Gutenberg editor.
+* Fixed: Social icons block now supports live preview in the Gutenberg editor.
+* Fixed: Switcher block now supports live preview in the Gutenberg editor.
 
 = 1.0.7 =
 * Improved: Redesigned block templates for a cleaner look and fixed minor issues.

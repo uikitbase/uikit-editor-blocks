@@ -1,0 +1,63 @@
+@import "~@wordpress/base-styles/variables";
+
+[data-type="uikit-editor-blocks/grid"] {
+    padding: 11px;
+    background:
+	linear-gradient(#999, #999) top left / 1px 10px no-repeat,
+        linear-gradient(#999, #999) top left / 10px 1px no-repeat,
+        linear-gradient(#999, #999) bottom right / 1px 10px no-repeat,
+        linear-gradient(#999, #999) bottom right / 10px 1px no-repeat;
+
+    background-position: top left, top left, bottom right, bottom right;
+
+    &:before {
+        content: "UIkit Grid";
+        position: absolute;
+        font-size: 7pt;
+        left: 10px;
+        top: -10px;
+        height: 20px;
+        line-height: 20px;
+        padding: 0 5px;
+	color: #999;
+    }
+}
+
+.uikit-editor-blocks-template-selector-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.uikit-editor-blocks-template-selector-button {
+    flex: 0 0 50%;
+    display: flex;
+
+    > .components-icon-button,
+    > .components-button.has-icon {
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: auto;
+        padding: 8px;
+
+        // Align margin to text position
+        &.has-text svg {
+            margin-right: 0;
+            margin-bottom: 4px;
+        }
+
+        &.is-active,
+        &.is-active:not(:disabled):not([aria-disabled="true"]):not(.is-default):hover {
+            color: $gray-900;
+            box-shadow: inset 0 0 0 2px $gray-700;
+
+            // Windows High Contrast mode will show this outline, but not the box-shadow.
+            outline: 2px solid transparent;
+            outline-offset: -2px;
+        }
+    }
+}
+
+.uikit-editor-blocks-template-selector-button-label {
+    font-size: 12px;
+}

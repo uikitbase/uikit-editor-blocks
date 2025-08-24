@@ -1,0 +1,28 @@
+[data-type="uikit-editor-blocks/slideshow"] {
+    padding: 11px;
+    background:
+	linear-gradient(#999, #999) top left / 1px 10px no-repeat,
+        linear-gradient(#999, #999) top left / 10px 1px no-repeat,
+        linear-gradient(#999, #999) bottom right / 1px 10px no-repeat,
+        linear-gradient(#999, #999) bottom right / 10px 1px no-repeat;
+
+    background-position: top left, top left, bottom right, bottom right;
+
+    &:before {
+        content: "UIkit Slideshow";
+        position: absolute;
+        font-size: 7pt;
+        left: 10px;
+        top: -10px;
+        height: 20px;
+        line-height: 20px;
+        padding: 0 5px;
+	color: #999;
+    }
+}
+
+[data-type="uikit-editor-blocks/slideshow-item"] {
+    margin-bottom: 0;
+    margin-top: 0;
+    position: absolute !important;
+}

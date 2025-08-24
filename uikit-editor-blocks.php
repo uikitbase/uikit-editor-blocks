@@ -5,7 +5,7 @@
  * Description: UIkit Editor Blocks for WordPress. This plugin adds UIkit blocks to the WordPress Block Editor (Gutenberg).
  * Author: UIkitBase
  * Author URI: https://uikitbase.com/
- * Version: 1.0.7
+ * Version: 1.0.8
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: uikit-editor-blocks
@@ -30,7 +30,7 @@ if ( ! defined( 'UIKIT_EDITOR_BLOCKS_PLUGIN_URL' ) ) {
 
 // Include the main Uikit_Editor_Blocks class.
 if ( ! class_exists( \Uikit_Editor_Blocks\Uikit_Editor_Blocks::class ) ) {
-    require_once plugin_dir_path( UIKIT_EDITOR_BLOCKS_PLUGIN_FILE ) . 'src/class-uikit-editor-blocks.php';
+    require_once plugin_dir_path( UIKIT_EDITOR_BLOCKS_PLUGIN_FILE ) . 'includes/class-uikit-editor-blocks.php';
 }
 
 // Initialize plugin

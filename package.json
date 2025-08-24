@@ -1,6 +1,6 @@
 {
   "name": "uikit-editor-blocks",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "private": true,
   "description": "UIkit Editor Blocks for WordPress. This plugin adds UIkit blocks to the WordPress Block Editor (Gutenberg).",
   "author": "UIKitBase",
@@ -13,8 +13,8 @@
     "Blocks"
   ],
   "scripts": {
-    "start": "wp-scripts start src/index.js src/settings/settings.js",
-    "build": "wp-scripts build src/index.js src/settings/settings.js"
+    "start": "wp-scripts start src/index.js",
+    "build": "wp-scripts build src/index.js"
   },
   "devDependencies": {
     "@wordpress/scripts": "30.0.2"
